@@ -13,9 +13,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each settings.triggers}}
+			{{#each}}
 				<tr>
-					<td>{{input type="checkbox" checked=active}}</td>
+					<td><input type="checkbox" {{bind-attr value="active" event="toggle"}}></td>
 					<td>{{input value=delay}}</td>
 					<td>{{input value=exclude}}</td>
 					<td>{{input value=include}}</td>
@@ -31,6 +31,6 @@
 	</table>
 
 	<div class="upper_space">
-		<button {{action 'createTrigger'}}>Add Trigger</button>
+		<button {{action click="create"}}>Add Trigger</button>
 	</div>
 </div>
