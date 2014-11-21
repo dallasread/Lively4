@@ -1,0 +1,60 @@
+#lcs {
+	.topbar {
+		position: fixed;
+		top: 0;
+		height: $topbar_height;
+		background: #585B5B;
+		z-index: 99999;
+		
+		.menu_wrapper {
+			position: absolute;
+			
+			.open_menu {
+				font-size: 28px;
+				line-height: 28px;
+				padding: 12px 20px 10px;
+			}
+		}
+	
+		h1 {
+			text-align: center;
+			padding: 13px;
+			font-weight: bold;
+			color: #fff;
+			background: #585B5B;
+			font-size: 19px;
+		}
+		
+		.icon {
+			color: #8D8E91;
+			font-size: 34px;
+			line-height: 34px;
+			cursor: pointer;
+			padding: 5px 15px 11px;
+			
+			&:hover {
+				color: #B5B6BB;
+				background: #787C7C;
+			}
+		}
+		
+		.signinout {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding-left: 17px;
+			padding-right: 17px;
+			
+			i {
+				font-size: 21px;
+			}
+		}
+		
+		.close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			font-weight: 100;
+		}
+	}
+}

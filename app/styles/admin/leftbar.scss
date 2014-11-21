@@ -1,0 +1,59 @@
+#lcs {
+	.leftbar {
+		z-index: 99998;
+		background: red;
+		position: fixed;
+		top: $topbar_height;
+		bottom: 0;
+		left: 0;
+		width: $leftbar_width;
+		background: #fff;
+		border-right: 1px solid #ccc;
+		
+		a {
+			display: block;
+			text-decoration: none;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+			color: #aaa;
+			padding: 19px 0px;
+			border-top: 1px solid transparent;
+			border-bottom: 1px solid transparent;
+			
+			&.active {
+				background: #eee;
+				color: #333;
+				border-color: #ccc;
+			}
+			
+			i {
+				display: block;
+				font-size: 45px;
+				line-height: 45px;
+				padding-bottom: 6px;
+			}
+			
+			&.toggle_status {
+				&.offline {
+				  i {
+						filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+					  -webkit-transform: scale(-1, 1);
+					  -ms-transform: scale(-1, 1);
+					  transform: scale(-1, 1);
+					}
+					
+					.toggle-on {
+						display: none;
+					}
+				}
+				
+				&.online {
+					.toggle-off {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

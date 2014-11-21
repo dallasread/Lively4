@@ -1,0 +1,99 @@
+#lcs {
+	.panes {
+		.pane {
+			.activate {
+				max-width: 450px;
+
+				.plan {
+					padding: 20px;
+					position: relative;
+					background: #B3DAFF;
+					color: #394854;
+					border: 3px solid #212931;
+					border-radius: 9px;
+			
+					p, li {
+						margin: 40px 0;
+						color: #394854;
+					}
+					
+					.plan_header {
+						background: #212931;
+						color: #B3DAFF;
+						text-align: center;
+						padding: 10px;
+						margin: -20px -20px 20px -20px;
+						font-weight: bold;
+					}
+			
+					.price {
+						font-weight: bold;
+						font-size: 72px;
+						line-height: 84px;
+						margin: 0;
+						color: #212931;
+						display: inline-block;
+					}
+			
+					.interval {
+						display: inline-block;
+						color: #5C768A;
+					}
+			
+					.savings {
+						position: absolute;
+						right: -20px;
+						top: -20px;
+					}
+			
+					.description {
+						margin: 10px 0 0 0;
+						font-size: 14px;
+						line-height: 21px;
+					}
+				}
+		
+				.hint {
+					color: #aaa;
+					font-size: 13px;
+					line-height: 20px;
+					margin-top: 7px;
+					float: right;
+			
+					a {
+						text-decoration: underline;
+					}
+				}
+		
+				.red {
+					color: #CD1F00;
+					font-weight: bold;
+				}
+				
+				.buy_now {
+					margin-top: 20px;
+					background: #E62300;
+				}
+				
+				.testimonial {
+					background: #ddd;
+					color: #333;
+					padding: 10px;
+					border-radius: 4px;
+					font-size: 14px;
+					line-height: 20px;
+					margin-bottom: 15px;
+				}
+				
+				.risk_list {
+					margin: -20px 0 20px 35px;
+					list-style: disc;
+					
+					li {
+						margin-bottom: 7px;
+					}
+				}
+			}
+		}
+	}
+}

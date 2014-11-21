@@ -1,0 +1,24 @@
+<div>
+	<div class="header">
+		<div class="profile">
+			<img src="/imgs/avatar.jpg">
+			<p class="served_by_description">
+				You're talking to
+				<span class="agent_name">Dallas</span>
+			</p>
+		</div>
+	</div>
+
+	<div class="messages">
+		<div class="overlay"></div>
+	</div>
+
+	<form class="new_message" {{action submit="createMessage"}}>
+		<textarea name="body" placeholder="What's on your mind?"></textarea>
+		<div class="action_row">
+			<button type="submit">Send</button>
+			<p class="upload_icon"></p>
+			<div class="clear"></div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,36 @@
+<div>
+	<p>Triggers are the things that go crazy and crazier. Triggers are the things that go crazy and crazier. Triggers are the things that go crazy and crazier.</p>
+
+	<table class="triggers table">
+		<thead>
+			<tr>
+				<th>Active</th>
+				<th>Delay</th>
+				<th>Exclude</th>
+				<th>Include</th>
+				<th>Message</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each}}
+				<tr>
+					<td><input type="checkbox" {{bind-attr value="active" event="toggle"}}></td>
+					<td>{{input value=delay}}</td>
+					<td>{{input value=exclude}}</td>
+					<td>{{input value=include}}</td>
+					<td>{{input value=message.body}}</td>
+					<td>
+						<button class="fluid_width small gray red_hover" {{action click="delete"}}>
+							<i class="fa fa-trash"></i>
+						</button>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	<div class="upper_space">
+		<button {{action click="create"}}>Add Trigger</button>
+	</div>
+</div>

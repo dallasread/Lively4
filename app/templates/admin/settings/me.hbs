@@ -1,0 +1,17 @@
+<div>
+	<form {{action submit="saveAttrs"}}>
+		<div class="field">
+			<label>What is your <strong>email address</strong>?</label>
+			<input type="email" value="">
+		</div>
+		
+		<div class="field">
+			<label>What is your new <strong>password</strong> (blank to keep your current password)?</label>
+			<input type="password" name="password">
+		</div>
+
+		<button type="submit" class="full_width">Save My Profile</button>
+	</form>
+	
+	<br><button {{action click="signOut"}} class="gray">Sign Out</button>
+</div>

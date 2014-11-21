@@ -11,6 +11,8 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
+Ember.run.backburner.DEBUG = true;
+
 loadInitializers(App, config.modulePrefix);
 
 export default App;

@@ -1,0 +1,21 @@
+<div>
+	<form {{action submit="saveAttrs"}}>
+
+		<div class="field">
+			<label>Organization Name</label>
+			{{input value=settings.name}}
+		</div>
+	
+		<div class="field">
+			<label>Which pages should <strong>show</strong> your chatbox?</label>
+			{{input value=settings.include}}
+		</div>
+
+		<div class="field">
+			<label>Which pages should <strong>hide</strong> your chatbox?</label>
+			{{input value=settings.exclude}}
+		</div>
+
+		<button type="submit" class="full_width">Save Settings</button>
+	</form>
+</div>

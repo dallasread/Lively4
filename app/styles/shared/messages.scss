@@ -1,0 +1,171 @@
+#lcs {
+	.visitor_profile_messages {
+		.message {
+			float: left;
+		
+			&::before {
+				float: left;
+				margin-top: 3px;
+				margin-left: -15px;
+				border-width: 5px 6px 5px 0;
+			}
+			
+			.body::before {
+				float: left;
+				margin-top: 2px;
+				margin-left: -17px;
+				border-width: 6px 7px 6px 0;
+			}
+		
+			&.from_agent {
+				float: right;
+			
+				&::before {
+					float: right;
+					margin-top: 3px;
+					margin-right: -16px;
+					border-width: 5px 0 5px 6px;
+				}
+				
+				.body::before {
+					float: right;
+					margin-top: 2px;
+					margin-right: -17px;
+					border-width: 6px 0 6px 7px;
+				}
+			}
+		}
+	}
+	
+	.chatbox {
+		.message {
+			float: right;
+			
+			&::before {
+				float: right;
+				margin-top: 3px;
+				margin-right: -16px;
+				border-width: 5px 0 5px 6px;
+			}
+			
+			.body::before {
+				float: right;
+				margin-top: 2px;
+				margin-right: -17px;
+				border-width: 6px 0 6px 7px;
+			}
+			
+			&.from_agent {
+				float: left;
+				
+				&::before {
+					float: left;
+					margin-top: 3px;
+					margin-left: -15px;
+					border-width: 5px 6px 5px 0;
+				}
+				
+				.body::before {
+					float: left;
+					margin-top: 2px;
+					margin-left: -17px;
+					border-width: 6px 7px 6px 0;
+				}
+			}
+		}
+	}
+	
+	.message {
+		margin-top: 10px;
+		width: 70%;
+		font-size: 13px;
+		line-height: 17px;
+		padding: 8px 10px;
+		border-radius: 5px;
+		color: #fff;
+	  background: #4F8F5C;
+		
+		&::before {
+			border-color: transparent #4F8F5C;
+			display: block;
+			width: 0;
+			border-style: solid;
+			content: "";
+		}
+		
+		&.from_agent {
+		  color: #4C4D4F;
+		  background: #fff;
+			border: 1px solid #ccc;
+			
+			&::before {
+				border-color: transparent #fff;
+			}
+			
+			.body::before {
+				border-color: transparent #ccc;
+				display: block;
+				width: 0;
+				border-style: solid;
+				content: "";
+			}
+			
+			&.private {
+				background: #FFF1D8;
+				border-color: #CFC4AF;
+				color: #6C634C;
+				
+				.lock {
+					float: left;
+					font-size: 16px;
+					line-height: 16px;
+					color: #CFC4AF;
+					margin-right: 7px;
+				}
+				
+				&::before {
+					border-color: transparent #FFF1D8;
+				}
+				
+				&.body::before {
+					border-color: transparent #CFC4AF;
+				}
+			}
+		}
+		
+		.question {
+			margin: 8px -10px -8px;
+			background: #fff;
+			border-top: 1px solid #ccc;
+			border-radius: 0 0 5px 5px;
+			
+			&.boolean {
+				ul {
+					li {
+						padding: 5px;
+						width: 50%;
+						display: block;
+						float: left;
+						text-align: center;
+						color: #333;
+						font-size: 16px;
+						cursor: pointer;
+						
+						&:first-child {
+							border-radius: 0 0 0 5px;
+						}
+						
+						&:last-child {
+							border-radius: 0 0 5px 0;
+						}
+						
+						&.active {
+							background: #4F8F5C;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+}

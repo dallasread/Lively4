@@ -1,0 +1,104 @@
+#lcs {
+	.clear {
+		clear: both;
+		display: block;
+	}
+	
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	template, .success {
+		display: none;
+	}
+	
+	.online {
+		color: $green !important;
+		
+		.name, .last_seen, .icons i {
+			color: $green !important;
+		}
+	}
+	
+	.offline {
+		color: $red !important;
+	}
+	
+	.red_hover:hover {
+		background: $red;
+	}
+	
+	.green_hover:hover {
+		background: $green;
+	}
+	
+	.force_show {
+		display: block !important;
+	}
+	
+	strong, b {
+		font-weight: bold;
+	}
+	
+	em, i {
+		font-style: oblique;
+	}
+	
+	.with_padding {
+		padding: 50px;
+		text-align: center;
+	}
+	
+	.align_right {
+		text-align: right !important;
+	}
+	
+	.align_left {
+		text-align: left !important;
+	}
+	
+	.align_center {
+		text-align: center !important;
+	}
+	
+	.vertical_align_middle {
+		vertical-align: middle !important;
+	}
+	
+	.float_right {
+		float: right;
+	}
+	
+	.float_left {
+		float: left;
+	}
+	
+	.fluid_width {
+		width: auto;
+		display: inline-block;
+	}
+	
+	.full_width {
+		width: 100%;
+		display: block;
+	}
+	
+	.upper_space {
+		margin-top: 40px;
+	}
+	
+	.fa-lrg {
+		font-size: 28px;
+		line-height: 28px;
+	}
+	
+	.fa-mdm {
+		font-size: 17px;
+		line-height: 17px;
+	}
+}

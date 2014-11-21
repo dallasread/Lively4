@@ -1,0 +1,28 @@
+#lcs {
+	.panes {
+		.pane {
+			position: fixed;
+			top: $topbar_height;
+			left: $leftbar_width;
+			right: 0;
+			bottom: 0;
+			background: #fff;
+			overflow-y: auto;
+			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+			padding: 40px;
+			
+			h2 {
+				font-weight: bold;
+				margin-bottom: 10px;
+				font-size: 32px;
+				line-height: 40px;
+				color: #111;
+			}
+			
+			p {
+				margin-bottom: 40px;
+			}
+		}
+	}
+}

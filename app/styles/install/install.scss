@@ -1,0 +1,49 @@
+#lcs {
+	.install_overlay {
+		background: #333;
+		background: rgba(0, 0, 0, 0.5);
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 99998;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		
+		.install {
+			background: #fff;
+			width: 95%;
+			max-width: $chatbox_width;
+			margin: 9% auto;
+			padding: 20px;
+			border-radius: 4px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+			position: relative;
+			
+			.is_loading {
+				display: none;
+			}
+			
+			.badge {
+				width: 80px;
+				position: absolute;
+				right: -45px;
+				top: 25px;
+			}
+			
+			.fields {
+				margin-bottom: 30px;
+				
+				.field {
+					margin-bottom: 10px;
+				
+					label {
+						margin-bottom: 3px;
+					}
+				}
+			}
+		}
+	}
+}

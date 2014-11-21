@@ -1,0 +1,20 @@
+<div>
+	<form class="introducer form" {{action submit="signIn"}}>
+		<p class="please_introduce">
+			To sign in as an agent, please enter your credentials below.
+		</p>
+	
+		<div class="fields">
+			<div class="field">
+				<label for="field_email" class="moving_label">Your Email Address</label>
+				<input type="email" id="field_email" name="email" placeholder="Email Address" required>
+			</div>
+			<div class="field">
+				<label for="field_password" class="moving_label">Your Password</label>
+				<input type="password" id="field_password" name="password" placeholder="Password" required>
+			</div>
+		</div>
+
+		<button type="submit">Sign In</button>
+	</form>
+</div>

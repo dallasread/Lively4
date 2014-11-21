@@ -1,0 +1,66 @@
+#lcs {
+	.field {
+		margin-bottom: 30px;
+	}
+	
+	p, li, label, input, textarea, button, .button {
+		font-size: 16px;
+		line-height: 23px;
+		color: #444;
+		margin-bottom: 20px;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 7px;
+	}
+	
+	input, textarea, button, .button {
+		width: 100%;
+		border-radius: 4px;
+		border: 1px solid #ccc;
+		padding: 7px;
+		outline: none;
+		color: #333;
+		margin: 0;
+		
+		&:focus {
+			border: 1px solid #999;
+			box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+		}
+		
+		&[readonly] {
+			background: #eee;
+		}
+	}
+	
+	button, .button {
+		display: inline-block;
+		cursor: pointer;
+		text-align: center;
+		box-shadow: none;
+		border: 0 none;
+		margin: 0;
+		border-radius: 5px;
+		background: #4F8F5C;
+		color: #fff;
+		word-break: keep-all;
+		padding: 15px 23px;
+		font-size: 17px;
+		line-height: 17px;
+		
+		&.fb_blue {
+			background: #185B93;
+		}
+		
+		&.gray {
+			background: #aaa;
+		}
+		
+		&.small {
+			padding: 8px 15px;
+			font-size: 14px;
+			line-height: 14px;		
+		}
+	}
+}
