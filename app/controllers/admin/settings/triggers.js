@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	setupController: function() {
-		controller.set('model', this.store.findAll('trigger'));
-	}
+	needs: ['settings'],
+	settings: Ember.computed.alias('controllers.settings.chatbox')
 });

@@ -1,10 +1,10 @@
-import DS from 'ember-data';
+import {Model, attr, hasOne} from 'fireplace';
 
-export default DS.Model.extend({
-	chatbox: DS.attr('string'),
-	active: DS.attr('boolean'),
-	delay: DS.attr('integer'),
-	include: DS.attr('string'),
-	exclude: DS.attr('string'),
-	message: DS.attr()
+export default Model.extend({
+	chatbox: hasOne(),
+	active: attr('boolean'),
+	delay: attr('integer'),
+	include: attr('string'),
+	exclude: attr('string'),
+	message: attr()
 });
