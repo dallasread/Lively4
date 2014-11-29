@@ -2,8 +2,11 @@
 	<div class="topbar">
 		<h1>{{ chatbox.name }}</h1>
 		
-		<a class="signinout icon"><i class="fa fa-lock"></i></a>
-		{{#link-to "prompter"}}
+		<a class="signinout icon" {{action "signinout"}}>
+			<i class="fa fa-lock"></i>
+		</a>
+		
+		{{#link-to "prompter" class="close icon"}}
 			&times;
 		{{/link-to}}
 	</div>
