@@ -3,11 +3,15 @@ import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
+Ember.MODEL_FACTORY_INJECTIONS = true;
+
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver: Resolver
 });
+
+Ember.run.backburner.DEBUG = true;
 
 loadInitializers(App, config.modulePrefix);
 

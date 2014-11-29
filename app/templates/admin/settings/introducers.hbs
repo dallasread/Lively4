@@ -4,7 +4,6 @@
 	<table class="table introducers">
 		<thead>
 			<tr>
-				<th>Active</th>
 				<th>Required</th>
 				<th>Name</th>
 				<th>Permalink</th>
@@ -15,26 +14,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each chatbox.settings.introducers itemController="admin/settings/introducers/introducer"}}
-				<tr>
-					<td>{{input type="checkbox" checked=active}}</td>
-					<td>{{input type="checkbox" checked=required}}</td>
-					<td>{{input value=name focus-out="saveChatbox"}}</td>
-					<td>{{input value=permalink focus-out="saveChatbox"}}</td>
-					<td>{{input value=type focus-out="saveChatbox"}}</td>
-					<td>{{input value=validator focus-out="saveChatbox"}}</td>
-					<td>{{input value=priority focus-out="saveChatbox"}}</td>
-					<td>
-						<button class="fluid_width small gray red_hover" {{action 'deleteIntroducer' .}}>
-							<i class="fa fa-trash"></i>
-						</button>
-					</td>
-				</tr>
-			{{/each}}
+			{{! render "introducers"}}
 		</tbody>
 	</table>
 
 	<div class="upper_space">
-		<button {{action 'createIntroducer'}}>Add Introducer</button>
+		<button {{action click="create"}}>Add Introducer</button>
 	</div>
 </div>

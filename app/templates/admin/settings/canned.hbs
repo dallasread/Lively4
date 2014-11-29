@@ -10,21 +10,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each chatbox.settings.canned}}
-				<tr>
-					<td>{{input value=hash focus-out="saveChatbox"}}</td>
-					<td>{{input value=message.body focus-out="saveChatbox"}}</td>
-					<td>
-						<button class="fluid_width small gray red_hover" {{action 'deleteCanned' .}}>
-							<i class="fa fa-trash"></i>
-						</button>
-					</td>
-				</tr>
-			{{/each}}
+			{{! render "canned"}}
 		</tbody>
 	</table>
 
 	<div class="upper_space">
-		<button {{action 'createCanned'}}>Add Canned Message</button>
+		<button {{action click="create"}}>Add Canned Message</button>
 	</div>
 </div>

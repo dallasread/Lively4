@@ -1,9 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	chatbox: DS.belongsTo('chatbox'),
+	chatbox: DS.attr('string'),
 	active: DS.attr('boolean'),
-	delay: DS.attr('string'),
+	delay: DS.attr('integer'),
 	include: DS.attr('string'),
 	exclude: DS.attr('string'),
 	message: DS.attr()
