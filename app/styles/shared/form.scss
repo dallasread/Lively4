@@ -34,6 +34,10 @@
 		}
 	}
 	
+	input[type="checkbox"] {
+		width: auto;
+	}
+	
 	button, .button {
 		display: inline-block;
 		cursor: pointer;
@@ -61,6 +65,11 @@
 			padding: 8px 15px;
 			font-size: 14px;
 			line-height: 14px;		
+		}
+		
+		&:focus {
+			border: 0 none;
+			box-shadow: 0 0 0;
 		}
 	}
 }

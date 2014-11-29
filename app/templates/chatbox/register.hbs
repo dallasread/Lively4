@@ -1,17 +1,17 @@
 <div>
-	<form class="introducer form" {{action submit="visitorRegisterViaEmail"}}>
+	<form class="introducer form" {{action 'visitorRegisterViaEmail'}}>
 		<p class="please_introduce">
 			To start talking with <span class="agent_name">Dallas</span>,<br>please introduce yourself.
 		</p>
 
-		<a class="button fb_blue" {{action click="visitorRegisterViaFacebook"}}>
+		<a class="button fb_blue" {{action 'visitorRegisterViaFacebook'}}>
 			Introduce Myself through Facebook
 		</a>
 
 		<p class="or">or</p>
 
 		<div class="fields">
-			{{render "introducers" "/chatbox/introducer"}}
+			{{! srender "introducers" "/chatbox/introducer"}}
 		</div>
 
 		<button type="submit">

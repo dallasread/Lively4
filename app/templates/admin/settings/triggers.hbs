@@ -13,15 +13,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each}}
+			{{#each chatbox.settings.triggers itemController="admin/settings/triggers/trigger"}}
 				<tr>
-					<td><input type="checkbox" {{bind-attr value="active" event="toggle"}}></td>
-					<td>{{input value=delay}}</td>
-					<td>{{input value=exclude}}</td>
-					<td>{{input value=include}}</td>
-					<td>{{input value=message.body}}</td>
+					<td>{{input type="checkbox" checked=active click="saveChatbox"}}</td>
+					<td>{{input value=delay focus-out="saveChatbox"}}</td>
+					<td>{{input value=exclude focus-out="saveChatbox"}}</td>
+					<td>{{input value=include focus-out="saveChatbox"}}</td>
+					<td>{{input value=message.body focus-out="saveChatbox"}}</td>
 					<td>
-						<button class="fluid_width small gray red_hover" {{action click="delete"}}>
+						<button class="fluid_width small gray red_hover" {{action 'deleteTrigger' .}}>
 							<i class="fa fa-trash"></i>
 						</button>
 					</td>
@@ -31,6 +31,6 @@
 	</table>
 
 	<div class="upper_space">
-		<button {{action click="create"}}>Add Trigger</button>
+		<button {{action 'createTrigger'}}>Add Trigger</button>
 	</div>
 </div>

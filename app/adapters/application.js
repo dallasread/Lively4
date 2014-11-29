@@ -1,5 +1,7 @@
 import DS from 'ember-data';
 
+window.LCSDB = new window.Firebase("https://lcs4.firebaseio.com");
+
 export default DS.FirebaseAdapter.extend({
-	firebase: new window.Firebase("https://lcs3.firebaseio.com")
+	firebase: window.LCSDB
 });
