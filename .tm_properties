@@ -1,2 +1,2 @@
-exclude = "{node_modules,tmp,tests,bower_components,dist}"
-excludeInFolderSearch = "{$excludeInFolderSearch,$extraExcludes,node_modules,tmp,tests,bower_components,dist}"
+exclude = "{node_modules,tmp,tests,bower_components,dist,.jshintrc}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$extraExcludes,node_modules,tmp,tests,bower_components,dist,.jshintrc}"

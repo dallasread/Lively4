@@ -7,10 +7,13 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.route('install');
-  this.route('chatbox', function() {
+	this.route('prompter');
+  
+	this.route('chatbox', function() {
   	this.route('signin');
 		this.route('register');
   });
+	
 	this.route('admin', function() {
 		this.route('agents');
 		this.route('activate');
@@ -23,8 +26,6 @@ Router.map(function() {
 			this.route('me');
 		});
 	});
-	
-	this.route('prompter', { path: "/" });
 });
 
 export default Router;
