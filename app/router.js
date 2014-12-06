@@ -19,6 +19,7 @@ Router.map(function() {
 		this.route('activate');
 		this.route('setup');
 		this.resource('visitors');
+						
 		this.route('settings', function() {
 			this.route('triggers');
 			this.route('canned');

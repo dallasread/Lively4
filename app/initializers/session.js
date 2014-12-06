@@ -9,7 +9,6 @@ export default {
 		window.LCSDB.onAuth(function(auth) {
 			var token = Ember.$('[data-lcs]').data('lcs');
 			var store = container.lookup('store:main');
-			var router = container.lookup('router:main');
 	
 			store.find('chatbox', token).then(function(chatbox) {
 				var session = Ember.Object.extend({
