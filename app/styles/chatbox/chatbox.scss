@@ -18,7 +18,7 @@
 		}
 		
 		.header {
-			height: 60px;
+			height: $agent_img_height;
 			background: #fff;
 			border-bottom: 1px solid #ccc;
 			color: #585B5B;
@@ -26,22 +26,26 @@
 			.profile {
 				img {
 					float: left;
-					height: 60px;
+					height: $agent_img_height; 
 					border-right: 1px solid #ccc;
 				}
 				
 				.served_by_description {
-					font-size: 12px;
+					font-size: 15px;
+					line-height: 15px;
 					float: left;
-					margin-top: 12px;
+					margin-top: 20px;
 					margin-left: 17px;
 					color: #919797;
+					width: auto;
 					
 					.agent_name {
 						font-weight: bold;
 						color: #363838;
 						display: block;
-						font-size: 18px;
+						font-size: 22px;
+						line-height: 22px;
+						margin-top: 5px;
 					}
 				}
 			}
@@ -49,10 +53,10 @@
 		
 		.messages {
 			position: fixed;
-			top: 110px;
+			top: 50px + $agent_img_height;
 			right: 0px;
 			width: $chatbox_width;
-			bottom: 110px;
+			bottom: 100px;
 			overflow-y: auto;
 			overflow-x: hidden;
 			-webkit-overflow-scrolling: touch;
@@ -60,6 +64,7 @@
 			z-index: 99995;
 			
 			.overlay {
+				display: none;
 				background: rgba(0, 0, 0, 0.3);
 				position: fixed;
 				top: 110px;
@@ -103,12 +108,20 @@
 		.new_message {
 			position: fixed;
 			bottom: 0px;
-			right: 0;
+			right: 0px;
 			width: $chatbox_width - 1;
-			height: 110px;
+			height: 100px;
 			padding: 10px;
 			background: #EDEFF5;
 			z-index: 99996;
+			
+			&.is_disabled {
+				.action_row {
+					button {
+						background: $gray;
+					}
+				}
+			}
 			
 			textarea {
 				font-family: Helvetica Neue, Helvetica, Sans Serif;
@@ -121,7 +134,7 @@
 				outline: none;
 				font-size: 15px;
 				line-height: 22px;
-				height: 90px;
+				height: 82px;
 				width: 100%;
 			}
 			
@@ -131,17 +144,17 @@
 				
 				button {
 					position: absolute;
-					right: 3px;
-					bottom: 12px;
-					background: #AFB0B4;
-					padding: 7px 13px;
-					
-					&.active {
-						background: #4F8F5C;
-					}
+					background: $green;
+					border-radius: 3px;
+					width: auto;
+					right: 5px;
+					bottom: 14px;
+					padding: 8px 14px;
+					font-size: 14px;
 				}
 				
 				.upload_icon {
+					display: none;
 					position: absolute;
 					left: 9px;
 					bottom: 12px;
@@ -159,9 +172,31 @@
 			width: auto;
 			left: 0;
 			
-			.messages, .new_message, .profile, .introducer, .messages .overlay {
+			.messages, .new_message, .profile, .introducer, .messages .overlay, .topbar {
 				width: auto;
 				left: 0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet_width) {
+	#lcs {
+		.chatbox {
+			.new_message {
+				textarea {
+					font-size: 16px;
+					line-height: 22px;
+				}
+				
+				.action_row {
+					button {
+						right: 4px;
+						bottom: 15px;
+						padding: 10px 15px;
+						font-size: 16px;
+					}
+				}
 			}
 		}
 	}

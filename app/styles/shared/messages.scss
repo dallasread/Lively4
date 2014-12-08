@@ -77,16 +77,16 @@
 	
 	.message {
 		margin-top: 10px;
-		width: 70%;
+		width: 75%;
 		font-size: 13px;
-		line-height: 17px;
+		line-height: 18px;
 		padding: 8px 10px;
 		border-radius: 5px;
 		color: #fff;
-	  background: #4F8F5C;
+	  background: $green;
 		
 		&::before {
-			border-color: transparent #4F8F5C;
+			border-color: transparent $green;
 			display: block;
 			width: 0;
 			border-style: solid;
@@ -160,12 +160,23 @@
 						}
 						
 						&.active {
-							background: #4F8F5C;
+							background: $green;
 							color: #fff;
 						}
 					}
 				}
 			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet_width) {
+	#lcs {
+		.message {
+			width: 82%;
+			font-size: 16px;
+			line-height: 23px;
+			margin-top: 14px;
 		}
 	}
 }

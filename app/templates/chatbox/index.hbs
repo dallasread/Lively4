@@ -1,23 +1,27 @@
 <div>
-	<div class="header">
-		<div class="profile">
-			<img src="/imgs/avatar.jpg">
-			<p class="served_by_description">
-				You're talking to
-				<span class="agent_name">Dallas</span>
-			</p>
-		</div>
-	</div>
-
+	{{render 'chatbox/header'}}
+	
 	<div class="messages">
+		{{#each session.visitor.messages}}
+			<div {{bind-attr class=":message from_agent:from_agent"}}>
+				<div class="body">
+					{{{ body }}}
+				</div>
+
+				<div class="clear"></div>
+			</div>
+		{{/each}}
 		<div class="overlay"></div>
 	</div>
 
-	<form class="new_message" {{action submit="createMessage"}}>
-		<textarea name="body" placeholder="What's on your mind?"></textarea>
+	<form action="#" class="is_disabled new_message" {{action 'createMessage' on='submit'}}>
+		{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
+		
 		<div class="action_row">
 			<button type="submit">Send</button>
-			<p class="upload_icon"></p>
+			<a href="#" {{action 'uploadFile'}} class="upload_icon">
+				<i class="fa fa-paperclip"></i>
+			</a>
 			<div class="clear"></div>
 		</div>
 	</form>

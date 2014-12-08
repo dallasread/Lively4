@@ -6,9 +6,16 @@ export default Ember.Route.extend({
 			this.chatbox.settings.save();
 		},
 		signinout: function() {
-			var current = this.controllerFor("application").get("currentPath");
-			var route = current === "chatbox.signin" ? "chatbox" : "chatbox.signin";
-			this.transitionTo(route);
+			if (this.get('session.auth')) {
+				if (confirm("Are you sure you want to leave this chat session?")) {
+					window.LCSDB.unauth();
+					this.transitionTo('prompter');
+				}
+			} else {
+				var current = this.controllerFor("application").get("currentPath");
+				var route = current === "chatbox.signin" ? "chatbox" : "chatbox.signin";
+				this.transitionTo(route);
+			}
 		}
 	}
 });

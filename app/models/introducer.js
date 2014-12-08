@@ -8,5 +8,13 @@ export default DS.Model.extend({
 	active: DS.attr('boolean'),
 	type: DS.attr('string'),
 	validator: DS.attr('string'),
-	priority: DS.attr('string')
+	priority: DS.attr('string'),
+	dom_id: function() {
+		return "lcs_field_" + this.get('permalink');
+	}.property('permalink'),
+	placeholder: function() {
+		var p = this.get('name');
+		if (this.get('required')) { p += "*"; }
+		return p;
+	}.property('name', 'required')
 });

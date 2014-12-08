@@ -2,6 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		this.transitionToRoute( this.session.root );
+		if (this.get('session.registered')) {
+			this.transitionToRoute( this.session.root_path );
+		} else {
+			this.transitionToRoute( 'prompter' );
+		}
 	}
 });

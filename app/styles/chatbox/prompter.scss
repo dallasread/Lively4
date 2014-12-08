@@ -1,8 +1,8 @@
 #lcs {
 	.prompter {
 		position: fixed;
-		bottom: 15px;
-		right: 20px;
+		bottom: 8px;
+		right: 12px;
 		z-index: 99990;
 		
 		&:hover {
@@ -22,20 +22,20 @@
 				background: #D12819;
 				border: 1px solid #9A271C;
 				color: #fff;
-				padding: 2px 5px 3px;
 				border-radius: 50px;
-				font-size: 10px;
 				position: absolute;
-				margin-left: 36px;
-				margin-top: -2px;
 			  -webkit-animation-duration: 2s;
 				animation-duration: 2s;
+				padding: 3px 6px;
+				font-size: 11px;
+				margin-left: 40px;
+				margin-top: -2px;
 			}
 			
 			img {
-				width: 50px;
-				height: 50px;
-				border-radius: 25px;
+				width: 60px;
+				height: 60px;
+				border-radius: 35px;
 				border: 1px solid #aaa;
 				
 				&.agent_cta {
@@ -47,17 +47,18 @@
 		.bubble {
 			cursor: pointer;
 			float: left;
-			margin-right: 14px;
-			width: 225px;
 			background: #f7f7f7;
 			border: 1px solid #ccc;
-			font-size: 13px;
-			line-height: 17px;
-			padding: 8px 10px;
 			border-radius: 5px;
 			color: #333;
 		  -webkit-animation-duration: 500ms;
 			animation-duration: 500ms;
+			font-size: 13px;
+			line-height: 17px;
+			padding: 8px 10px;
+			margin-right: 14px;
+			margin-top: 7px;
+			width: 225px;
 			
 			&::before {
 				bottom: 14px;
@@ -95,6 +96,35 @@
 				&::after {
 					border-color: transparent #f1f1f1;
 				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet_width) {
+	#lcs {
+		.prompter {
+			.agent_avatar {
+				img {
+					width: 70px;
+					height: 70px;
+				}
+				
+				.unread_messages_count {
+					padding: 3px 7px;
+					font-size: 12px;
+					margin-left: 44px;
+					margin-top: -4px;
+				}
+			}
+			
+			.bubble {
+				font-size: 15px;
+				line-height: 21px;
+				padding: 8px 10px;
+				margin-right: 14px;
+				margin-top: 7px;
+				width: 275px;
 			}
 		}
 	}

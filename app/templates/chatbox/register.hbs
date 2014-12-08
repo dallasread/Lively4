@@ -1,17 +1,27 @@
 <div>
-	<form class="introducer form" {{action 'visitorRegisterViaEmail'}}>
+	{{render 'chatbox/header'}}
+	
+	<form class="introducer form" {{action 'registerViaEmail' on='submit'}}>
 		<p class="please_introduce">
-			To start talking with <span class="agent_name">Dallas</span>,<br>please introduce yourself.
+			To start talking with <span class="agent_name">{{ session.visitor.details.name }}</span>,<br>please introduce yourself.
 		</p>
 
-		<a class="button fb_blue" {{action 'visitorRegisterViaFacebook'}}>
+		<a class="button fb_blue" {{action 'visitorRegisterViaFacebook' on='click'}}>
 			Introduce Myself through Facebook
 		</a>
 
 		<p class="or">or</p>
 
 		<div class="fields">
-			{{! srender "introducers" "/chatbox/introducer"}}
+			
+			{{#each session.chatbox.introducers}}
+				{{#if active}}
+					<div class="field has_moving_label">
+						<label {{bind-attr for=dom_id}} class="moving_label">{{ name }}</label>
+						<input {{bind-attr type=type}} {{bind-attr id=dom_id}} {{bind-attr name=permalink}} {{bind-attr placeholder=placeholder}} {{bind-attr data-validator=validator}} {{bind-attr required=required}}>
+					</div>
+				{{/if}}
+			{{/each}}
 		</div>
 
 		<button type="submit">

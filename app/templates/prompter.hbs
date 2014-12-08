@@ -1,15 +1,19 @@
 <div class="prompter">
 	{{#if session}}
-		{{#link-to "chatbox" class="agent_avatar"}}
-			<span class="unread_messages_count pulse animated infinite">3</span>
+		<a href="#" {{action 'showChatbox'}} class="agent_avatar">
+			{{#if session.visitor.unread_from_agent}}
+				<span class="unread_messages_count pulse animated infinite">{{session.visitor.visitor_unread_count}}</span>
+			{{/if}}
 			<img src="/imgs/avatar.jpg">
-		{{/link-to}}
+		</a>
 		
-		{{#link-to "chatbox" class="bubble pulse animated"}}
-			I was wondering if you had any 3rd apples to display to the crew.
-		{{/link-to}}
+		{{#if session.visitor.unread_from_agent}}
+			<a href="#" {{action 'showChatbox'}} class="bubble pulse animated">
+				{{ truncate-text session.visitor.latest_agent_message.body 60 }}
+			</a>
+		{{/if}}
 	{{else}}
-		{{#link-to "chatbox.signin" class="agent_avatar"}}
+		{{#link-to "admin" class="agent_avatar"}}
 			<img src="/imgs/agent_cta.png" class="agent_cta pulse animated">
 		{{/link-to}}
 	{{/if}}

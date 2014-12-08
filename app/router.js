@@ -11,6 +11,7 @@ Router.map(function() {
   
 	this.route('chatbox', function() {
   	this.route('signin');
+		this.route('chatting');
 		this.route('register');
   });
 	
@@ -19,7 +20,7 @@ Router.map(function() {
 		this.route('activate');
 		this.route('setup');
 		this.resource('visitors');
-						
+
 		this.route('settings', function() {
 			this.route('triggers');
 			this.route('canned');
