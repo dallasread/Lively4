@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 	messageAdded: function() {
 		this.send('scrollMessages');
 	}.observes('session.visitor.messages.@each'),
-	textareaHasContent: function(val) {
+	textareaHasContent: function() {
 		var new_message = Ember.$("#lcs .new_message");
 		
 		if (this.body.length) {
@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 		},
 		createMessage: function() {
 			this.store.createRecord('message', {
-				body: this.get('body'),
+				body: Ember.$.trim(this.get('body')),
 				from_agent: false
 			}).save();
 			this.set('body', '');

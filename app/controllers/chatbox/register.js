@@ -20,6 +20,11 @@ export default Ember.ObjectController.extend({
 			this.store.createRecord('visitor', {
 				details: visitor
 			}).save();
+		},
+		registerViaFacebook: function() {
+			window.LCSDB.authWithOAuthPopup("facebook", function(error) {
+				console.log("done", error);
+			});
 		}
 	}
 });

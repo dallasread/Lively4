@@ -1,10 +1,29 @@
-<div class="header">
+<div class="header" {{bind-attr style=session.chatbox.chatbox_style}}>
 	<div class="profile">
-		<img src="/imgs/avatar.jpg" {{bind-attr hsrc=agent.avatar}}>
-		<p class="served_by_description">
-			You're talking to
-			<span class="agent_name">{{ session.visitor.details.name }}</span>
-		</p>
+		{{#link-to "prompter" class="close icon"}}
+			<i class="ion ion-ios-close-empty"></i>
+		{{/link-to}}
+		
+		<div class="rectangle"></div>
+		
+		<div class="avatar_wrapper">
+			<img src="/imgs/avatar.jpg" {{bind-attr hsrc=agent.avatar}}>
+		</div>
+		
+		<div class="served_by_description">
+			<p class="talking_to">You're talking to</p>
+			<p class="agent_name">{{ session.visitor.details.name }}</p>
+			
+			<ul class="meta">
+				<li><a href="#"><i class="ion ion-ios-person-outline"></i></a></li>
+				<!-- <li><a href="#"><i class="ion ion-ios-email-outline"></i></a></li> -->
+				<li><a href="#" {{action "signinout"}}><i class="ion ion-ios-locked-outline"></i></a></li>
+				<li><p class="is_online">Online</p></li>
+			</ul>
+		</div>
+		
 		<div class="clear"></div>
 	</div>
+	
+	<div class="fader"></div>
 </div>

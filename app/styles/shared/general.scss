@@ -1,16 +1,11 @@
-body.lcs-fixed {
-	overflow: hidden;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-
 #lcs, .tipsy {
-	font-family: Helvetica Neue, Helvetica, Sans Serif;
+	font-family: 'Open Sans', Helvetica Neue, Helvetica, Sans Serif;
 	
 	input, textarea {
-		font-family: Helvetica Neue, Helvetica, Sans Serif;
+		font-family: 'Open Sans', Helvetica Neue, Helvetica, Sans Serif;
 	}
+}
+
+#lcs .chatbox {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }

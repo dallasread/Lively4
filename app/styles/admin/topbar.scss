@@ -3,7 +3,6 @@
 		position: fixed;
 		top: 0;
 		height: $topbar_height;
-		background: #585B5B;
 		z-index: 99999;
 		
 		.menu_wrapper {
@@ -21,7 +20,7 @@
 			padding: 13px;
 			font-weight: bold;
 			color: #fff;
-			background: #585B5B;
+			background: #333;
 			font-size: 19px;
 		}
 		
@@ -34,7 +33,7 @@
 			
 			&:hover {
 				color: #B5B6BB;
-				background: #787C7C;
+				background: #555;
 			}
 		}
 		

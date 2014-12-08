@@ -24,8 +24,8 @@
 				color: #fff;
 				border-radius: 50px;
 				position: absolute;
-			  -webkit-animation-duration: 2s;
-				animation-duration: 2s;
+			  -webkit-animation-duration: 1.7s;
+				animation-duration: 1.7s;
 				padding: 3px 6px;
 				font-size: 11px;
 				margin-left: 40px;
@@ -58,7 +58,9 @@
 			padding: 8px 10px;
 			margin-right: 14px;
 			margin-top: 7px;
-			width: 225px;
+			max-width: 225px;
+			width: auto;
+			
 			
 			&::before {
 				bottom: 14px;

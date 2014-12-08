@@ -3,10 +3,10 @@
 	
 	<form class="introducer form" {{action 'registerViaEmail' on='submit'}}>
 		<p class="please_introduce">
-			To start talking with <span class="agent_name">{{ session.visitor.details.name }}</span>,<br>please introduce yourself.
+			To start talking to <span class="agent_name">{{ session.visitor.details.name }}</span>,<br>please introduce yourself.
 		</p>
 
-		<a class="button fb_blue" {{action 'visitorRegisterViaFacebook' on='click'}}>
+		<a class="button fb_blue" {{action 'registerViaFacebook'}}>
 			Introduce Myself through Facebook
 		</a>
 
@@ -27,14 +27,5 @@
 		<button type="submit">
 			Introduce Myself
 		</button>
-	</form>
-
-	<form class="new_message">
-		<textarea placeholder="What's on your mind?"></textarea>
-		<div class="action_row">
-			<button type="submit">Send</button>
-			<p class="upload_icon"></p>
-			<div class="clear"></div>
-		</div>
 	</form>
 </div>

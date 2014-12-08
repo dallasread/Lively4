@@ -1,15 +1,17 @@
 <div class="chatbox">
-	<div class="topbar">
-		<h1>{{ session.chatbox.name }}</h1>
+	{{#if session.admin}}
+		<div class="topbar">
+			<h1>{{ session.chatbox.name }}</h1>
 		
-		<a class="signinout icon" {{action "signinout"}}>
-			<i class="fa fa-lock"></i>
-		</a>
+			<a class="signinout icon" {{action "signinout"}}>
+				<i class="fa fa-lock"></i>
+			</a>
 		
-		{{#link-to "prompter" class="close icon"}}
-			&times;
-		{{/link-to}}
-	</div>
+			{{#link-to "prompter" class="close icon"}}
+				&times;
+			{{/link-to}}
+		</div>
+	{{/if}}
 	
 	{{ outlet }}
 </div>

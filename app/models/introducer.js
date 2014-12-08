@@ -14,7 +14,7 @@ export default DS.Model.extend({
 	}.property('permalink'),
 	placeholder: function() {
 		var p = this.get('name');
-		if (this.get('required')) { p += "*"; }
+		if (this.get('required')) { p += " (required)"; }
 		return p;
 	}.property('name', 'required')
 });
