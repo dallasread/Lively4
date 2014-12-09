@@ -11,12 +11,12 @@
 	}
 	
 	.delete_row {
-		color: $red;
+		color: #bbb;
 		font-size: 28px;
 		line-height: 28px;
 		
 		&:hover {
-			color: #B2260D;
+			color: $red;
 		}
 	}
 }
