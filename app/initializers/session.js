@@ -22,21 +22,33 @@ export default {
 						var e = this;
 						
 						window.LCSDB.offAuth(function(){
-							e.set('root_path', null);
 							e.set('auth', null);
 							e.set('visitor', null);
+							e.set('agent', null);
 						});
 						
 						e.set('chatbox', chatbox);
 						e.set('url', 'http://localhost:4200');
 
 						if (auth) {
-							// IF USER IS AGENT, GRAB INFO, SET BOOL
-							// IF USER IS VISITOR, GRAB INFO, SET BOOL
-							e.set('root_path', 'chatbox');
 							e.set('auth', auth);
-							e.set('visitor', store.find('visitor', auth.uid));
-							//e.set('agent', store.find('agents', auth.uid));
+							
+							store.find('agent', auth.uid).then(function(agent) {
+								agent.set('online', true).save();	
+								e.set('agent', agent);
+								
+								window.LCSDB.child('.info/connected').on("value", function() {
+									//window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').set(true);
+									window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
+								});
+							}, function() {
+								e.set('visitor', store.find('visitor', auth.uid));
+								
+								window.LCSDB.child('.info/connected').on("value", function() {
+									window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
+									window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
+								});
+							});
 						} else {
 							window.LCSDB.authAnonymously(function(error, auth) {
 							  if (error) {
@@ -44,10 +56,7 @@ export default {
 							  } else {
 									store.createRecord('visitor', {
 										id: auth.uid,
-										anonymous: true,
-										details: {
-											name: "Guest"
-										}
+										anonymous: true
 									}).save();
 							  }
 							});

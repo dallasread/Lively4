@@ -3,7 +3,7 @@
 		z-index: 99998;
 		background: red;
 		position: fixed;
-		top: $topbar_height;
+		top: 0;
 		bottom: 0;
 		left: 0;
 		width: $leftbar_width;
@@ -41,16 +41,6 @@
 					  -webkit-transform: scale(-1, 1);
 					  -ms-transform: scale(-1, 1);
 					  transform: scale(-1, 1);
-					}
-					
-					.toggle-on {
-						display: none;
-					}
-				}
-				
-				&.online {
-					.toggle-off {
-						display: none;
 					}
 				}
 			}

@@ -7,18 +7,21 @@
 		<div class="rectangle"></div>
 		
 		<div class="avatar_wrapper">
-			<img src="/imgs/avatar.jpg" {{bind-attr hsrc=agent.avatar}}>
+			<img {{bind-attr src=session.visitor.agent.avatar}}>
 		</div>
 		
 		<div class="served_by_description">
 			<p class="talking_to">You're talking to</p>
-			<p class="agent_name">{{ session.visitor.details.name }}</p>
+			<p class="agent_name">{{session.visitor.agent.name}}</p>
 			
 			<ul class="meta">
 				<li><a href="#"><i class="ion ion-ios-person-outline"></i></a></li>
 				<!-- <li><a href="#"><i class="ion ion-ios-email-outline"></i></a></li> -->
 				<li><a href="#" {{action "signinout"}}><i class="ion ion-ios-locked-outline"></i></a></li>
-				<li><p class="is_online">Online</p></li>
+
+				{{#if session.visitor.online}}
+					<li><p class="is_online">Online</p></li>
+				{{/if}}
 			</ul>
 		</div>
 		

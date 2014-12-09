@@ -1,48 +1,40 @@
 <div class="admin">
-	<div class="topbar">
-		<div class="menu_wrapper">
-			<!--<p class="fa fa-bars open_menu icon"></p>-->
-		</div>
-		<h1>{{ settings.name }}</h1>
-		<a class="signinout icon"><i class="fa fa-lock"></i></a>
-		
-		{{#link-to "prompter" class="close icon"}}
-			&times;
-		{{/link-to}}
-	</div>
-
 	<div class="leftbar">
-		<a class="toggle_status offline" {{action click="toggleStatus"}}>
-			<span class="toggle-on">
-				<i class="fa fa-toggle-on"></i>
-				Online
-			</span>
-			<span class="toggle-off">
-				<i class="fa fa-toggle-on"></i>
-				Offline
-			</span>
+		<a href="#" {{bind-attr class=":toggle_status session.agent.online:online:offline"}} {{action "toggleStatus"}}>
+			{{#if session.agent.online}}
+				<span class="toggle-on">
+					<i class="ion ion-toggle-filled"></i>
+					Online
+				</span>
+			{{else}}
+				<span class="toggle-off">
+					<i class="ion ion-toggle"></i>
+					Offline
+				</span>
+			{{/if}}
 		</a>
 
 		{{#link-to "visitors"}}
-			<i class="fa fa-group icon"></i>
+			<i class="ion ion-person-stalker icon"></i>
 			Visitors
 		{{/link-to}}
 
 		{{#link-to "admin.agents"}}
-			<i class="fa fa-support icon"></i>
+			<i class="ion ion-help-buoy icon"></i>
 			Agents
 		{{/link-to}}
 
 		{{#link-to "admin.settings"}}
-			<i class="fa fa-cog icon"></i>
+			<i class="ion ion-gear-a icon"></i>
 			Settings
 		{{/link-to}}
 
-		{{#link-to "admin.activate"}}
-			<!-- hide_if_activated hide_unless_admin -->
-			<i class="fa fa-bolt icon"></i>
-			Activate
-		{{/link-to}}
+		{{#unless session.chatbox.activated}}
+			{{#link-to "admin.activate"}}
+				<i class="ion ion-ios-bolt icon"></i>
+				Activate
+			{{/link-to}}
+		{{/unless}}
 	</div>
 
 	<div class="panes">

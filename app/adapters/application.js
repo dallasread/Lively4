@@ -6,9 +6,12 @@ export default DS.FirebaseAdapter.extend({
   pathForType: function(type) {
 		var chatbox = null;
 		
-		if (type === "visitor") {
+	  if (type === "visitor") {
 			chatbox = this.container.lookup('session:main').get('chatbox.id');
 			return "visitors/" + chatbox;
+	  } else if (type === "agent") {
+			chatbox = this.container.lookup('session:main').get('chatbox.id');
+			return "chatboxes/" + chatbox + "/agents";
 		} else if (type === "message") {
 			chatbox = this.container.lookup('session:main').get('chatbox.id');
 			var visitor = this.container.lookup('session:main').get('visitor.id');

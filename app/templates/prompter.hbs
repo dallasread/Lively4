@@ -1,5 +1,9 @@
 <div class="prompter">
-	{{#if session}}
+	{{#if session.agent}}
+		{{#link-to "admin" class="agent_avatar"}}
+			<img src="/imgs/agent_cta.png" class="agent_cta pulse animated">
+		{{/link-to}}
+	{{else}}
 		<a href="#" {{action 'showChatbox'}} class="agent_avatar">
 			{{#if session.visitor.unread_from_agent}}
 				<span class="unread_messages_count pulse animated infinite">{{session.visitor.visitor_unread_count}}</span>
@@ -12,9 +16,5 @@
 				{{ truncate-text session.visitor.latest_agent_message.body 60 }}
 			</a>
 		{{/if}}
-	{{else}}
-		{{#link-to "admin" class="agent_avatar"}}
-			<img src="/imgs/agent_cta.png" class="agent_cta pulse animated">
-		{{/link-to}}
 	{{/if}}
 </div>

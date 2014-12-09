@@ -2,7 +2,9 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	details: DS.attr(),
-	anonymous: DS.attr('boolean'),
+	anonymous: DS.attr('boolean', { defaultValue: true }),
+	online: DS.attr('boolean', { defaultValue: false }),
+	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
 	unread_from_agent: function() {
 		var messages = this.get('messages');
