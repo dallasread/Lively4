@@ -1,6 +1,13 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.ArrayController.extend({
+	updateOrdinals: function(ordinals) {
+    this.session.chatbox.get('introducers').forEach(function(introducer) {
+      var ordinal = ordinals[introducer.get('id')];
+      introducer.set('ordinal', ordinal);
+    }, this);
+		this.session.chatbox.save();
+	},
 	actions: {
 		createIntroducer: function() {
 			var introducer = this.store.createRecord('introducer', {

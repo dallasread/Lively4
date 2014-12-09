@@ -7,7 +7,12 @@ export default Ember.Route.extend({
 		},
 		signinout: function() {
 			if (this.get('session.auth')) {
-				if (confirm("Are you sure you want to leave this chat session?")) {
+				var msg = "Are you sure you want to leave this chat session?";
+				if (this.get('session.agent')) {
+					msg = "Are you sure you want to log out?";
+				}
+				
+				if (confirm(msg)) {
 					window.LCSDB.unauth();
 					this.transitionTo('prompter');
 				}

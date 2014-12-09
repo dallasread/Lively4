@@ -21,12 +21,6 @@ export default {
 					init: function() {
 						var e = this;
 						
-						window.LCSDB.offAuth(function(){
-							e.set('auth', null);
-							e.set('visitor', null);
-							e.set('agent', null);
-						});
-						
 						e.set('chatbox', chatbox);
 						e.set('url', 'http://localhost:4200');
 
@@ -44,7 +38,9 @@ export default {
 									window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 								});
 							}, function() {
-								e.set('visitor', store.find('visitor', auth.uid));
+								store.find('visitor', auth.uid).then(function(visitor) {
+									e.set('visitor', visitor);
+								});
 								
 								window.LCSDB.child('.info/connected').on("value", function() {
 									window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
@@ -52,6 +48,10 @@ export default {
 								});
 							});
 						} else {
+							e.set('auth', null);
+							e.set('visitor', null);
+							e.set('agent', null);
+							
 							window.LCSDB.authAnonymously(function(error, auth) {
 							  if (error) {
 									console.log("Lively Chat Support could not connect.", error);
