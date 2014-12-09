@@ -10,14 +10,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each chatbox.settings.canned}}
+			{{#each session.chatbox.canned itemController="admin/settings/canned/canned"}}
 				<tr>
-					<td>{{input value=hash focus-out="saveChatbox"}}</td>
+					<td class="header_column align_center">
+						<span class="canned_hash">#</span>
+						{{input value=hash focus-out="saveChatbox" class="has_canned_hash" placeholder="shortcut"}}
+					</td>
 					<td>{{input value=message.body focus-out="saveChatbox"}}</td>
-					<td>
-						<button class="fluid_width small gray red_hover" {{action 'deleteCanned' .}}>
-							<i class="fa fa-trash"></i>
-						</button>
+					<td class="align_center">
+						<a href="#" class="fluid_width delete_row" {{action 'deleteCanned' .}}>
+							<i class="ion ion-ios-close"></i>
+						</a>
 					</td>
 				</tr>
 			{{/each}}

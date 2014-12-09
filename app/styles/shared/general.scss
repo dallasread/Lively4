@@ -6,6 +6,12 @@
 	}
 }
 
-#lcs .chatbox {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+#lcs {
+	.chatbox {
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	}
+	
+	.ion-arrow-move {
+		cursor: move;
+	}
 }

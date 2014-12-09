@@ -2,15 +2,11 @@
 	<div class="leftbar">
 		<a href="#" {{bind-attr class=":toggle_status session.agent.online:online:offline"}} {{action "toggleStatus"}}>
 			{{#if session.agent.online}}
-				<span class="toggle-on">
-					<i class="ion ion-toggle-filled"></i>
-					Online
-				</span>
+				<i class="ion ion-toggle-filled"></i>
+				Online
 			{{else}}
-				<span class="toggle-off">
-					<i class="ion ion-toggle"></i>
-					Offline
-				</span>
+				<i class="ion ion-toggle"></i>
+				Offline
 			{{/if}}
 		</a>
 

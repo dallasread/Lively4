@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	actions: {
 		saveChatbox: function() {
-			this.chatbox.settings.save();
+			this.session.chatbox.save();
 		},
 		signinout: function() {
 			if (this.get('session.auth')) {

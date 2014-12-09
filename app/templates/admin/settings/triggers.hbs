@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each chatbox.settings.triggers itemController="admin/settings/triggers/trigger"}}
+			{{#each session.chatbox.triggers itemController="admin/settings/triggers/trigger"}}
 				<tr>
 					<td>{{input type="checkbox" checked=active click="saveChatbox"}}</td>
 					<td>{{input value=delay focus-out="saveChatbox"}}</td>
@@ -21,9 +21,9 @@
 					<td>{{input value=include focus-out="saveChatbox"}}</td>
 					<td>{{input value=message.body focus-out="saveChatbox"}}</td>
 					<td>
-						<button class="fluid_width small gray red_hover" {{action 'deleteTrigger' .}}>
-							<i class="fa fa-trash"></i>
-						</button>
+						<a href="#" class="fluid_width delete_row" {{action 'deleteTrigger' .}}>
+							<i class="ion ion-ios-close"></i>
+						</a>
 					</td>
 				</tr>
 			{{/each}}

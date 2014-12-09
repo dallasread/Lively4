@@ -34,11 +34,13 @@ export default {
 							e.set('auth', auth);
 							
 							store.find('agent', auth.uid).then(function(agent) {
-								agent.set('online', true).save();	
+								if (!agent.get('online')) {
+									agent.set('online', true);
+									chatbox.save();
+								}
 								e.set('agent', agent);
 								
 								window.LCSDB.child('.info/connected').on("value", function() {
-									//window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').set(true);
 									window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 								});
 							}, function() {

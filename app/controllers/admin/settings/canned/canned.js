@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	watchActive: function() {
+	watchBody: function() {
 		this.session.chatbox.save();
-	}.observes('active')
+	}.observes('message.body')
 });

@@ -1,8 +1,8 @@
 <div>
-	<form {{action submit="saveAttrs"}}>
+	<form {{! action "saveChatbox" on='submit'}}>
 		<div class="field">
 			<label>What is your <strong>email address</strong>?</label>
-			<input type="email" value="">
+			{{input type="email" value=session.agent.email}}
 		</div>
 		
 		<div class="field">

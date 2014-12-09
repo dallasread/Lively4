@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -5,10 +6,9 @@ export default DS.Model.extend({
 	name: DS.attr('string'),
 	permalink: DS.attr('string'),
 	required: DS.attr('boolean'),
-	active: DS.attr('boolean'),
 	type: DS.attr('string'),
 	validator: DS.attr('string'),
-	priority: DS.attr('string'),
+	ordinal: DS.attr('number'),
 	dom_id: function() {
 		return "lcs_field_" + this.get('permalink');
 	}.property('permalink'),
@@ -16,5 +16,8 @@ export default DS.Model.extend({
 		var p = this.get('name');
 		if (this.get('required')) { p += " (required)"; }
 		return p;
-	}.property('name', 'required')
+	}.property('name', 'required'),
+	active: function() {
+		return !!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('permalink')).length;
+	}.property('name', 'permalink')
 });

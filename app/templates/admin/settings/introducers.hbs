@@ -4,30 +4,37 @@
 	<table class="table introducers">
 		<thead>
 			<tr>
-				<th>Active</th>
-				<th>Required</th>
+				<th class="align_center">Required</th>
 				<th>Name</th>
 				<th>Permalink</th>
 				<th>Type</th>
 				<th>Validator</th>
-				<th>Reorder</th>
-				<th>Delete</th>
+				<th class="align_center">Reorder</th>
+				<th class="align_center">Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			{{#each chatbox.settings.introducers itemController="admin/settings/introducers/introducer"}}
+			{{#each session.chatbox.introducersSorted itemController="admin/settings/introducers/introducer"}}
 				<tr>
-					<td>{{input type="checkbox" checked=active}}</td>
-					<td>{{input type="checkbox" checked=required}}</td>
+					<td class="align_center">{{input type="checkbox" checked=required}}</td>
 					<td>{{input value=name focus-out="saveChatbox"}}</td>
 					<td>{{input value=permalink focus-out="saveChatbox"}}</td>
-					<td>{{input value=type focus-out="saveChatbox"}}</td>
-					<td>{{input value=validator focus-out="saveChatbox"}}</td>
-					<td>{{input value=priority focus-out="saveChatbox"}}</td>
 					<td>
-						<button class="fluid_width small gray red_hover" {{action 'deleteIntroducer' .}}>
-							<i class="fa fa-trash"></i>
-						</button>
+						{{view "select" content=types value=type optionValuePath="content.value" optionLabelPath="content.label"}}
+					</td>
+					<td>
+						{{view "select" content=validators value=validator optionValuePath="content.value" optionLabelPath="content.label"}}
+					</td>
+					<td class="align_center">
+						<a href="#">
+							<i class="ion ion-arrow-move"></i>
+						</a>
+						{{input type="hidden" value=ordinal}}
+					</td>
+					<td class="align_center">
+						<a href="#" class="fluid_width delete_row" {{action 'deleteIntroducer' .}}>
+							<i class="ion ion-ios-close"></i>
+						</a>
 					</td>
 				</tr>
 			{{/each}}

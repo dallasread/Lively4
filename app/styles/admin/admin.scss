@@ -7,6 +7,16 @@
 	}
 	
 	.has_canned_hash {
-		padding-left: 25px;
+		padding-left: 28px;
+	}
+	
+	.delete_row {
+		color: $red;
+		font-size: 28px;
+		line-height: 28px;
+		
+		&:hover {
+			color: #B2260D;
+		}
 	}
 }

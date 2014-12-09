@@ -14,12 +14,29 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{! render "agents"}}
+			{{#each session.chatbox.agents}}
+				<tr>
+					<td {{bind-attr class=":align_center online:online:offline"}}>
+						<i class="ion ion-record"></i>
+					</td>
+					<td>
+						{{input type="name" value=name focus-out="saveChatbox"}}
+					</td>
+					<td>
+						{{input type="email" value=email focus-out="saveChatbox"}}
+					</td>
+					<td class="align_right">
+						<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>
+							<i class="ion ion-ios-close"></i>
+						</a>
+					</td>
+				</tr>
+			{{/each}}
 		</tbody>
 	</table>
 
 	<div class="upper_space">
-		<button {{action click="create"}}>Add Agent</button>
+		<button {{action "createAgent"}}>Add Agent</button>
 	</div>
 
 </div>
