@@ -4,44 +4,42 @@
 		<li class="action"><i class="fa fa-sign-out" title="Transfer"></i></li>
 	</ul>
 	
-	{{!gravatar-image email=email alt=name size="250" class="avatar"}}
+	<!-- gravatar-image email=email alt=name size="250" class="avatar" -->
 		
 	<div class="info">
 		<h2 class="name">
-			{{ visitor.data.name }}
-			<span class="show_more">more...</span>
+			{{ details.name }}
+			<span {{action "showMore"}} class="show_more">more...</span>
 		</h2>
 		
-		<h3 class="location">{{ visitor.location }}</h3>
+		<h3 class="location">{{ details.location }}</h3>
 		
 		<p>
 			Served by:
-			{{ visitor.agent.name }}
+			{{ agent.name }}
 		</p>
 			
 		<ul class="tags">
-			{{#each tags}}
+			<!--each details
 				<li class="tag">
-					<span class="tag_label">{{ name }}</span>
+					<span class="tag_label">name</span>
 					<span class="delete_tag">&times;</span>
 				</li>
-			{{/each}}
+			each -->
 		</ul>
 	</div>
 	
 	<div class="more">
-		{{#each visitor.data}}
-			{{#firstcharisnt key "_"}}
-				<p>
-					<span class="more_label">{{key}}</span>
-					<span class="more_detail">{{this}}</span>
-					<span class="clear"></span>
-				</p>
-			{{/firstcharisnt}}
+		{{#each details_array}}
+			<p>
+				<span class="more_label">{{ label }}</span>
+				<span class="more_detail">{{ value }}</span>
+				<span class="clear"></span>
+			</p>
 		{{/each}}
 		<p>
 			<span class="more_label">Last Seen</span>
-			<span class="more_detail"><span {{!bind-attr title=updated_at}}>10 minutes ago</span></span>
+			<span class="more_detail"><span {{bind-attr title=updated_at}}>{{ updated_at }}</span></span>
 			<span class="clear"></span>
 		</p>
 		<div class="clear"></div>
@@ -49,10 +47,18 @@
 </div>
 
 <div class="visitor_profile_messages">
-	{{! render "visitor.messages"}}
+	{{#each messages}}
+		<div {{bind-attr class=":message from_agent:from_agent"}}>
+			<div class="body">
+				{{{ body }}}
+			</div>
+
+			<div class="clear"></div>
+		</div>
+	{{/each}}
 </div>
 
-<form class="visitor_new_message" {{action submit="createMessage"}}>
-	<textarea name="body"></textarea>
+<form action="#" {{bind-attr class=":visitor_new_message session.visitor.typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
+	{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
 	<button type="submit">Send</button>
 </form>

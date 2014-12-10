@@ -17,8 +17,8 @@ export default Ember.Controller.extend({
 		scrollMessages: function() {
 			var $ = Ember.$;
 			var messages = $('#lcs .chatbox .messages');
-			messages.animate({
-				scrollTop: $('#lcs .chatbox .messages').prop("scrollHeight")
+			messages.stop().animate({
+				scrollTop: messages.prop("scrollHeight")
 			}, 250);
 		},
 		createMessage: function() {
@@ -34,8 +34,6 @@ export default Ember.Controller.extend({
 				
 				visitor.get('messages').addObject(message);
 				visitor.save();
-
-				e.send('scrollMessages');
 			});
 		}
 	}

@@ -19,7 +19,9 @@ Router.map(function() {
 		this.route('agents');
 		this.route('activate');
 		this.route('setup');
-		this.resource('visitors');
+		this.route('visitors', function() {
+			this.route('visitor', { path: '/:visitor_id' });
+		});
 
 		this.route('settings', function() {
 			this.route('triggers');

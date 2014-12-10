@@ -1,5 +1,6 @@
 #lcs {
 	.visitors_search {
+		display: none;
 		position: fixed;
 		left: $leftbar_width;
 		width: $visitors_width;
@@ -20,7 +21,7 @@
 	
 	.visitors {
 		position: fixed;
-		top: $topbar_height + $search_height;
+		top: 0;
 		width: $visitors_width;
 		bottom: 0;
 		left: $leftbar_width;
@@ -235,7 +236,7 @@
 		top: $topbar_height + $profile_header_height;
 		left: $leftbar_width + $visitors_width;
 		right: 0;
-		bottom: 0;
+		bottom: 110px;
 		background: #fff;
 		z-index: 99998;
 		overflow-y: auto;

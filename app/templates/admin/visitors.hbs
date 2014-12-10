@@ -1,10 +1,24 @@
-<div class="pane" data-tab="!/visitors">
+<div class="pane">
 	
 	<input type="text" class="visitors_search" placeholder="Search...">
 
 	<div class="visitors">
-		
-		{{! render "visitors"}}
+		{{#each}}
+			{{#link-to 'admin.visitors.visitor' . classBinding=':visitor online:online has_unread:has_unread'}}
+				<span class="name">
+					<span {{bind-attr title=details.email}}>{{ details.name }}</span>
+				</span>
+				<span class="icons">
+					<i title="Apple" class="fa fa-apple"></i>
+					<i title="Windows" class="fa fa-windows"></i>
+					<i title="Canada" class="fa fa-flag"></i>
+				</span>
+				<span class="last_seen">
+					<span {{bind-attr title=updated_at}}>{{updated_at}}</span>
+				</span>
+				<span class="clear"></span>
+			{{/link-to}}
+		{{/each}}
 		
 	</div>
 	
