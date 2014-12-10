@@ -135,7 +135,7 @@ $header_border_width: 7px;
 				background: -o-linear-gradient(top,  rgba(237,239,245,1) 0%,rgba(237,239,245,1) 13%,rgba(237,239,245,0) 78%,rgba(237,239,245,0) 100%); /* Opera 11.10+ */
 				background: -ms-linear-gradient(top,  rgba(237,239,245,1) 0%,rgba(237,239,245,1) 13%,rgba(237,239,245,0) 78%,rgba(237,239,245,0) 100%); /* IE10+ */
 				background: linear-gradient(to bottom,  rgba(237,239,245,1) 0%,rgba(237,239,245,1) 13%,rgba(237,239,245,0) 78%,rgba(237,239,245,0) 100%); /* W3C */
-				//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edeff5', endColorstr='#00edeff5',GradientType=0 ); /* IE6-9 */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edeff5', endColorstr='#00edeff5',GradientType=0 ); /* IE6-9 */
 				position: absolute;
 				right: 0;
 				top: $header_height + $header_border_width;

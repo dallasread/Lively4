@@ -1,8 +1,7 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	chatbox: DS.belongsTo('chatbox', { async: true }),
+	chatbox: DS.belongsTo('chatbox'),
 	online: DS.attr('boolean'),
 	name: DS.attr('string'),
 	email: DS.attr('string'),

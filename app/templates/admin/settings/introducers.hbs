@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			{{#each session.chatbox.introducersSorted itemController="admin/settings/introducers/introducer"}}
-				<tr class="introducer" data-id="{{unbound id}}">
+				<tr>
 					<td class="align_center">{{input type="checkbox" checked=required}}</td>
 					<td>{{input value=name focus-out="saveChatbox"}}</td>
 					<td>{{input value=permalink focus-out="saveChatbox"}}</td>
@@ -29,6 +29,7 @@
 						<a href="#">
 							<i class="ion ion-arrow-move"></i>
 						</a>
+						{{input type="hidden" value=ordinal}}
 					</td>
 					<td class="align_center">
 						<a href="#" class="fluid_width delete_row" {{action 'deleteIntroducer' .}}>

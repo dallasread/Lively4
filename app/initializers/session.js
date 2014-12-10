@@ -21,6 +21,12 @@ export default {
 					init: function() {
 						var e = this;
 						
+						window.LCSDB.offAuth(function(){
+							e.set('auth', null);
+							e.set('visitor', null);
+							e.set('agent', null);
+						});
+						
 						e.set('chatbox', chatbox);
 						e.set('url', 'http://localhost:4200');
 
@@ -46,10 +52,6 @@ export default {
 								});
 							});
 						} else {
-							e.set('auth', null);
-							e.set('visitor', null);
-							e.set('agent', null);
-							
 							window.LCSDB.authAnonymously(function(error, auth) {
 							  if (error) {
 									console.log("Lively Chat Support could not connect.", error);

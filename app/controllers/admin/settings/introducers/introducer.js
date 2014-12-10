@@ -20,5 +20,5 @@ export default Ember.ObjectController.extend({
 	}],
 	watchActive: function() {
 		this.session.chatbox.save();
-	}.observes('active', 'required', 'type', 'validator', 'ordinal')
+	}.observes('active', 'required', 'type', 'validator')
 });

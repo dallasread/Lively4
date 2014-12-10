@@ -18,9 +18,9 @@ export default DS.Model.extend({
       content: this.get('introducers')
     });
   }).property('introducers.@each.ordinal'),
-	onlineAgents: function() {
-		return this.get('agents').filterBy('active', true).filterBy('online', true);
-	}.property('agents.@each.active', 'agents.@each.online'),
+	activeAgents: function() {
+		return this.get('agents').filterBy('active', true);
+	}.property('agents.@each.name', 'agents.@each.email'),
 	chatbox_style: function() {
 		var styles = ['background-color: ' + this.get('color')];
 		if (this.get('texturize')) { styles.push('background-image: url(/imgs/header_bg2.png)'); }

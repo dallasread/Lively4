@@ -2,12 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		this.session.visitor.get('unread_from_agent').forEach(function(message) {
-			message.set('read', true);
+		this.get('session.visitor').then(function(visitor) {
+			visitor.get('unread_from_agent').forEach(function(message) {
+				message.set('read', true).save();
+			});
 		});
-		this.session.visitor.save();
 	},
-	messageAdded: function(message) {
+	messageAdded: function() {
 		this.send('scrollMessages');
 	}.observes('session.visitor.messages.@each'),
 	textareaHasContent: function() {
@@ -28,12 +29,10 @@ export default Ember.Controller.extend({
 			}, 250);
 		},
 		createMessage: function() {
-			var message = this.store.createRecord('message', {
+			this.store.createRecord('message', {
 				body: Ember.$.trim(this.get('body')),
 				from_agent: false
-			});
-			this.session.visitor.get('messages').addObject(message);
-			this.session.visitor.save();
+			}).save();
 			this.set('body', '');
 			this.send('scrollMessages');
 		}
