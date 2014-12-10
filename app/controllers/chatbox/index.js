@@ -2,12 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		this.get('session.visitor').forEach(function(message) {
+		this.session.visitor.get('unread_from_agent').forEach(function(message) {
 			message.set('read', true);
 		});
-		this.get'(session.visitor').save();
+		this.session.visitor.save();
 	},
-	messageAdded: function() {
+	messageAdded: function(message) {
 		this.send('scrollMessages');
 	}.observes('session.visitor.messages.@each'),
 	textareaHasContent: function() {

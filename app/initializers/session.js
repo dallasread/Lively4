@@ -38,9 +38,7 @@ export default {
 									window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 								});
 							}, function() {
-								store.find('visitor', auth.uid).then(function(visitor) {
-									e.set('visitor', visitor);
-								});
+								e.set('visitor', store.find('visitor', auth.uid));
 								
 								window.LCSDB.child('.info/connected').on("value", function() {
 									window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);

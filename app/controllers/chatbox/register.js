@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	init: function() {
-		if (this.get('session.registered')) {
+		if (this.get('session.visitor')) {
 			this.transitionToRoute( 'chatbox' );
 		}
 	},
