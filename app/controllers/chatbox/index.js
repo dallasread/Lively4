@@ -2,11 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		this.get('session.visitor').then(function(visitor) {
-			visitor.get('unread_from_agent').forEach(function(message) {
-				message.set('read', true).save();
-			});
-		});
+		// this.session.visitor.get('unread_from_agent').forEach(function(message) {
+		// 	message.set('read', true);
+		// });
+		// this.session.visitor.save();
 	},
 	messageAdded: function() {
 		this.send('scrollMessages');
@@ -29,12 +28,19 @@ export default Ember.Controller.extend({
 			}, 250);
 		},
 		createMessage: function() {
-			this.store.createRecord('message', {
-				body: Ember.$.trim(this.get('body')),
-				from_agent: false
-			}).save();
-			this.set('body', '');
-			this.send('scrollMessages');
+			var e = this;
+			var body = Ember.$.trim(e.get('body'));
+			e.set('body', '');
+			
+			this.get('session.visitor').then(function(visitor) {
+				var message = e.store.createRecord('message', {
+					visitor: visitor,
+					body: body,
+					from_agent: false
+				});
+				
+				e.send('scrollMessages');
+			});
 		}
 	}
 });

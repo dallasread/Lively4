@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+	chatbox: DS.belongsTo('chatbox', { async: true }),
 	details: DS.attr(),
 	anonymous: DS.attr('boolean', { defaultValue: true }),
 	online: DS.attr('boolean', { defaultValue: false }),

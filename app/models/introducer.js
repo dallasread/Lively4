@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	chatbox: DS.belongsTo('chatbox'),
+	chatbox: DS.belongsTo('chatbox', { async: true }),
 	name: DS.attr('string'),
 	permalink: DS.attr('string'),
 	required: DS.attr('boolean'),
