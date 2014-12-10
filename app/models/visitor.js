@@ -2,11 +2,12 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	chatbox: DS.belongsTo('chatbox', { async: true }),
-	details: DS.attr(),
+	details: DS.attr('object'),
 	anonymous: DS.attr('boolean', { defaultValue: true }),
 	online: DS.attr('boolean', { defaultValue: false }),
 	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
+	typing: DS.attr('boolean', { defaultValue: false }),
 	unread_from_agent: function() {
 		var messages = this.get('messages');
 		return messages.filterBy('read', false).filterBy('from_agent', true);

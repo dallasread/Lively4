@@ -6,7 +6,8 @@ export default Ember.Controller.extend({
 	},
 	actions: {
 		toggleStatus: function() {
-			this.get('session.agent').set('online', !this.get('session.agent.online')).save();
+			this.session.agent.set('online', !this.session.agent.get('online'));
+			this.session.chatbox.save();
 		}
 	}
 });

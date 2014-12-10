@@ -12,6 +12,7 @@ export default DS.Model.extend({
 	agents: DS.hasMany('agent', { embedded: true }),
 	triggers: DS.hasMany('trigger', { embedded: true }),
 	introducers: DS.hasMany('introducer', { embedded: true }),
+	offline_message: DS.attr('string', { defaultValue: "We're not available right now, but feel free to leave us a message!" }),
 	introducersSorted: (function() {
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       sortProperties: ['ordinal'],

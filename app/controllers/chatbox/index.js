@@ -11,13 +11,7 @@ export default Ember.Controller.extend({
 		this.send('scrollMessages');
 	}.observes('session.visitor.messages.@each'),
 	textareaHasContent: function() {
-		var new_message = Ember.$("#lcs .new_message");
-		
-		if (this.body.length) {
-			new_message.removeClass("is_disabled");
-		} else {
-			new_message.addClass("is_disabled");
-		}
+		this.session.visitor.set('typing', !!Ember.$.trim(this.body).length);
 	}.observes('body'),
 	actions: {
 		scrollMessages: function() {
@@ -34,11 +28,13 @@ export default Ember.Controller.extend({
 			
 			this.get('session.visitor').then(function(visitor) {
 				var message = e.store.createRecord('message', {
-					visitor: visitor,
 					body: body,
 					from_agent: false
 				});
 				
+				visitor.get('messages').addObject(message);
+				visitor.save();
+
 				e.send('scrollMessages');
 			});
 		}

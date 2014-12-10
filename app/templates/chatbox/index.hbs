@@ -2,6 +2,12 @@
 	{{render 'chatbox/header'}}
 	
 	<div class="messages">
+		{{#each errors}}
+		  <div class="error">
+		    {{.}}
+		  </div>
+		{{/each}}
+		
 		{{#each session.visitor.messages}}
 			<div {{bind-attr class=":message from_agent:from_agent"}}>
 				<div class="body">
@@ -11,10 +17,11 @@
 				<div class="clear"></div>
 			</div>
 		{{/each}}
+		
 		<div class="overlay"></div>
 	</div>
 
-	<form action="#" class="is_disabled new_message" {{action 'createMessage' on='submit'}}>
+	<form action="#" {{bind-attr class="session.visitor.typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
 		{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
 		
 		<div class="action_row">

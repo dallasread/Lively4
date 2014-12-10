@@ -15,7 +15,7 @@ export default {
 				auth: auth,
 				url: 'http://localhost:4200'
 			});
-	
+			
 			store.find('chatbox', token).then(function(chatbox) {
 				session.set('chatbox', chatbox);
 				
@@ -24,6 +24,7 @@ export default {
 					app.register('session:main', session, { instantiate: false, singleton: true });
 					app.inject('route', 'session', 'session:main');
 					app.inject('controller', 'session', 'session:main');
+					app.advanceReadiness();
 				}
 				
 				if (auth) {
@@ -37,7 +38,6 @@ export default {
 						
 						window.LCSDB.child('.info/connected').on("value", function() {
 							window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
-							app.advanceReadiness();
 						});
 					}, function() {
 						session.set('visitor', store.find('visitor', auth.uid));
@@ -45,7 +45,7 @@ export default {
 						window.LCSDB.child('.info/connected').on("value", function() {
 							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
 							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-							app.advanceReadiness();	
+							app.advanceReadiness();
 						});
 					});
 				} else {
@@ -61,7 +61,7 @@ export default {
 					});
 				}
 			}, function() {
-				console.log("Lively Chat Support token does not exist.");
+				console.log("Lively Chat Support token \"" + token + "\" does not exist.");
 			});
 		});
 		
