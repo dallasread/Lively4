@@ -7,8 +7,10 @@ export default DS.FirebaseAdapter.extend({
 		var chatbox = null;
 
 	  if (type === "visitor") {
-			chatbox = this.container.lookup('session:main').get('chatbox.id');
-			return "visitors/" + chatbox;
+			if (!window.LCSCB) {
+				window.LCSCB = this.container.lookup('session:main').get('chatbox.id');
+			}
+			return "visitors/" + window.LCSCB;
 	  } else if (type === "canned") {
 			return "canned";
 		} else {
