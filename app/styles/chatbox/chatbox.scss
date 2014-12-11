@@ -145,6 +145,28 @@ $header_border_width: 7px;
 			}
 		}
 		
+		.agent_offline {
+			position: fixed;
+			top: $header_height + $header_border_width;
+			right: 0;
+			width: $chatbox_width;
+			z-index: 99997;
+			background: #BF172C;
+			color: #fff;
+			padding: 11px;
+			font-size: 12px;
+			line-height: 18px;
+			
+			i {
+				float: left;
+				font-size: 35px;
+				line-height: 35px;
+				padding-left: 5px;
+				padding-right: 15px;
+				color: rgba(255, 255, 255, 0.5);
+			}
+		}
+		
 		.messages {
 			position: fixed;
 			top: $header_height + $header_border_width;
@@ -154,7 +176,7 @@ $header_border_width: 7px;
 			overflow-y: auto;
 			overflow-x: hidden;
 			-webkit-overflow-scrolling: touch;
-			padding: 40px 10px 10px;
+			padding: 50px 10px 10px;
 			z-index: 99995;
 			
 			.overlay {
@@ -221,7 +243,7 @@ $header_border_width: 7px;
 				outline: none;
 				font-size: 15px;
 				line-height: 22px;
-				height: 85px;
+				height: $textarea_height;
 				position: fixed;
 				bottom: 0px;
 				right: 0px;
@@ -263,7 +285,7 @@ $header_border_width: 7px;
 			width: auto;
 			left: 0;
 			
-			.messages, .new_message, .profile, .introducer, .messages .overlay {
+			.messages, .new_message, .profile, .introducer, .messages .overlay, .agent_offline {
 				width: auto;
 				left: 0;
 			}

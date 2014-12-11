@@ -16,7 +16,7 @@ export default DS.Model.extend({
 	updated_at: DS.attr('number', { defaultValue: new Date().getTime() }),
 	details_array: function() {
 		var details_array = [];
-		$.each(this.get('details'), function(label, value) { 
+		Ember.$.each(this.get('details'), function(label, value) { 
 	    details_array.push({
 	    	label: label,
 				value: value

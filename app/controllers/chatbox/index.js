@@ -20,9 +20,9 @@ export default Ember.Controller.extend({
 			messages.stop().animate({
 				scrollTop: messages.prop("scrollHeight")
 			}, 250);
-		}, 10)
+		}, 10);
 	},
-	messageAdded: function(message) {
+	messageAdded: function() {
 		this.scrollMessages();
 	}.observes('session.visitor.messages.@each'),
 	textareaHasContent: function() {
