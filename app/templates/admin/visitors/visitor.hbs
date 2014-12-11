@@ -4,7 +4,7 @@
 		<li class="action"><i class="fa fa-sign-out" title="Transfer"></i></li>
 	</ul>
 	
-	<!-- gravatar-image email=email alt=name size="250" class="avatar" -->
+	{{gravatar-image email=details.email alt=name size=75 class="avatar"}}
 		
 	<div class="info">
 		<h2 class="name">
@@ -27,6 +27,22 @@
 				<span class="clear"></span>
 			</p>
 			
+			<div class="more">
+				{{#each details_array}}
+					<p>
+						<span class="more_label">{{ label }}</span>
+						<span class="more_detail">{{ value }}</span>
+						<span class="clear"></span>
+					</p>
+				{{/each}}
+				<p>
+					<span class="more_label">Last Seen</span>
+					<span class="more_detail"><span {{bind-attr title=updated_at}}>{{ updated_at }}</span></span>
+					<span class="clear"></span>
+				</p>
+				<div class="clear"></div>
+			</div>
+			
 			<!-- <ul class="tags">
 				<!ach details
 					<li class="tag">
@@ -36,22 +52,6 @@
 				each
 			</ul> -->
 		</div>
-	</div>
-	
-	<div class="more">
-		{{#each details_array}}
-			<p>
-				<span class="more_label">{{ label }}</span>
-				<span class="more_detail">{{ value }}</span>
-				<span class="clear"></span>
-			</p>
-		{{/each}}
-		<p>
-			<span class="more_label">Last Seen</span>
-			<span class="more_detail"><span {{bind-attr title=updated_at}}>{{ updated_at }}</span></span>
-			<span class="clear"></span>
-		</p>
-		<div class="clear"></div>
 	</div>
 </div>
 
