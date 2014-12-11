@@ -9,22 +9,29 @@ export default Ember.ObjectController.extend({
 			Ember.$('.more').slideToggle();
 		},
 		scrollMessages: function() {
-			var $ = Ember.$;
-			var messages = $('.visitor_profile_messages');
-			messages.stop().animate({
-				scrollTop: messages.prop("scrollHeight")
-			}, 250);
+			setTimeout(function() {
+				var $ = Ember.$;
+				var messages = $('.visitor_profile_messages');
+				messages.stop().animate({
+					scrollTop: messages.prop("scrollHeight")
+				}, 250);
+			}, 50);
 		},
 		createMessage: function() {
+			var e = this;
 			var body = Ember.$.trim(this.get('body'));
 			var visitor = this.get('model');
-			var message = this.store.createRecord('message', {
-				body: body,
-				from_agent: true,
-				agent: this.get('session.agent')
+			this.set('body', '');
+			this.session.chatbox.get('canned').forEach(function(canned) {
+				body = body.replace(new RegExp("#" + canned.get('hash'), "mi"), canned.get('message'));
 			});
 			
-			this.set('body', '');
+			var message = e.store.createRecord('message', {
+				body: body,
+				from_agent: true,
+				agent: e.get('session.agent')
+			});
+
 			visitor.get('messages').addObject(message);
 			visitor.save();
 		}
