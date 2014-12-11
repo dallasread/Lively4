@@ -50,15 +50,20 @@
 	{{#each messages}}
 		<div {{bind-attr class=":message from_agent:from_agent"}}>
 			<div class="body">
-				{{{ body }}}
+				{{ body }}
 			</div>
 
 			<div class="clear"></div>
 		</div>
 	{{/each}}
+	
+	{{#if visitor_typing}}
+		<div class="message">
+			<div class="body">
+				Visitor is typing...
+			</div>
+		</div>
+	{{/if}}
 </div>
 
-<form action="#" {{bind-attr class=":visitor_new_message session.visitor.typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
-	{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
-	<button type="submit">Send</button>
-</form>
+{{new-message visitor=this agent=session.agent chatbox=session.chatbox type="agent"}}

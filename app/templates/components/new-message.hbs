@@ -1,0 +1,11 @@
+<form action="#" {{bind-attr class="typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
+	{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
+	
+	<div class="action_row">
+		<button type="submit">Send</button>
+		<a href="#" {{action 'uploadFile'}} class="upload_icon">
+			<i class="fa fa-paperclip"></i>
+		</a>
+		<div class="clear"></div>
+	</div>
+</form>

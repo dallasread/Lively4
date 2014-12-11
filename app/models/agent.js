@@ -10,6 +10,7 @@ export default DS.Model.extend({
 	email: DS.attr('string'),
 	avatar: DS.attr('string'),
 	visitors: DS.hasMany('visitor', { async: true }),
+	typing: DS.attr('boolean', { defaultValue: false }),
 	active: function() {
 		return !!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('email')).length;
 	}.property('name', 'email')

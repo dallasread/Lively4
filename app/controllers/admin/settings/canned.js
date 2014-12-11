@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 		createCanned: function() {
 			var canned = this.store.createRecord('canned', {
 				hash: "",
-				message: { body: "" }
+				message: ""
 			});
 			this.session.chatbox.get('canned').addObject(canned);
 			this.session.chatbox.save();

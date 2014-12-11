@@ -2,34 +2,28 @@
 	{{render 'chatbox/header'}}
 	
 	<div class="messages">
-		{{#each errors}}
-		  <div class="error">
-		    {{.}}
-		  </div>
-		{{/each}}
-		
 		{{#each session.visitor.messages}}
 			<div {{bind-attr class=":message from_agent:from_agent"}}>
 				<div class="body">
-					{{{ body }}}
+					{{ body }}
 				</div>
 
 				<div class="clear"></div>
 			</div>
 		{{/each}}
 		
+		{{#if session.visitor.agent_typing}}
+			<div class="message from_agent">
+				<div class="body">
+					Agent is typing...
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+		{{/if}}
+		
 		<div class="overlay"></div>
 	</div>
 
-	<form action="#" {{bind-attr class="session.visitor.typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
-		{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage'}}
-		
-		<div class="action_row">
-			<button type="submit">Send</button>
-			<a href="#" {{action 'uploadFile'}} class="upload_icon">
-				<i class="fa fa-paperclip"></i>
-			</a>
-			<div class="clear"></div>
-		</div>
-	</form>
+	{{new-message visitor=session.visitor agent=session.visitor.agent chatbox=session.chatbox}}
 </div>

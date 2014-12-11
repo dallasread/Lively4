@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
 				active: false,
 				exclude: "",
 				include: "*",
-				message: { body: "" }
+				message: ""
 			});
 			this.session.chatbox.get('triggers').addObject(trigger);
 		},

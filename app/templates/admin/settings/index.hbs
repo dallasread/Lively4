@@ -15,6 +15,16 @@
 			<label>Which pages should <strong>hide</strong> your chatbox?</label>
 			{{input value=session.chatbox.exclude}}
 		</div>
+		
+		<div class="field">
+			<label>Which colour should the chatbox header be?</label>
+			{{input value=session.chatbox.color}}
+		</div>
+		
+		<div class="field">
+			<label>What message should be sent when no agents are available?</label>
+			{{input value=session.chatbox.offline_message}}
+		</div>
 
 		<button type="submit" class="full_width">Save Settings</button>
 	</form>

@@ -6,5 +6,5 @@ export default DS.Model.extend({
 	delay: DS.attr('string'),
 	include: DS.attr('string'),
 	exclude: DS.attr('string'),
-	message: DS.attr()
+	message: DS.attr('string')
 });

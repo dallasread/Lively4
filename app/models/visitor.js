@@ -11,7 +11,8 @@ export default DS.Model.extend({
 	online: DS.attr('boolean', { defaultValue: false }),
 	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
-	typing: DS.attr('boolean', { defaultValue: false }),
+	visitor_typing: DS.attr('boolean', { defaultValue: false }),
+	agent_typing: DS.attr('boolean', { defaultValue: false }),
 	updated_at: DS.attr('number', { defaultValue: new Date().getTime() }),
 	details_array: function() {
 		var details_array = [];
