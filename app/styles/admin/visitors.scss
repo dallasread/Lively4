@@ -1,130 +1,132 @@
 #lcs {
-	.visitors_search {
-		display: none;
-		position: fixed;
-		left: $leftbar_width;
-		width: $visitors_width;
-		top: $topbar_height;
-		z-index: 99999;
-		margin: 0;
-		padding: 13px 10px;
-		font-size: 18px;
-		line-height: 33px;
-		border-radius: 0;
-		height: $search_height;
-		border: 0px;
-		border-bottom: 1px solid #ccc;
-		border-right: 1px solid #ccc;
-		outline: none;
-		box-shadow: none;
-	}
-	
-	.visitors {
-		position: fixed;
-		top: 0;
-		width: $visitors_width;
-		bottom: 0;
-		left: $leftbar_width;
-		background: #fff;
-		overflow-y: auto;
-		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
-		border-right: 1px solid #ccc;
-		z-index: 99998;
-
-		.visitor {
-			display: block;
-			border-bottom: 1px solid #ccc;
-			cursor: pointer;
-			padding: 15px 11px 15px 18px;
-			border-right: 9px solid transparent;
-			text-decoration: none;
-			
-			&.active {
-				background: #eee;
-			}
-			
-			&.online {
-				p {
-					color: $green !important;
-				}
-			}
-			
-			&.has_unread {
-				border-right: 9px solid #ccc;
-				
-				&.online {
-					border-right: 9px solid $green;
-				}
-			}
-
-			span {
-				display: block;
-
-				i {
-					padding: 3px;
-				}
-				
-				&.name {
-					font-weight: bold;
-					margin-bottom: 3px;
-					color: #444;
-					font-size: 22px;
-					line-height: 34px;
-					margin: 0;
-				}
-				
-				&.last_seen {
-					float: left;
-					font-size: 16px;
-					line-height: 16px;
-					color: #999;
-					margin: 0;
-				}
-				
-				&.icons {
-					float: right;
-					text-align: right;
-					margin: 0px 0 -2px;
-					color: #444;
-					font-size: 18px;
-				}
-			}
-		}
-	}
-	
-	.visitor_profile_header, .visitor_index {
-		position: fixed;
-		top: $topbar_height;
-		left: $leftbar_width + $visitors_width;
-		right: 0;
-		z-index: 99999;
-		background: #fff;
-		border-bottom: 1px solid #ccc;
-		padding: 20px;
-		
-		.avatar {
-			width: 100px;
-			float: left;
-			margin-right: 20px;
-			
-			img {
-				margin-bottom: -3px;
-				border-radius: 4px;
-				border: 1px solid #ccc;
-			}
-		}
-		
-		.more {
+	.panes .pane {
+		.visitors_search {
 			display: none;
-			padding: 20px 0px 0px;
+			position: fixed;
+			left: $leftbar_width;
+			width: $visitors_width;
+			top: $topbar_height;
+			z-index: 99999;
+			margin: 0;
+			padding: 13px 10px;
+			font-size: 18px;
+			line-height: 33px;
+			border-radius: 0;
+			height: $search_height;
+			border: 0px;
+			border-bottom: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			outline: none;
+			box-shadow: none;
+		}
+	
+		.visitors {
+			position: fixed;
+			top: 0;
+			width: $visitors_width;
+			bottom: 0;
+			left: $leftbar_width;
+			background: #fff;
+			overflow-y: auto;
+			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+			border-right: 1px solid #ccc;
+			z-index: 99998;
+
+			.visitor {
+				display: block;
+				border-bottom: 1px solid #ccc;
+				cursor: pointer;
+				padding: 15px 11px 15px 18px;
+				border-right: 9px solid transparent;
+				text-decoration: none;
 			
+				&.active {
+					background: #eee;
+				}
+			
+				&.online {
+					p {
+						color: $green !important;
+					}
+				}
+			
+				&.has_unread {
+					border-right: 9px solid #ccc;
+				
+					&.online {
+						border-right: 9px solid $green;
+					}
+				}
+			
+				span {
+					display: block;
+
+					i {
+						padding: 3px;
+					}
+				
+					&.name {
+						font-weight: bold;
+						margin-bottom: 3px;
+						color: #444;
+						font-size: 22px;
+						line-height: 34px;
+						margin: 0;
+					}
+				
+					&.last_seen {
+						float: left;
+						font-size: 16px;
+						line-height: 16px;
+						color: #999;
+						margin: 0;
+					}
+				
+					&.icons {
+						float: right;
+						text-align: right;
+						margin: 0px 0 -2px;
+						color: #444;
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	
+		.visitor_profile_header, .visitor_index {
+			position: fixed;
+			top: $topbar_height;
+			left: $leftbar_width + $visitors_width;
+			right: 0;
+			z-index: 99999;
+			background: #fff;
+			border-bottom: 1px solid #ccc;
+			padding: 20px;
+		
+			.avatar {
+				width: 100px;
+				float: left;
+				margin-right: 20px;
+			
+				img {
+					margin-bottom: -3px;
+					border-radius: 4px;
+					border: 1px solid #ccc;
+				}
+			}
+		
+			.more {
+				display: none;
+				padding: 20px 0px 0px;
+			}
+		
 			p {
 				margin: 0;
 				padding: 3px 0px;
 				font-size: 17px;
 				line-height: 24px;
-				
+			
 				.more_label {
 					font-size: 11px;
 					color: #aaa;
@@ -135,125 +137,129 @@
 					padding-top: 1px;
 					padding-right: 10px;
 				}
-				
+			
 				.more_detail {
 					float: right;
 					width: 74%;
 				}
 			}
-		}
 		
-		.info {
-			display: block;
-			margin-left: 120px;
-		}
-		
-		.name {
-			display: inline-block;
-			font-weight: bold;
-			font-size: 36px;
-			line-height: 36px;
-			margin-bottom: 8px;
+			.info {
+				display: block;
+				margin-left: 120px;
 			
-			.show_more {
-				display: inline-block;
-				font-size: 14px;
-				line-height: 14px;
-				font-weight: normal;
-				color: $blue;
-				cursor: pointer;
-			}
-		}
-		
-		.location {
-			font-style: oblique;
-			font-size: 16px;
-			line-height: 16px;
-			color: #777;
-			margin-bottom: 12px;
-		}
-		
-		.tags {
-			.tag {
-				display: inline-block;
-				margin-right: 2px;
-				
-				.tag_label, .delete_tag {
-					display: inline-block;
-					background: $blue;
-					vertical-align: top;
-				}
-				
-				.tag_label {
-					padding: 5px 6px 6px 8px;
-					color: #fff;
-					border-radius: 4px 0 0 4px;
+				.status {
 					font-weight: bold;
-					font-size: 13px;
-					line-height: 13px;
 				}
-				
-				.delete_tag {
-					font-size: 16px;
-					line-height: 16px;
-					padding: 3px 8px 5px 8px;
-					color: #ddd;
-					color: rgba(255, 255, 255, 0.5);
-					border-radius: 0 4px 4px 0;
-					margin-left: -5px;
+			}
+		
+			.name {
+				display: inline-block;
+				font-weight: bold;
+				font-size: 36px;
+				line-height: 36px;
+				margin-bottom: 8px;
+			
+				.show_more {
+					display: inline-block;
+					font-size: 14px;
+					line-height: 14px;
 					font-weight: normal;
+					color: $blue;
 					cursor: pointer;
+				}
+			}
+		
+			.location {
+				font-style: oblique;
+				font-size: 16px;
+				line-height: 16px;
+				color: #777;
+				margin-bottom: 12px;
+			}
+		
+			.tags {
+				.tag {
+					display: inline-block;
+					margin-right: 2px;
+				
+					.tag_label, .delete_tag {
+						display: inline-block;
+						background: $blue;
+						vertical-align: top;
+					}
+				
+					.tag_label {
+						padding: 5px 6px 6px 8px;
+						color: #fff;
+						border-radius: 4px 0 0 4px;
+						font-weight: bold;
+						font-size: 13px;
+						line-height: 13px;
+					}
+				
+					.delete_tag {
+						font-size: 16px;
+						line-height: 16px;
+						padding: 3px 8px 5px 8px;
+						color: #ddd;
+						color: rgba(255, 255, 255, 0.5);
+						border-radius: 0 4px 4px 0;
+						margin-left: -5px;
+						font-weight: normal;
+						cursor: pointer;
 					
+						&:hover {
+							background: $dark_blue;
+							color: #eee;
+							color: rgba(255, 255, 255, 0.6);
+						}
+					}
+				}
+			}
+		
+			.actions {
+				float: right;
+			
+				.action {
+					cursor: pointer;
+					color: #aaa;
+					display: inline-block;
+					font-size: 27px;
+					line-height: 27px;
+					margin-left: 18px;
+				
 					&:hover {
-						background: $dark_blue;
-						color: #eee;
-						color: rgba(255, 255, 255, 0.6);
+						color: $blue;
 					}
 				}
 			}
 		}
-		
-		.actions {
-			float: right;
-			
-			.action {
-				cursor: pointer;
-				color: #aaa;
-				display: inline-block;
-				font-size: 27px;
-				line-height: 27px;
-				margin-left: 18px;
-				
-				&:hover {
-					color: $blue;
-				}
-			}
+	
+		.visitor_profile_messages {
+			position: fixed;
+			top: $topbar_height + $profile_header_height;
+			left: $leftbar_width + $visitors_width;
+			right: 0;
+			bottom: 110px;
+			background: #fff;
+			z-index: 99998;
+			overflow-y: auto;
+			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+			padding: 20px;
 		}
-	}
 	
-	.visitor_profile_messages {
-		position: fixed;
-		top: $topbar_height + $profile_header_height;
-		left: $leftbar_width + $visitors_width;
-		right: 0;
-		bottom: 110px;
-		background: #fff;
-		z-index: 99998;
-		overflow-y: auto;
-		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
-		padding: 20px;
-	}
-	
-	.new_message {
-		position: fixed;
-		bottom: 0;
-		right: 0;
-		left: $leftbar_width + $visitors_width;
-		z-index: 99999;
+		.new_message {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			left: $leftbar_width + $visitors_width;
+			z-index: 99999;
 		
-		textarea {
-			width: 100%;
+			textarea {
+				width: 100%;
+			}
 		}
 	}
 }

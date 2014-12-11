@@ -14,19 +14,28 @@
 		
 		<h3 class="location">{{ details.location }}</h3>
 		
-		<p>
-			Served by:
-			{{ agent.name }}
-		</p>
+		<div class="details">
+			<p>
+				<span class="more_label">Served By</span>
+				<span class="more_detail">{{ agent.name }}</span>
+				<span class="clear"></span>
+			</p>
+		
+			<p>
+				<span class="more_label">Status</span>
+				<span {{bind-attr class=":status :more_detail online:online:offline"}}>{{ status }}</span>
+				<span class="clear"></span>
+			</p>
 			
-		<ul class="tags">
-			<!--each details
-				<li class="tag">
-					<span class="tag_label">name</span>
-					<span class="delete_tag">&times;</span>
-				</li>
-			each -->
-		</ul>
+			<!-- <ul class="tags">
+				<!ach details
+					<li class="tag">
+						<span class="tag_label">name</span>
+						<span class="delete_tag">&times;</span>
+					</li>
+				each
+			</ul> -->
+		</div>
 	</div>
 	
 	<div class="more">

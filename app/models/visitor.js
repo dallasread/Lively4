@@ -14,6 +14,9 @@ export default DS.Model.extend({
 	visitor_typing: DS.attr('boolean', { defaultValue: false }),
 	agent_typing: DS.attr('boolean', { defaultValue: false }),
 	updated_at: DS.attr('number', { defaultValue: new Date().getTime() }),
+	status: function() {
+		return this.get('online') ? 'Online' : 'Offline';
+	}.property('online'),
 	details_array: function() {
 		var details_array = [];
 		Ember.$.each(this.get('details'), function(label, value) { 
