@@ -4,12 +4,13 @@
 	
 	<p>This is a desciprtion of agents. Should you need any help, don't be afraid to ask for it. This is a desciprtion of agents. Should you need any help, don't be afraid to ask for it. </p>
 
-	<table class="table">
+	<table class="agents table">
 		<thead>
 			<tr>
-				<th style="width: 11%;" class="align_center">Online</th>
-				<th style="width: 30%;">Name</th>
-				<th style="width: 49%;">Email Address</th>
+				<th style="width: 10%;" class="align_center">Online</th>
+				<th style="width: 25%;">Name</th>
+				<th style="width: 35%;">Email Address</th>
+				<th style="width: 20%;">Avatar (75px square)</th>
 				<th style="width: 10%;"></th>
 			</tr>
 		</thead>
@@ -24,6 +25,9 @@
 					</td>
 					<td>
 						{{input type="email" value=email focus-out="saveChatbox"}}
+					</td>
+					<td>
+						<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
 					</td>
 					<td class="align_right">
 						<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>

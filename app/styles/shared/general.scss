@@ -14,4 +14,13 @@
 	.ion-arrow-move {
 		cursor: move;
 	}
+	
+	.agents {
+		img {
+			width: 75px;
+			height: 75px;
+			border: 1px solid #ddd;
+			border-radius: 40px;
+		}
+	}
 }

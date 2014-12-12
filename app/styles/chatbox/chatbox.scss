@@ -53,6 +53,7 @@ $header_border_width: 7px;
 					img {
 						float: left;
 						height: $agent_img_height; 
+						width: $agent_img_height; 
 						border-right: 1px solid #ccc;
 						border: 4px solid #fff;
 						border-radius: 50px;

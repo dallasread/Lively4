@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'lively',
     environment: environment,
     baseURL: '/',
-    locationType: 'none', //auto
+    locationType: 'none', //auto,
+		filepickerAPIKey: 'AXEU9C0erSGp77jK5MDNuz',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

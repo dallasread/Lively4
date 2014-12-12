@@ -15,6 +15,36 @@ export default Ember.ArrayController.extend({
 				this.session.chatbox.get('agents').removeObject(agent);
 				this.session.chatbox.save();
 			}
+		},
+		chooseAvatar: function(agent) {
+			var e = this;
+			
+			filepicker.pick(
+			  {
+			    mimetypes: ['image/*'],
+			    services:['BOX', 'COMPUTER', 'DROPBOX', 'FACEBOOK', 'GOOGLE_DRIVE', 'FLICKR', 'INSTAGRAM', 'IMAGE_SEARCH', 'URL', 'WEBCAM'],
+					openTo: 'COMPUTER'
+			  },
+			  function(blob){
+					agent.set('avatar', blob.url);
+					e.session.chatbox.save();
+					
+					//filepicker.convert(
+					//  blob,
+					//  {
+					//    width: 75,
+					//    height: 75,
+					//		fit: 'clip'
+					//  },
+					//  function(new_blob){
+					//    console.log(new_blob.url);
+					//  }
+					//)
+			  },
+			  function(){
+					alert("There was an issue with the file you chose. Please try again.");
+			  }
+			);
 		}
 	}
 });
