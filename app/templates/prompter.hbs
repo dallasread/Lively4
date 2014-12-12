@@ -12,9 +12,7 @@
 		</a>
 		
 		{{#if session.visitor.unread_from_agent}}
-			<a href="#" {{action 'showChatbox'}} class="bubble pulse animated">
-				{{ truncate-text session.visitor.latest_agent_message.body 60 }}
-			</a>
+			{{latest-message message=session.visitor.latest_agent_message unread=session.visitor.visitor_unread_count session=session currentControllerBinding="controller"}}
 		{{/if}}
 	{{/if}}
 </div>

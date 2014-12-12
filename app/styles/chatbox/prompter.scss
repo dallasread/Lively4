@@ -44,6 +44,10 @@
 			}
 		}
 		
+		.ember-view {
+			display: inline-block;
+		}
+		
 		.bubble {
 			cursor: pointer;
 			float: left;

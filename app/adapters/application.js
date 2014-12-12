@@ -4,9 +4,7 @@ import DS from 'ember-data';
 export default DS.FirebaseAdapter.extend({
 	firebase: window.LCSDB,
   pathForType: function(type) {
-		var chatbox = null;
-
-	  if (type === "visitor") {
+		if (type === "visitor") {
 			if (!window.LCSCB) {
 				window.LCSCB = this.container.lookup('session:main').get('chatbox.id');
 			}

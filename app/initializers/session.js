@@ -13,7 +13,13 @@ export default {
 			var store = container.lookup('store:main');
 			var session = Ember.Object.create({
 				auth: auth,
-				url: 'http://localhost:4200'
+				url: 'http://localhost:4200',
+				ding: new window.Howl({
+				  urls: [
+						'/audio/bell.mp3',
+						'/audio/bell.ogg'
+					]
+				})
 			});
 			
 			store.find('chatbox', token).then(function(chatbox) {
@@ -24,6 +30,7 @@ export default {
 					app.register('session:main', session, { instantiate: false, singleton: true });
 					app.inject('route', 'session', 'session:main');
 					app.inject('controller', 'session', 'session:main');
+					app.inject('view', 'session', 'session:main');
 					container.injection('component', 'store', 'store:main');
 					app.advanceReadiness();
 				}
