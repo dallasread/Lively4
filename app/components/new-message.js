@@ -4,9 +4,7 @@ export default Ember.Component.extend({
 	type: "visitor",
 	typing: false,
 	textareaHasContent: function() {
-		var e = this;
-		
-		this.visitor.set(e.type + '_typing', !!Ember.$.trim(e.body).length);
+		this.visitor.set(this.type + '_typing', !!Ember.$.trim(this.body).length);
 		this.visitor.save();
 	}.observes('body'),
 	actions: {
