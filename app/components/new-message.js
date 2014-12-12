@@ -6,15 +6,8 @@ export default Ember.Component.extend({
 	textareaHasContent: function() {
 		var e = this;
 		
-		if (this.type === "visitor") {
-			this.get('visitor').then(function(visitor) {
-				visitor.set(e.type + '_typing', !!Ember.$.trim(e.body).length);
-				visitor.save();
-			});
-		} else {
-			this.visitor.set(e.type + '_typing', !!Ember.$.trim(e.body).length);
-			this.visitor.get('content').save();
-		}
+		this.visitor.set(e.type + '_typing', !!Ember.$.trim(e.body).length);
+		this.visitor.save();
 	}.observes('body'),
 	actions: {
 		createMessage: function() {
@@ -28,7 +21,7 @@ export default Ember.Component.extend({
 				});
 			}
 			
-			var message = this.get('store').createRecord('message', {
+			var message = this.store.createRecord('message', {
 				body: body,
 				from_agent: this.type === "agent",
 			});
@@ -37,9 +30,7 @@ export default Ember.Component.extend({
 
 			this.visitor.get('messages').addObject(message);
 			if (this.type === "visitor") {
-				this.get('visitor').then(function(visitor) {
-					visitor.save();	
-				});
+				this.visitor.save();
 			} else {
 				this.visitor.get('model').save();				
 			}

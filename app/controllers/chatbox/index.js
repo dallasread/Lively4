@@ -1,18 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	init: function() {
-		//this.session.get('chatbox').then(function(a) {
-		//	alert(a);
-		//});
-
-		//.then(function(visitor) {
-		//	visitor.get('unread_from_agent').forEach(function(message) {
-		//		message.set('read', true);
-		//	});
-		//	visitor.save();
-		//});
-	},
 	scrollMessages: function() {
 		setTimeout(function() {
 			var $ = Ember.$;

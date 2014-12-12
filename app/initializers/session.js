@@ -48,12 +48,14 @@ export default {
 							window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 						});
 					}, function() {
-						session.set('visitor', store.find('visitor', auth.uid));
-						
 						window.LCSDB.child('.info/connected').on("value", function() {
 							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
 							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-							app.advanceReadiness();
+							
+							store.find('visitor', auth.uid).then(function(visitor) {
+								session.set('visitor', visitor);
+								app.advanceReadiness();
+							});
 						});
 					});
 				} else {
@@ -61,6 +63,13 @@ export default {
 					  if (error) {
 							console.log("Lively Chat Support could not connect.", error);
 					  } else {
+							store.unloadAll('message');
+							store.unloadAll('visitor');
+							store.unloadAll('agent');
+							session.set('auth', null);
+							session.set('visitor', null);
+							session.set('agent', null);
+							
 							store.createRecord('visitor', {
 								id: auth.uid,
 								anonymous: true

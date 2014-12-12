@@ -2,28 +2,30 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	init: function() {
-		if (this.get('session.visitor')) {
+		if (this.get('session.visitor.registered')) {
 			this.transitionToRoute( 'chatbox' );
 		}
 	},
 	actions: {
 		registerViaEmail: function() {
-			var visitor = {};
+			var details = {};
 			var $ = Ember.$;
-			// CREATE VISITOR
-			// LOG IN VISITOR
-			// SAVE VISITOR DETAILS
-			// REDIRECT TO 
+			var e = this;
+
 			$("#lcs .introducer input").each(function() {
-				visitor[$(this).attr('name')] = $(this).val();
+				details[$(this).attr('name')] = $(this).val();
 			});
-			this.store.createRecord('visitor', {
-				details: visitor
-			}).save();
+			
+			this.session.visitor.setProperties({
+				details: details,
+				registered: true
+			}).save().then(function() {
+				e.transitionToRoute('chatbox');
+			});
 		},
 		registerViaFacebook: function() {
 			window.LCSDB.authWithOAuthPopup("facebook", function(error) {
-				console.log("done", error);
+				alert("logged in!");
 			});
 		}
 	}

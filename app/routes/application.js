@@ -18,7 +18,7 @@ export default Ember.Route.extend({
 				}
 				
 				if (confirm(msg)) {
-					window.LCSDB.unauth();
+					window.LCSDB.unauth()
 					this.transitionTo('prompter');
 				}
 			} else {

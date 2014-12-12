@@ -1,3 +1,11 @@
 <div id="lcs">
-	{{outlet}}
+	{{!#if session.visitor}}
+		{{!#if session.visitor.agent}}
+			{{outlet}}
+		{{!/if}}
+	{{!/if}}
+
+	{{!#if session.agent}}
+		{{!outlet}}
+	{{!/if}}
 </div>

@@ -9,6 +9,7 @@ export default DS.Model.extend({
 	}}),
 	anonymous: DS.attr('boolean', { defaultValue: true }),
 	online: DS.attr('boolean', { defaultValue: false }),
+	registered: DS.attr('boolean', { defaultValue: false }),
 	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
 	visitor_typing: DS.attr('boolean', { defaultValue: false }),
@@ -37,7 +38,17 @@ export default DS.Model.extend({
 	visitor_unread_count: function() {
 	  return this.get('unread_from_agent').get('length');
 	}.property('unread_from_agent'),
-	has_unread: function() {
+	visitor_has_unread: function() {
 		return this.get('visitor_unread_count') !== 0;
-	}.property('unread_from_agent')
+	}.property('unread_from_agent'),
+	unread_from_visitor: function() {
+		var messages = this.get('messages');
+		return messages.filterBy('read', false).filterBy('from_agent', false);
+	}.property('messages.@each.read'),
+	agent_unread_count: function() {
+	  return this.get('unread_from_visitor').get('length');
+	}.property('unread_from_visitor'),
+	agent_has_unread: function() {
+		return this.get('agent_unread_count') !== 0;
+	}.property('unread_from_visitor')
 });
