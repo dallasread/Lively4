@@ -23,16 +23,16 @@ export default {
 			});
 			
 			store.find('chatbox', token).then(function(chatbox) {
-				session.set('chatbox', chatbox);
-				
 				if (!window.LCSInjected) {
 					window.LCSInjected = true;
+					session.set('chatbox', chatbox);
 					app.register('session:main', session, { instantiate: false, singleton: true });
 					app.inject('route', 'session', 'session:main');
 					app.inject('controller', 'session', 'session:main');
 					app.inject('view', 'session', 'session:main');
 					container.injection('component', 'store', 'store:main');
-					app.advanceReadiness();
+					container.injection('view', 'store', 'store:main');
+					session = container.lookup('session:main');
 				}
 				
 				if (auth) {
@@ -44,16 +44,21 @@ export default {
 						
 						session.set('agent', agent);
 						
-						window.LCSDB.child('.info/connected').on("value", function() {
+						window.LCSDB.child('.info/connected').once("value", function() {
 							window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
+							app.advanceReadiness();
 						});
 					}, function() {
-						window.LCSDB.child('.info/connected').on("value", function() {
-							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
-							window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-							
-							store.find('visitor', auth.uid).then(function(visitor) {
+						store.find('visitor', auth.uid).then(function(visitor) {
+							visitor.get('agent').then(function(agent) {
+								if (!agent) {
+									visitor.set('agent', session.get("chatbox.next_available_agent"));
+								}
+								
+								window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
+								window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
 								session.set('visitor', visitor);
+								
 								app.advanceReadiness();
 							});
 						});
@@ -65,11 +70,10 @@ export default {
 					  } else {
 							store.unloadAll('message');
 							store.unloadAll('visitor');
-							store.unloadAll('agent');
 							session.set('auth', null);
 							session.set('visitor', null);
 							session.set('agent', null);
-							
+
 							store.createRecord('visitor', {
 								id: auth.uid,
 								anonymous: true

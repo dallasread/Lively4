@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	init: function() {
-		if (this.get('session.visitor.registered')) {
+		if (this.get('session.visitor.introduced')) {
 			this.transitionToRoute( 'chatbox' );
 		}
 	},
@@ -16,9 +16,13 @@ export default Ember.ObjectController.extend({
 				details[$(this).attr('name')] = $(this).val();
 			});
 			
+			if (!this.session.get('visitor.agent.online')) {
+				this.session.set('visitor.agent', this.session.chatbox.get('next_available_agent'));
+			}
+			
 			this.session.visitor.setProperties({
 				details: details,
-				registered: true
+				introduced: true
 			}).save().then(function() {
 				e.transitionToRoute('chatbox');
 			});

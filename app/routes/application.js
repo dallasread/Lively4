@@ -3,12 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	actions: {
 		saveChatbox: function() {
-			this.session.chatbox.save().then(function() {
-				
-			}).catch(function(err) {
-				console.log(err);
-				
-			});
+			this.session.chatbox.save();
 		},
 		signinout: function() {
 			if (this.get('session.auth')) {
@@ -18,8 +13,8 @@ export default Ember.Route.extend({
 				}
 				
 				if (confirm(msg)) {
-					window.LCSDB.unauth()
-					this.transitionTo('prompter');
+					window.LCSDB.unauth();
+					Ember.$("#lcs").hide();
 				}
 			} else {
 				var current = this.controllerFor("application").get("currentPath");

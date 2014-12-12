@@ -8,7 +8,7 @@
 			{{#if session.visitor.unread_from_agent}}
 				<span class="unread_messages_count pulse animated infinite">{{session.visitor.visitor_unread_count}}</span>
 			{{/if}}
-			<img src="/imgs/avatar.jpg">
+			<img {{bind-attr src=session.visitor.agent.avatar}}>
 		</a>
 		
 		{{#if session.visitor.unread_from_agent}}
