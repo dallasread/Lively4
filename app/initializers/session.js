@@ -49,16 +49,16 @@ export default {
 							app.advanceReadiness();
 						});
 					}, function() {
+						window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
+						window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
+						
 						store.find('visitor', auth.uid).then(function(visitor) {
 							visitor.get('agent').then(function(agent) {
 								if (!agent) {
 									visitor.set('agent', session.get("chatbox.next_available_agent"));
 								}
 								
-								window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
-								window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
 								session.set('visitor', visitor);
-								
 								app.advanceReadiness();
 							});
 						});

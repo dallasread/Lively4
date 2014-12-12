@@ -27,11 +27,7 @@ export default Ember.Component.extend({
 			if (this.type === "agent") { message.set('agent', this.agent); }
 
 			this.visitor.get('messages').addObject(message);
-			if (this.type === "visitor") {
-				this.visitor.save();
-			} else {
-				this.visitor.get('model').save();				
-			}
+			this.visitor.save();
 		}
 	}
 });
