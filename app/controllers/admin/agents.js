@@ -40,9 +40,6 @@ export default Ember.ArrayController.extend({
 					//    console.log(new_blob.url);
 					//  }
 					//)
-			  },
-			  function(){
-					alert("There was an issue with the file you chose. Please try again.");
 			  }
 			);
 		}

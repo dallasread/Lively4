@@ -3,6 +3,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	chatbox: DS.belongsTo('chatbox', { async: true }),
+	creator: DS.attr('boolean', { defaultValue: false }),
 	admin: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
 	name: DS.attr('string'),
@@ -13,8 +14,8 @@ export default DS.Model.extend({
 	offline: function() {
 		return !this.get('online');
 	}.property('online'),
-	is_creator: function() {
-		return this.get('chatbox.creator') === this.get('id');
+	is_current_user: function() {
+		return this.get('session.agent.id') === this.get('id');
 	}.property('id'),
 	visitors: DS.hasMany('visitor', { async: true }),
 	typing: DS.attr('boolean', { defaultValue: false }),

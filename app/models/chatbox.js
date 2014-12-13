@@ -5,7 +5,6 @@ export default DS.Model.extend({
 	domain: DS.attr('string', { defaultValue: function() {
 		return window.location.host;
 	}}),
-	creator: DS.attr('string'),
 	activated: DS.attr('boolean', { defaultValue: false }),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: true }),
@@ -16,6 +15,7 @@ export default DS.Model.extend({
 	triggers: DS.hasMany('trigger', { embedded: true }),
 	introducers: DS.hasMany('introducer', { embedded: true }),
 	offline_message: DS.attr('string', { defaultValue: "We're not available right now, but feel free to leave us a message!" }),
+	initial_message: DS.attr('string', { defaultValue: "How can I help you?" }),
 	triggersSorted: (function() {
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       sortProperties: ['delay'],

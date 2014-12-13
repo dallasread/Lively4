@@ -19,9 +19,11 @@
 			{{#each session.chatbox.agents itemController="admin/agents/agent"}}
 				<tr>
 					<td class="align_center">
-						{{#unless is_creator}}
-							{{input type="checkbox" checked=admin}}
-						{{/unless}}
+						{{#if session.agent.admin}}
+							{{#unless creator}}
+								{{input type="checkbox" checked=admin}}
+							{{/unless}}
+						{{/if}}
 					</td>
 					<td {{bind-attr class=":align_center online:online:offline"}}>
 						<i class="ion ion-record"></i>
@@ -36,13 +38,15 @@
 						<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
 					</td>
 					<td class="align_right">
-						{{#unless is_creator}}
-							{{#unless admin}}
-								<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>
-									<i class="ion ion-ios-close"></i>
-								</a>
+						{{#if session.agent.admin}}
+							{{#unless is_current_user}}
+								{{#unless creator}}
+									<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>
+										<i class="ion ion-ios-close"></i>
+									</a>
+								{{/unless}}
 							{{/unless}}
-						{{/unless}}
+						{{/if}}
 					</td>
 				</tr>
 			{{/each}}

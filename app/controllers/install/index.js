@@ -45,11 +45,11 @@ export default Ember.Controller.extend({
 									id: auth.uid,
 									email: e.get('email'),
 									name: e.get('name'),
-									admin: true
+									admin: true,
+									creator: true
 								});
 					
 								chatbox.get('agents').addObject(agent);
-								chatbox.set('creator', agent.id).save();
 								e.session.set('agent', agent);
 								e.transitionToRoute( 'admin' );
 							}
