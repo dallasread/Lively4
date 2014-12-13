@@ -35,7 +35,11 @@
 						{{input type="email" value=email focus-out="saveChatbox"}}
 					</td>
 					<td>
-						<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
+						{{#if session.agent.admin}}
+							<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
+						{{else}}
+							<img {{bind-attr src=avatar}}>
+						{{/if}}
 					</td>
 					<td class="align_right">
 						{{#if session.agent.admin}}
