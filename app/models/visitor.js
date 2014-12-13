@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	chatbox: DS.belongsTo('chatbox', { async: true }),
+	//chatbox: DS.belongsTo('chatbox', { async: true }),
 	details: DS.attr('object', { defaultValue: {
 		name: "",
 		email: ""
@@ -15,7 +15,7 @@ export default DS.Model.extend({
 	messages: DS.hasMany('message', { embedded: true }),
 	visitor_typing: DS.attr('boolean', { defaultValue: false }),
 	agent_typing: DS.attr('boolean', { defaultValue: false }),
-	updated_at: DS.attr('number', { defaultValue: new Date().getTime() }),
+	updated_at: DS.attr('date', { defaultValue: function() { return new Date(); }}),
 	status: function() {
 		return this.get('online') ? 'Online' : 'Offline';
 	}.property('online'),
