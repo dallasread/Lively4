@@ -7,16 +7,18 @@
 	<table class="agents table">
 		<thead>
 			<tr>
+				<th style="width: 10%;" class="align_center">Admin</th>
 				<th style="width: 10%;" class="align_center">Online</th>
-				<th style="width: 25%;">Name</th>
-				<th style="width: 35%;">Email Address</th>
-				<th style="width: 20%;">Avatar (75px square)</th>
+				<th style="width: 24%;">Name</th>
+				<th style="width: 31%;">Email Address</th>
+				<th style="width: 15%;">Avatar (75px square)</th>
 				<th style="width: 10%;"></th>
 			</tr>
 		</thead>
 		<tbody>
 			{{#each session.chatbox.agents}}
 				<tr>
+					<td class="align_center">{{input type="checkbox" checked=admin}}</td>
 					<td {{bind-attr class=":align_center online:online:offline"}}>
 						<i class="ion ion-record"></i>
 					</td>
@@ -30,9 +32,11 @@
 						<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
 					</td>
 					<td class="align_right">
-						<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>
-							<i class="ion ion-ios-close"></i>
-						</a>
+						{{#unless admin}}
+							<a href="#" class="fluid_width delete_row" {{action "deleteAgent" .}}>
+								<i class="ion ion-ios-close"></i>
+							</a>
+						{{/unless}}
 					</td>
 				</tr>
 			{{/each}}

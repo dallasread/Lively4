@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-		"filepicker"
+		"filepicker",
+		"md5"
   ],
   "browser": true,
   "boss": true,

@@ -1,4 +1,4 @@
-<form class="form" {{action submit="createChatbox"}}>
+<form class="form" {{action "createChatbox" on="submit"}}>
 	<div class="is_loading with_padding">
 		<img src="/imgs/badge_almost.png" class="badge">
 		<img src="/imgs/loading.gif">
@@ -13,16 +13,20 @@
 	
 		<div class="fields">
 			<div class="field">
+				<label for="install_field_email">What is your <strong>name</strong>?</label>
+				{{input type="text" id="install_field_name" value=name placeholder="Your Name" required=true}}
+			</div>
+			<div class="field">
 				<label for="install_field_email">What is your <strong>email address</strong>?</label>
-				<input type="email" id="install_field_email" name="email" placeholder="Email Address" data-validator="EMAIL" required>
+				{{input type="email" id="install_field_email" value=email placeholder="Email Address" required=true}}
 			</div>
 			<div class="field">
 				<label for="install_field_password">Please choose a <strong>password</strong>.</label>
-				<input type="password" id="install_field_password" name="password" placeholder="Password" data-validator="HASLENGTH" required>
+				{{input type="password" id="install_field_password" value=password placeholder="Password" required=true}}
 			</div>
 			<div class="field">
 				<label for="install_field_token" class="force_show">Serial Number</label>
-				<input type="text" id="install_field_token" value="" name="key" readonly="readonly">
+				{{input type="text" id="install_field_token" value=session.token}}{{! readonly="readonly" }}
 			</div>
 		</div>
 

@@ -6,8 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-	this.route('install');
 	this.route('prompter');
+	
+	this.route('install', function() {
+		this.route('success');
+	});
   
 	this.route('chatbox', function() {
   	this.route('signin');

@@ -2,7 +2,9 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	name: DS.attr('string'),
+	domain: DS.attr('string', { defaultValue: function() {
+		return window.location.host;
+	}}),
 	activated: DS.attr('boolean', { defaultValue: false }),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: true }),

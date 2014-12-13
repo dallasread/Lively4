@@ -2,6 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		this.transitionToRoute( 'prompter' );
+		if (this.session.get('chatbox')) {
+			this.transitionToRoute( 'prompter' );
+		} else {
+			this.transitionToRoute( 'install' );
+		}
 	}
 });
