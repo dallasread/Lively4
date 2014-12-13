@@ -15,7 +15,7 @@ export default Ember.ObjectController.extend({
 		label: "Email",
 		value: "email"
 	}, {
-		label: "Present",
+		label: "Presence",
 		value: "presence"
 	}],
 	watchActive: function() {
