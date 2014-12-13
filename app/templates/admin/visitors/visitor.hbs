@@ -75,4 +75,4 @@
 	{{/if}}
 </div>
 
-{{new-message visitor=this.content agent=session.agent chatbox=session.chatbox type="agent"}}
+{{new-message visitor=this.content agent=session.agent chatbox=session.chatbox type="agent" readonly=session.agent.offline}}

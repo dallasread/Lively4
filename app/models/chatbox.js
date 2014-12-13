@@ -5,6 +5,7 @@ export default DS.Model.extend({
 	domain: DS.attr('string', { defaultValue: function() {
 		return window.location.host;
 	}}),
+	creator: DS.attr('string'),
 	activated: DS.attr('boolean', { defaultValue: false }),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: true }),

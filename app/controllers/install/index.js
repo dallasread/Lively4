@@ -49,6 +49,7 @@ export default Ember.Controller.extend({
 								});
 					
 								chatbox.get('agents').addObject(agent);
+								chatbox.set('creator', agent.id).save();
 								e.session.set('agent', agent);
 								e.transitionToRoute( 'admin' );
 							}

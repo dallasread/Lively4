@@ -9,7 +9,6 @@ export default {
 		//window.LCSDB.unauth();
 		
 		window.LCSDB.onAuth(function(auth) {
-			console.log(auth)
 			var token = Ember.$('[data-lcs]').data('lcs');
 			var store = container.lookup('store:main');
 			var session = Ember.Object.create({
@@ -29,6 +28,7 @@ export default {
 				app.inject('route', 'session', 'session:main');
 				app.inject('controller', 'session', 'session:main');
 				app.inject('view', 'session', 'session:main');
+				app.inject('model', 'session', 'session:main');
 				container.injection('component', 'store', 'store:main');
 				container.injection('view', 'store', 'store:main');
 				session = container.lookup('session:main');
