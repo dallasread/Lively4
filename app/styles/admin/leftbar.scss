@@ -9,6 +9,9 @@
 		width: $leftbar_width;
 		background: #fff;
 		border-right: 1px solid #ccc;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
 		
 		a {
 			display: block;
