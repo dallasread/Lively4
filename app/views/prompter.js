@@ -28,23 +28,23 @@ export default Ember.View.extend({
 		var e = this;
 		var found = false;
 
-		if (this.session.visitor && !this.session.visitor.get('messages').get('length')) {
+		if (this.session.contact && !this.session.contact.get('messages').get('length')) {
 			this.session.chatbox.get('triggersSorted').forEach(function(trigger) {
 				if (e.isIncluded(trigger.get('include')) && !e.isIncluded(trigger.get('exclude'))) {
 					if (!found) {
 						found = true;
 						setTimeout(function() {
-							if (!e.session.visitor.get('messages').get('length')) {
+							if (!e.session.contact.get('messages').get('length')) {
 								var message = e.store.createRecord('message', {
 									body: trigger.get('message'),
-									agent: e.session.visitor.agent,
+									agent: e.session.contact.agent,
 									from_agent: true
 								});
     
-								e.session.visitor.get('messages').addObject(message);
-								e.session.visitor.set('triggered_by', trigger.get('message'));
-								e.session.visitor.set('agent_last_seen', new Date());
-								e.session.visitor.save();
+								e.session.contact.get('messages').addObject(message);
+								e.session.contact.set('triggered_by', trigger.get('message'));
+								e.session.contact.set('agent_last_seen', new Date());
+								e.session.contact.save();
 							}
 						}, parseFloat(trigger.get('delay')) * 1000);
 					}

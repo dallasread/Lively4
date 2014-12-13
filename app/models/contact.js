@@ -13,10 +13,10 @@ export default DS.Model.extend({
 	triggered_by: DS.belongsTo('trigger'),
 	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
-	visitor_typing: DS.attr('boolean', { defaultValue: false }),
+	contact_typing: DS.attr('boolean', { defaultValue: false }),
 	agent_typing: DS.attr('boolean', { defaultValue: false }),
 	agent_last_seen: DS.attr('date'),
-	visitor_last_seen: DS.attr('date', { defaultValue: function() { return new Date(); }}),
+	contact_last_seen: DS.attr('date', { defaultValue: function() { return new Date(); }}),
 	status: function() {
 		return this.get('online') ? 'Online' : 'Offline';
 	}.property('online'),
@@ -35,22 +35,22 @@ export default DS.Model.extend({
 		return messages.filterBy('read', false).filterBy('from_agent', true);
 	}.property('messages.@each.read'),
 	latest_agent_message: function() {
-		return this.get('unread_from_agent').objectAt( this.get('visitor_unread_count') - 1 );
+		return this.get('unread_from_agent').objectAt( this.get('contact_unread_count') - 1 );
 	}.property('unread_from_agent'),
-	visitor_unread_count: function() {
+	contact_unread_count: function() {
 	  return this.get('unread_from_agent').get('length');
 	}.property('unread_from_agent'),
-	visitor_has_unread: function() {
-		return this.get('visitor_unread_count') !== 0;
+	contact_has_unread: function() {
+		return this.get('contact_unread_count') !== 0;
 	}.property('unread_from_agent'),
-	unread_from_visitor: function() {
+	unread_from_contact: function() {
 		var messages = this.get('messages');
 		return messages.filterBy('read', false).filterBy('from_agent', false);
 	}.property('messages.@each.read'),
 	agent_unread_count: function() {
-	  return this.get('unread_from_visitor').get('length');
-	}.property('unread_from_visitor'),
+	  return this.get('unread_from_contact').get('length');
+	}.property('unread_from_contact'),
 	agent_has_unread: function() {
 		return this.get('agent_unread_count') !== 0;
-	}.property('unread_from_visitor')
+	}.property('unread_from_contact')
 });

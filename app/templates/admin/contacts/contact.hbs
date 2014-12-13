@@ -1,4 +1,4 @@
-<div class="visitor_profile_header">
+<div class="contact_profile_header">
 	<ul class="actions">
 		<li class="action archive"><i class="fa fa-archive" title="Archive"></i></li>
 		<li class="action"><i class="fa fa-sign-out" title="Transfer"></i></li>
@@ -37,7 +37,7 @@
 				{{/each}}
 				<p>
 					<span class="more_label">Last Seen</span>
-					<span class="more_detail">{{moment visitor_last_seen 'lll'}}</span>
+					<span class="more_detail">{{moment contact_last_seen 'lll'}}</span>
 					<span class="clear"></span>
 				</p>
 				<div class="clear"></div>
@@ -55,8 +55,8 @@
 	</div>
 </div>
 
-<div class="visitor_profile_messages">
-	{{#each messages itemView="admin/visitors/visitor/message"}}
+<div class="contact_profile_messages">
+	{{#each messages itemView="admin/contacts/contact/message"}}
 		<div {{bind-attr class=":message from_agent:from_agent"}}>
 			<div class="body">
 				{{ body }}
@@ -66,13 +66,13 @@
 		</div>
 	{{/each}}
 	
-	{{#if visitor_typing}}
+	{{#if contact_typing}}
 		<div class="message">
 			<div class="body">
-				Visitor is typing...
+				contact is typing...
 			</div>
 		</div>
 	{{/if}}
 </div>
 
-{{new-message visitor=this.content agent=session.agent chatbox=session.chatbox type="agent" readonly=session.agent.offline}}
+{{new-message contact=this.content agent=session.agent chatbox=session.chatbox type="agent" readonly=session.agent.offline}}

@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	type: "visitor",
+	type: "contact",
 	typing: false,
 	textareaHasContent: function() {
-		this.visitor.set(this.type + '_typing', !!Ember.$.trim(this.body).length);
-		this.visitor.save();
+		this.contact.set(this.type + '_typing', !!Ember.$.trim(this.body).length);
+		this.contact.save();
 	}.observes('body'),
 	actions: {
 		createMessage: function() {
@@ -26,9 +26,9 @@ export default Ember.Component.extend({
 			
 			if (this.type === "agent") { message.set('agent', this.agent); }
 
-			this.visitor.get('messages').addObject(message);
-			this.visitor.set(this.type + '_last_seen', new Date());
-			this.visitor.save();
+			this.contact.get('messages').addObject(message);
+			this.contact.set(this.type + '_last_seen', new Date());
+			this.contact.save();
 		}
 	}
 });

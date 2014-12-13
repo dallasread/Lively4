@@ -36,14 +36,14 @@
 				}
 			}
 		},
-		"visitors": {
+		"contacts": {
 		  "$chatbox_id": {
 		    ".read": "auth !== null",
-				"$visitor_id": {
-					".read": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $visitor_id == auth.uid",
-					".write": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $visitor_id == auth.uid || !root.child('visitors/' + $chatbox_id + '/' + $visitor_id).exists()",
+				"$contact_id": {
+					".read": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $contact_id == auth.uid",
+					".write": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $contact_id == auth.uid || !root.child('contacts/' + $chatbox_id + '/' + $contact_id).exists()",
 					"data": { ".validate": true },
-					"online": { ".validate": "$visitor_id == auth.uid" },
+					"online": { ".validate": "$contact_id == auth.uid" },
 					"has_unread": { ".validate": true },
 					"$other": { ".validate": false }
 				}
@@ -53,10 +53,10 @@
 		  ".read": "auth !== null",
 		  ".write": "auth !== null",
 		  "$chatbox_id": {
-				"$visitor_id": {
-					".read": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $visitor_id == auth.uid",
+				"$contact_id": {
+					".read": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $contact_id == auth.uid",
 				  "$message_id": {
-					  ".write": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $visitor_id == auth.uid",
+					  ".write": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists() || $contact_id == auth.uid",
 					  "body": { ".validate": true },
 					  "from_agent": { ".validate": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists()" },
 					  "agent": { ".validate": "root.child('agents/' + $chatbox_id + '/' + auth.uid).exists()" }

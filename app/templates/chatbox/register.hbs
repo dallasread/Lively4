@@ -3,7 +3,7 @@
 	
 	<form class="introducer form" {{action 'registerViaEmail' on='submit'}}>
 		<p class="please_introduce">
-			To start talking to <span class="agent_name">{{ session.visitor.agent.name }}</span>,<br>please introduce yourself.
+			To start talking to <span class="agent_name">{{ session.contact.agent.name }}</span>,<br>please introduce yourself.
 		</p>
 
 		<a class="button fb_blue" {{action 'registerViaFacebook'}}>

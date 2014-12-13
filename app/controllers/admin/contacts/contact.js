@@ -11,7 +11,7 @@ export default Ember.ObjectController.extend({
 		scrollMessages: function() {
 			setTimeout(function() {
 				var $ = Ember.$;
-				var messages = $('.visitor_profile_messages');
+				var messages = $('.contact_profile_messages');
 				messages.stop().animate({
 					scrollTop: messages.prop("scrollHeight")
 				}, 250);

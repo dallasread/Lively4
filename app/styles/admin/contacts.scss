@@ -1,10 +1,10 @@
 #lcs {
 	.panes .pane {
-		.visitors_search {
+		.contacts_search {
 			display: none;
 			position: fixed;
 			left: $leftbar_width;
-			width: $visitors_width;
+			width: $contacts_width;
 			top: $topbar_height;
 			z-index: 99999;
 			margin: 0;
@@ -20,10 +20,10 @@
 			box-shadow: none;
 		}
 	
-		.visitors {
+		.contacts {
 			position: fixed;
 			top: 0;
-			width: $visitors_width;
+			width: $contacts_width;
 			bottom: 0;
 			left: $leftbar_width;
 			background: #fff;
@@ -33,7 +33,7 @@
 			border-right: 1px solid #ccc;
 			z-index: 99998;
 
-			.visitor {
+			.contact {
 				display: block;
 				border-bottom: 1px solid #ccc;
 				cursor: pointer;
@@ -94,10 +94,10 @@
 			}
 		}
 	
-		.visitor_profile_header, .visitor_index {
+		.contact_profile_header, .contact_index {
 			position: fixed;
 			top: $topbar_height;
-			left: $leftbar_width + $visitors_width;
+			left: $leftbar_width + $contacts_width;
 			right: 0;
 			z-index: 99999;
 			background: #fff;
@@ -235,10 +235,10 @@
 			}
 		}
 	
-		.visitor_profile_messages {
+		.contact_profile_messages {
 			position: fixed;
 			top: $topbar_height + $profile_header_height;
-			left: $leftbar_width + $visitors_width;
+			left: $leftbar_width + $contacts_width;
 			right: 0;
 			bottom: 110px;
 			background: #fff;
@@ -253,7 +253,7 @@
 			position: fixed;
 			bottom: 0;
 			right: 0;
-			left: $leftbar_width + $visitors_width;
+			left: $leftbar_width + $contacts_width;
 			z-index: 99999;
 		
 			textarea {

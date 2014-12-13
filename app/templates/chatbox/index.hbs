@@ -2,7 +2,7 @@
 	{{render 'chatbox/header'}}
 	
 	<div class="messages">
-		{{#each session.visitor.messages itemView="chatbox/message"}}
+		{{#each session.contact.messages itemView="chatbox/message"}}
 			<div {{bind-attr class=":message from_agent:from_agent"}}>
 				<div class="body">
 					{{ body }}
@@ -12,7 +12,7 @@
 			</div>
 		{{/each}}
 		
-		{{#if session.visitor.agent_typing}}
+		{{#if session.contact.agent_typing}}
 			<div class="message from_agent">
 				<div class="body">
 					Agent is typing...
@@ -25,5 +25,5 @@
 		<div class="overlay"></div>
 	</div>
 
-	{{new-message visitor=session.visitor agent=session.visitor.agent chatbox=session.chatbox readonly=false}}
+	{{new-message contact=session.contact agent=session.contact.agent chatbox=session.chatbox readonly=false}}
 </div>

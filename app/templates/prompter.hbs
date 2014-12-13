@@ -5,14 +5,14 @@
 		{{/link-to}}
 	{{else}}
 		<a href="#" {{action 'showChatbox'}} class="agent_avatar">
-			{{#if session.visitor.unread_from_agent}}
-				<span class="unread_messages_count pulse animated infinite">{{session.visitor.visitor_unread_count}}</span>
+			{{#if session.contact.unread_from_agent}}
+				<span class="unread_messages_count pulse animated infinite">{{session.contact.contact_unread_count}}</span>
 			{{/if}}
-			<img {{bind-attr src=session.visitor.agent.avatar}}>
+			<img {{bind-attr src=session.contact.agent.avatar}}>
 		</a>
 		
-		{{#if session.visitor.unread_from_agent}}
-			{{latest-message message=session.visitor.latest_agent_message unread=session.visitor.visitor_unread_count session=session currentControllerBinding="controller"}}
+		{{#if session.contact.unread_from_agent}}
+			{{latest-message message=session.contact.latest_agent_message unread=session.contact.contact_unread_count session=session currentControllerBinding="controller"}}
 		{{/if}}
 	{{/if}}
 </div>

@@ -6,7 +6,7 @@ export default Ember.View.extend({
 			if (this.get('content.from_agent')) {
 				this.get('session.ding').play();
 				this.get('content').set('read', true);
-				this.get('session.visitor').save();
+				this.get('session.contact').save();
 			}
 		}
 	}

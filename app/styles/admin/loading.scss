@@ -12,11 +12,11 @@
 			left: 0;
 		}
 		
-		&.visitors_loading {
+		&.contacts_loading {
 			top: $topbar_height;
 			right: 0;
 			bottom: 0;
-			left: $leftbar_width + $visitors_width;
+			left: $leftbar_width + $contacts_width;
 		}
 		
 		&.admin_loading {

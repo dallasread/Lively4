@@ -12,8 +12,8 @@ export default Ember.Controller.extend({
 	},
 	messageAdded: function() {
 		this.scrollMessages();
-	}.observes('session.visitor.messages.@each'),
+	}.observes('session.contact.messages.@each'),
 	textareaHasContent: function() {
-		this.session.visitor.set('typing', !!Ember.$.trim(this.body).length);
+		this.session.contact.set('typing', !!Ember.$.trim(this.body).length);
 	}.observes('body')
 });
