@@ -11,6 +11,7 @@ export default Ember.View.extend({
 				from_agent: true
 			});
 			e.session.visitor.get('messages').addObject(message);
+			e.session.visitor.set('agent_last_seen', new Date());
 			this.session.visitor.save();
 		}
 	}

@@ -13,7 +13,7 @@ export default Ember.View.extend({
 	isIncluded: function(included) {
 		var e = this;
 		var include = false;
-		var included = included.split(',');
+		included = included.toString().split(',');
 		
 		included.forEach(function(path) {
 			if (path.length && e.pathRegex(path).test(e.currentUrl())) {
@@ -43,6 +43,7 @@ export default Ember.View.extend({
     
 								e.session.visitor.get('messages').addObject(message);
 								e.session.visitor.set('triggered_by', trigger.get('message'));
+								e.session.visitor.set('agent_last_seen', new Date());
 								e.session.visitor.save();
 							}
 						}, parseFloat(trigger.get('delay')) * 1000);

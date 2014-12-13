@@ -27,6 +27,7 @@ export default Ember.Component.extend({
 			if (this.type === "agent") { message.set('agent', this.agent); }
 
 			this.visitor.get('messages').addObject(message);
+			this.visitor.set(this.type + '_last_seen', new Date());
 			this.visitor.save();
 		}
 	}

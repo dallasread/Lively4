@@ -52,7 +52,10 @@ export default {
 						});
 					}, function() {
 						window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').set(true);
-						window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
+						window.LCSDB.child('visitors/' + chatbox.id + '/' + auth.uid).onDisconnect().update({
+							online: false,
+							visitor_last_seen: new Date()
+						});
 						
 						store.find('visitor', auth.uid).then(function(visitor) {
 							visitor.get('agent').then(function(agent) {

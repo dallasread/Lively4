@@ -15,22 +15,5 @@ export default Ember.Controller.extend({
 	}.observes('session.visitor.messages.@each'),
 	textareaHasContent: function() {
 		this.session.visitor.set('typing', !!Ember.$.trim(this.body).length);
-	}.observes('body'),
-	actions: {
-		createMessage: function() {
-			var e = this;
-			var body = Ember.$.trim(e.get('body'));
-			e.set('body', '');
-			
-			this.get('session.visitor').then(function(visitor) {
-				var message = e.store.createRecord('message', {
-					body: body,
-					from_agent: false
-				});
-				
-				visitor.get('messages').addObject(message);
-				visitor.save();
-			});
-		}
-	}
+	}.observes('body')
 });

@@ -15,7 +15,8 @@ export default DS.Model.extend({
 	messages: DS.hasMany('message', { embedded: true }),
 	visitor_typing: DS.attr('boolean', { defaultValue: false }),
 	agent_typing: DS.attr('boolean', { defaultValue: false }),
-	updated_at: DS.attr('date', { defaultValue: function() { return new Date(); }}),
+	agent_last_seen: DS.attr('date'),
+	visitor_last_seen: DS.attr('date', { defaultValue: function() { return new Date(); }}),
 	status: function() {
 		return this.get('online') ? 'Online' : 'Offline';
 	}.property('online'),

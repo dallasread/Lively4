@@ -4,7 +4,8 @@
     "window",
     "-Promise",
 		"filepicker",
-		"md5"
+		"md5",
+		"moment"
   ],
   "browser": true,
   "boss": true,

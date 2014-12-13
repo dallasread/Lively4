@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	activate: function() {
-		alert("hi");
-	},
 	messageAdded: function() {
 		this.send('scrollMessages');
 	}.observes('messages.@each'),
