@@ -44,14 +44,8 @@ export default {
 				
 				if (auth) {
 					store.find('agent', auth.uid).then(function(agent) {
-						if (!agent.get('online')) {
-							agent.set('online', true);
-							chatbox.save();
-						}
-						
 						session.set('agent', agent);
-						
-						//window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
+						window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 						app.advanceReadiness();
 					}, function() {
 						store.find('contact', auth.uid).then(function(contact) {
@@ -60,13 +54,12 @@ export default {
 									contact.set('agent', session.get("chatbox.next_available_agent"));
 								}
 								
-								session.set('contact', contact);
-								
-								window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').set(true);
-								window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-								window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date());
-								
-								app.advanceReadiness();
+								contact.set('online', true).save().then(function() {
+									session.set('contact', contact);
+									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
+									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date());
+									app.advanceReadiness();
+								});
 							});
 						}, function() {
 							window.LCSDB.unauth();

@@ -2,10 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	type: "contact",
-	typing: false,
 	textareaHasContent: function() {
-		this.contact.set(this.type + '_typing', !!Ember.$.trim(this.body).length);
-		this.contact.save();
+		var typing = !!Ember.$.trim(this.body).length;
+		var field = this.type + '_typing';
+		if (this.contact.get(field) !== typing) {
+			this.contact.set(field, typing).save();
+		}
 	}.observes('body'),
 	actions: {
 		createMessage: function() {
