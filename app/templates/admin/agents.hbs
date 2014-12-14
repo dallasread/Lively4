@@ -38,7 +38,11 @@
 						{{#if session.agent.admin}}
 							<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
 						{{else}}
-							<img {{bind-attr src=avatar}}>
+							{{#if is_current_user}}
+								<img {{bind-attr src=avatar}} {{action 'chooseAvatar' .}}>
+							{{else}}
+								<img {{bind-attr src=avatar}}>
+							{{/if}}
 						{{/if}}
 					</td>
 					<td class="align_right">

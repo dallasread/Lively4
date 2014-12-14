@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 		createTrigger: function() {
 			var trigger = this.store.createRecord('trigger', {
 				chatbox: this.session.chatbox,
-				delay: 1000,
+				delay: 7,
 				active: false,
 				exclude: "",
 				include: "*",

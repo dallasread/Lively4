@@ -28,7 +28,7 @@ export default Ember.View.extend({
 		var e = this;
 		var found = false;
 
-		if (this.session.contact && !this.session.contact.get('messages').get('length')) {
+		if (this.session.get('contact') && !this.session.contact.get('messages').get('length')) {
 			this.session.chatbox.get('triggersSorted').forEach(function(trigger) {
 				if (e.isIncluded(trigger.get('include')) && !e.isIncluded(trigger.get('exclude'))) {
 					if (!found) {

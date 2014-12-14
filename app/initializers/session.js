@@ -57,7 +57,7 @@ export default {
 								contact.set('online', true).save().then(function() {
 									session.set('contact', contact);
 									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date());
+									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date().toJSON());
 									app.advanceReadiness();
 								});
 							});
