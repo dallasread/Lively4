@@ -1,4 +1,8 @@
 <div class="admin">
+	{{#link-to "prompter" class="close icon"}}
+		<i class="ion ion-ios-close-empty"></i>
+	{{/link-to}}
+	
 	<div class="leftbar">
 		<a href="#" {{bind-attr class=":toggle_status session.agent.online:online:offline"}} {{action "toggleStatus"}}>
 			{{#if session.agent.online}}
