@@ -15,15 +15,15 @@ export default Ember.Route.extend({
 				}
 				
 				if (confirm(msg)) {
-					e.store.unloadAll('message');
-					e.store.unloadAll('contact');
-					e.session.set('auth', null);
-					e.session.set('contact', null);
-					e.session.set('agent', null);
-					window.LCSDB.unauth();
-					e.transitionTo('prompter');
-					
-					//Ember.$("#lcs").hide();
+					e.session.contact.set('online', false).save().then(function() {
+						e.store.unloadAll('message');
+						e.store.unloadAll('contact');
+						e.session.set('auth', null);
+						e.session.set('contact', null);
+						e.session.set('agent', null);
+						window.LCSDB.unauth();
+						e.transitionTo('prompter');
+					});
 				}
 			} else {
 				var current = this.controllerFor("application").get("currentPath");
