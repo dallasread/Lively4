@@ -7,7 +7,7 @@ export default DS.Model.extend({
 	}}),
 	activated: DS.attr('boolean', { defaultValue: false }),
 	color: DS.attr('string', { defaultValue: '#004154' }),
-	texturize: DS.attr('boolean', { defaultValue: true }),
+	texturize: DS.attr('boolean', { defaultValue: false }),
 	exclude: DS.attr('string', { defaultValue: '' }),
 	include: DS.attr('string', { defaultValue: '*' }),
 	canned: DS.hasMany('canned', { embedded: true }),

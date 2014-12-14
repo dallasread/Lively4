@@ -1,4 +1,4 @@
-<form action="#" {{bind-attr class="typing::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
+<form action="#" {{bind-attr class="submittable::is_disabled :new_message"}} {{action 'createMessage' on='submit'}}>
 	{{textarea value=body placeholder="What's on your mind?" insert-newline='createMessage' readonly=readonly}}
 	
 	<div class="action_row">

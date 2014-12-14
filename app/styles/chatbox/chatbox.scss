@@ -220,62 +220,6 @@ $header_border_width: 7px;
 				}
 			}
 		}
-		
-		.new_message {			
-			&.is_disabled {
-				.action_row {
-					button {
-						color: $gray;
-						border-color: #ccc;
-						background: #fff;
-					}
-				}
-			}
-			
-			textarea {
-				font-family: Helvetica Neue, Helvetica, Sans Serif;
-				padding: 7px 7px 50px;
-				color: #333;
-				border: 0;
-				border-radius: 0;
-				box-shadow: inset 0 0 0 #fff;
-				border-top: 7px solid #ccc;
-				resize: none;
-				outline: none;
-				font-size: 15px;
-				line-height: 22px;
-				height: $textarea_height;
-				position: fixed;
-				bottom: 0px;
-				right: 0px;
-				padding-bottom: 48px;
-				width: $chatbox_width;
-				background: #fff;
-				z-index: 99996;
-			}
-			
-			button {
-				position: fixed;
-				background: $green;
-				color: #fff;
-				border: 1px solid $green;
-				border-radius: 5px;
-				width: auto;
-				right: 5px;
-				bottom: 5px;
-				padding: 6px 11px 5px;
-				font-size: 14px;
-				z-index: 99997;
-			}
-			
-			.upload_icon {
-				display: none;
-				position: absolute;
-				left: 9px;
-				bottom: 12px;
-				color: #AFB0B4;
-			}
-		}
 	}
 }
 
@@ -305,8 +249,8 @@ $header_border_width: 7px;
 				
 				.action_row {
 					button {
-						right: 4px;
-						bottom: 15px;
+						//right: 4px;
+						//bottom: 15px;
 						padding: 6px 11px;
 						font-size: 15px;
 					}

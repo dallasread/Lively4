@@ -240,7 +240,7 @@
 			top: $topbar_height + $profile_header_height;
 			left: $leftbar_width + $contacts_width;
 			right: 0;
-			bottom: 110px;
+			bottom: $textarea_height;
 			background: #fff;
 			z-index: 99998;
 			overflow-y: auto;
