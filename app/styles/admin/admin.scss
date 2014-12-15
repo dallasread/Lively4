@@ -26,13 +26,15 @@
 		padding-left: 28px;
 	}
 	
-	.delete_row {
-		color: #bbb;
-		font-size: 28px;
-		line-height: 28px;
+	.panes .pane {
+		a.delete_row {
+			color: #bbb;
+			font-size: 28px;
+			line-height: 28px;
 		
-		&:hover {
-			color: $red;
+			&:hover {
+				color: $red;
+			}
 		}
 	}
 }
