@@ -3,7 +3,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	actions: {
 		saveChatbox: function() {
-			this.session.chatbox.save();
+			this.session.chatbox.save().then(function() {
+				Ember.$.jGrowl('Your settings have been saved.', {
+					position: 'bottom-right'
+				});
+			});
 		},
 		signinout: function() {
 			var e = this;

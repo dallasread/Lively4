@@ -1,0 +1,23 @@
+.jGrowl-notification, .jGrowl-closer {
+	background: $green;
+	border-color: $green;
+  opacity: 1.0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(100);
+	color: #fff;
+	font-size: 15px;
+	line-height: 22px;
+	font-weight: normal;
+	
+	.jGrowl-close {
+		margin: 0;
+		padding: 0px;
+		font-size: 15px;
+		line-height: 15px;
+	}
+}
+
+.jGrowl-closer {
+	font-size: 13px;
+	line-height: 19px;
+}

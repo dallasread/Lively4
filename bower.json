@@ -21,6 +21,7 @@
     "JavaScript-MD5": "~1.1.0",
     "filepicker": "*",
     "momentjs": "~2.8.4",
-    "ember-cli-moment-shim": "~0.0.2"
+    "ember-cli-moment-shim": "~0.0.2",
+    "jgrowl": "~1.4.1"
   }
 }

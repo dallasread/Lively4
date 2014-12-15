@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+	needs: ['application'],
 	change_password: false,
 	new_password: null,
 	current_password: null,
@@ -24,7 +25,7 @@ export default Ember.ObjectController.extend({
 				}
 			}
 			
-			this.session.chatbox.save();
+			this.get('controllers.application').send('saveChatbox');
 		}
 	}
 });

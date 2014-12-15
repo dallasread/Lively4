@@ -15,6 +15,8 @@ export default {
 			var session_vars = {
 				auth: auth,
 				url: 'http://localhost:4200',
+				back: null,
+				current: 'prompter',
 				ding: new window.Howl({
 				  urls: [
 						'/audio/bell.mp3',

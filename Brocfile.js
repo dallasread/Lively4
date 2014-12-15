@@ -8,6 +8,7 @@ app.import("bower_components/firebase/firebase.js");
 app.import("bower_components/fastclick/lib/fastclick.js");
 app.import('bower_components/filepicker/filepicker.min.js');
 app.import('bower_components/momentjs/moment.js');
+app.import('bower_components/jgrowl/jquery.jgrowl.min.js');
 app.import("vendor/howler.min.js");
 
 // Use `app.import` to add additional libraries to the generated
