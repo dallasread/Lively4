@@ -16,7 +16,7 @@ export default Ember.ArrayController.extend({
 				return contact.get('agent.id') === e.session.agent.id;
 			});
 		}
-	}.property('filter', 'session.agent.admin'),
+	}.property('filter', 'session.agent.admin', 'content.@each.agent'),
 	actions: {
 		setFilter: function(filter, agent_id) {
 			if (this.get('filter') !== filter) {
