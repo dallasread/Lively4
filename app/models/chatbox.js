@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	domain: DS.attr('string', { defaultValue: function() {
 		return window.location.host;
 	}}),
-	activated: DS.attr('boolean', { defaultValue: false }),
+	active: DS.attr('boolean', { defaultValue: false }),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: false }),
 	exclude: DS.attr('string', { defaultValue: '' }),
@@ -14,14 +14,14 @@ export default DS.Model.extend({
 	agents: DS.hasMany('agent', { embedded: true }),
 	triggers: DS.hasMany('trigger', { embedded: true }),
 	introducers: DS.hasMany('introducer', { embedded: true }),
-	offline_message: DS.attr('string', { defaultValue: "We're not available right now, but feel free to leave us a message!" }),
-	initial_message: DS.attr('string', { defaultValue: "How can I help you?" }),
+	initial_offline_message: DS.attr('string', { defaultValue: "We're not available right now, but feel free to leave us a message!" }),
+	initial_online_message: DS.attr('string', { defaultValue: "How can I help you?" }),
 	triggersSorted: (function() {
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       sortProperties: ['delay'],
-      content: this.get('triggers').filterBy('active', true)
+      content: this.get('triggers').filterBy('active', true).filterBy('state', this.get('online') ? 'online' : 'offline')
     });
-  }).property('triggers.@each.delay'),
+  }).property('triggers.@each.delay', 'online'),
 	introducersSorted: (function() {
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       sortProperties: ['ordinal'],
@@ -29,8 +29,14 @@ export default DS.Model.extend({
     });
   }).property('introducers.@each.ordinal'),
 	online_agents: function() {
-		return this.get('agents').filterBy('active', true).filterBy('online', true);
+		return this.get('agents').filterBy('online', true).filterBy('active', true);
 	}.property('agents.@each.active', 'agents.@each.online'),
+	online: function() {
+		return !!this.get('online_agents').get('length');
+	}.property('online_agents'),
+	status: function() {
+		return this.get('online') ? 'online' : 'offline';
+	}.property('online'),
 	next_available_agent: function() {
 		var agents = this.get('agents');
 		return agents.objectAt(Math.floor(Math.random() * agents.get('length')));

@@ -6,7 +6,7 @@ export default Ember.View.extend({
 
 		if (this.session.contact && !this.session.contact.get('messages').get('length')) {
 			var message = this.store.createRecord('message', {
-				body: this.session.chatbox.get('initial_message'),
+				body: this.session.chatbox.get('initial_online_message'),
 				agent: this.session.contact.agent,
 				from_agent: true
 			});

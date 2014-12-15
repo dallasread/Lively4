@@ -3,15 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	actions: {
 		createTrigger: function() {
-			var trigger = this.store.createRecord('trigger', {
-				chatbox: this.session.chatbox,
-				delay: 7,
-				active: false,
-				exclude: "",
-				include: "*",
-				message: ""
-			});
+			var trigger = this.store.createRecord('trigger', {});
 			this.session.chatbox.get('triggers').addObject(trigger);
+			this.session.chatbox.save();
 		},
 		deleteTrigger: function(trigger) {
 			if (confirm("Are you sure you want to delete this trigger?")) {

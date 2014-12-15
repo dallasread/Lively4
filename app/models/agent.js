@@ -20,6 +20,6 @@ export default DS.Model.extend({
 	contacts: DS.hasMany('contact', { async: true }),
 	typing: DS.attr('boolean', { defaultValue: false }),
 	active: function() {
-		return !!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('email')).length;
+		return true; //!!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('email')).length;
 	}.property('name', 'email')
 });
