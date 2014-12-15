@@ -3,17 +3,20 @@
 	<h2>Agents</h2>
 	
 	<p>
-		Multiple agents allow you to never miss a potential visitor or lead.
-		{{#link-to 'admin.videos.video' 'agents'}}Quick Video: How to use multiple agents.{{/link-to}}
+		Multiple agents allow you to never miss a potential visitor or lead. To fully activate an agent, you must supply their email address. They will then receive an email with a temporary login password.
+		{{#link-to 'admin.videos.video' 'agents'}}
+			Quick Video: How to use multiple agents.
+		{{/link-to}}
 	</p>
 
 	<table class="agents table">
 		<thead>
 			<tr>
-				<th style="width: 10%;" class="align_center">Admin</th>
 				<th style="width: 10%;" class="align_center">Online</th>
+				<th style="width: 10%;" class="align_center">Admin</th>
 				<th style="width: 24%;">Name</th>
 				<th style="width: 31%;">Email Address</th>
+				<th style="width: 10%;" class="align_center">Activated</th>
 				<th style="width: 15%;">Avatar (75px square)</th>
 				<th style="width: 10%;"></th>
 			</tr>
@@ -21,6 +24,9 @@
 		<tbody>
 			{{#each session.chatbox.agents itemController="admin/agents/agent"}}
 				<tr>
+					<td {{bind-attr class=":align_center online:online:offline"}}>
+						<i class="ion ion-record"></i>
+					</td>
 					<td class="align_center">
 						{{#if session.agent.admin}}
 							{{#unless is_current_user}}
@@ -30,14 +36,24 @@
 							{{/unless}}
 						{{/if}}
 					</td>
-					<td {{bind-attr class=":align_center online:online:offline"}}>
-						<i class="ion ion-record"></i>
-					</td>
 					<td>
 						{{input type="name" value=name focus-out="saveChatbox"}}
 					</td>
 					<td>
 						{{input type="email" value=email focus-out="saveChatbox"}}
+					</td>
+					<td class="align_center">
+						{{#if active}}
+							{{input type="checkbox" checked=active readonly=true disabled=true}}
+						{{else}}
+							{{#if email.length}}
+								{{#if registered}}
+									<a href="#" {{action 'activate' .}}>Activate</a>
+								{{else}}
+									<a href="#" {{action 'reinvite' .}}>Re-invite</a>
+								{{/if}}
+							{{/if}}
+						{{/if}}
 					</td>
 					<td>
 						{{#if session.agent.admin}}

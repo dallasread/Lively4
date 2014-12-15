@@ -1,86 +1,84 @@
-<div class="contact_profile_header">
-	<ul class="actions">
-		<li class="action archive"><i class="fa fa-archive" title="Archive"></i></li>
-		<li class="action"><i class="fa fa-sign-out" title="Transfer"></i></li>
-	</ul>
+{{#if isCurrentAgentOrAdmin}}
+	<div class="contact_profile_header">
+		<ul class="actions">
+			<li class="action archive"><i class="fa fa-archive" title="Archive"></i></li>
+			<li class="action"><i class="fa fa-sign-out" title="Transfer"></i></li>
+		</ul>
 	
-	{{gravatar-image email=details.email alt=name size=75 class="avatar"}}
+		{{gravatar-image email=details.email alt=name size=75 class="avatar"}}
 		
-	<div class="info">
-		<h2 class="name">
-			{{ details.name }}
-			<span {{action "showMore"}} class="show_more">more...</span>
-		</h2>
+		<div class="info">
+			<h2 class="name">
+				{{ details.name }}
+				<span {{action "showMore"}} class="show_more">more...</span>
+			</h2>
 		
-		<h3 class="location">{{ details.location }}</h3>
+			<h3 class="location">{{ details.location }}</h3>
 		
-		<div class="details">
-			<p>
-				<span class="more_label">Served By</span>
-				<span class="more_detail">
-					{{#if session.agent.admin}}
-						{{view 'select' content=session.chatbox.agents selection=agent.content optionValuePath="content" optionLabelPath="content.name" prompt="None"}}
-					{{else}}
-						{{agent.name}}
-					{{/if}}
-				</span>
-				<span class="clear"></span>
-			</p>
-		
-			<p>
-				<span class="more_label">Status</span>
-				<span {{bind-attr class=":status :more_detail online:online:offline"}}>{{ status }}</span>
-				<span class="clear"></span>
-			</p>
-			
-			<div class="more">
-				{{#each details_array}}
-					<p>
-						<span class="more_label">{{ label }}</span>
-						<span class="more_detail">{{ value }}</span>
-						<span class="clear"></span>
-					</p>
-				{{/each}}
+			<div class="details">
 				<p>
-					<span class="more_label">Last Seen</span>
-					<span class="more_detail">{{moment contact_last_seen 'lll'}}</span>
+					<span class="more_label">Served By</span>
+					<span class="more_detail">
+						{{view 'select' content=session.chatbox.agents selection=agent.content optionValuePath="content" optionLabelPath="content.name" prompt="None"}}
+					</span>
 					<span class="clear"></span>
 				</p>
-				<div class="clear"></div>
-			</div>
+		
+				<p>
+					<span class="more_label">Status</span>
+					<span {{bind-attr class=":status :more_detail online:online:offline"}}>{{ status }}</span>
+					<span class="clear"></span>
+				</p>
 			
-			<!-- <ul class="tags">
-				<!ach details
-					<li class="tag">
-						<span class="tag_label">name</span>
-						<span class="delete_tag">&times;</span>
-					</li>
-				each
-			</ul> -->
+				<div class="more">
+					{{#each details_array}}
+						<p>
+							<span class="more_label">{{ label }}</span>
+							<span class="more_detail">{{ value }}</span>
+							<span class="clear"></span>
+						</p>
+					{{/each}}
+					<p>
+						<span class="more_label">Last Seen</span>
+						<span class="more_detail">{{moment contact_last_seen 'lll'}}</span>
+						<span class="clear"></span>
+					</p>
+					<div class="clear"></div>
+				</div>
+			
+				<!-- <ul class="tags">
+					<!ach details
+						<li class="tag">
+							<span class="tag_label">name</span>
+							<span class="delete_tag">&times;</span>
+						</li>
+					each
+				</ul> -->
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="contact_profile_messages">
-	{{#each messages itemView="admin/contacts/contact/message"}}
-		<div {{bind-attr class=":message from_agent:from_agent"}}>
-			<div class="body">
-				{{ body }}
+	<div class="contact_profile_messages">
+		{{#each messages itemView="admin/contacts/contact/message"}}
+			<div {{bind-attr class=":message from_agent:from_agent"}}>
+				<div class="body">
+					{{ body }}
+				</div>
+
+				<div class="clear"></div>
 			</div>
-
-			<div class="clear"></div>
-		</div>
-	{{/each}}
+		{{/each}}
 	
-	{{#if contact_typing}}
-		<div class="message">
-			<div class="body">
-				{{details.name}} is typing...
+		{{#if contact_typing}}
+			<div class="message">
+				<div class="body">
+					{{details.name}} is typing...
+				</div>
 			</div>
-		</div>
-	{{/if}}
-</div>
+		{{/if}}
+	</div>
 
-<div class="contact_new_message">
-	{{new-message contact=this.content agent=session.agent chatbox=session.chatbox type="agent" readonly=session.agent.offline}}
-</div>
+	<div class="contact_new_message">
+		{{new-message contact=this.content agent=session.agent chatbox=session.chatbox type="agent" readonly=session.agent.offline}}
+	</div>
+{{/if}}

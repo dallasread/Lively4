@@ -8,13 +8,25 @@ export default Ember.ArrayController.extend({
 				email: ""
 			});
 			this.session.chatbox.get('agents').addObject(agent);
-			this.session.chatbox.save();
 		},
 		deleteAgent: function(agent) {
 			if (confirm("Are you sure you want to delete this agent?")) {
 				this.session.chatbox.get('agents').removeObject(agent);
 				this.session.chatbox.save();
 			}
+		},
+		reinvite: function(agent) {
+			window.LCSDB.resetPassword({
+					email: agent.get('email')
+		  }, function(error) {
+			  if (error === null) {
+					Ember.$.jGrowl( agent.get('name') + ' has been re-invited via email. Just in case, let them know that the invitation may be in their junk mail.', {
+						position: 'bottom-right'
+					});
+			  } else {
+			    alert(error);
+			  }
+			});
 		},
 		chooseAvatar: function(agent) {
 			var e = this;

@@ -4,9 +4,15 @@ export default Ember.ObjectController.extend({
 	messageAdded: function() {
 		this.send('scrollMessages');
 	}.observes('messages.@each'),
-	watchContact: function() {  
+	watchContact: function() {
 		this.get('model').save();
   }.observes('agent.content'),
+	isCurrentAgent: function() {
+		return this.session.agent === this.get('agent.content');
+	}.property('agent.content'),
+	isCurrentAgentOrAdmin: function() {
+		return this.session.agent.get('admin') || this.session.agent === this.get('agent.content');
+	}.property('agent.content'),
 	actions: {
 		showMore: function() {
 			Ember.$('.more').slideToggle();

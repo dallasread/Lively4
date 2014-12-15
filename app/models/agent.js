@@ -9,7 +9,8 @@ export default DS.Model.extend({
 	name: DS.attr('string'),
 	email: DS.attr('string'),
 	avatar: DS.attr('string', { defaultValue: function() {
-		return "//lh5.googleusercontent.com/-oAV32fEdw20/AAAAAAAAAAI/AAAAAAAAAAA/AB9anrV-Gs4/s128-a/photo.jpg";
+		var n = Math.floor(Math.random() * 10) + 1;
+		return '/imgs/faces/face' + n + '.png';
 	}}),
 	offline: function() {
 		return !this.get('online');
