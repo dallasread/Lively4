@@ -28,7 +28,10 @@ export default Ember.Component.extend({
 					from_agent: this.type === "agent",
 				});
 			
-				if (this.type === "agent") { message.set('agent', this.agent); }
+				if (this.type === "agent") {
+					message.set('agent', this.agent);
+					this.contact.set('agent', this.agent)
+				}
 
 				this.contact.get('messages').addObject(message);
 				this.contact.set(this.type + '_last_seen', new Date());

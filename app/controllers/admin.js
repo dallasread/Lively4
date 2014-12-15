@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	init: function() {
-		Ember.$('body').css('overflow-y', 'hidden');
+		Ember.$('body').css('overflow', 'hidden');
 	},
 	actions: {
 		toggleStatus: function() {

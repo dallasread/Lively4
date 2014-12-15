@@ -6,7 +6,7 @@
 			left: $leftbar_width;
 			width: $contacts_width;
 			top: $topbar_height;
-			z-index: 99999;
+			z-index: 99998;
 			margin: 0;
 			padding: 13px 10px;
 			font-size: 18px;
@@ -19,10 +19,45 @@
 			outline: none;
 			box-shadow: none;
 		}
+		
+		.contacts_filters {
+			position: fixed;
+			left: $leftbar_width;
+			width: $contacts_width;
+			top: 0px;
+			z-index: 99999;
+			border-bottom: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			text-align: center;
+			border-collapse: collapse;
+			
+			td {
+				padding: 0px;
+				width: 50%;
+				
+				&:first-child {
+					border-right: 1px solid #ccc;
+				}
+				
+				a {
+					display: block;
+					height: $search_height;
+					line-height: $search_height;
+					color: #aaa;
+					background: #eee;
+					font-weight: bold;
+					
+					&.active {
+						color: $blue;
+						background: #fff;
+					}
+				}
+			}
+		}
 	
 		.contacts {
 			position: fixed;
-			top: 0;
+			top: $search_height;
 			width: $contacts_width;
 			bottom: 0;
 			left: $leftbar_width;
@@ -31,7 +66,7 @@
 			overflow-x: hidden;
 			-webkit-overflow-scrolling: touch;
 			border-right: 1px solid #ccc;
-			z-index: 99998;
+			z-index: 99997;
 
 			.contact {
 				display: block;
@@ -85,6 +120,7 @@
 					}
 				
 					&.icons {
+						display: none;
 						float: right;
 						text-align: right;
 						margin: 0px 0 -2px;
@@ -100,9 +136,9 @@
 			top: $topbar_height;
 			left: $leftbar_width + $contacts_width;
 			right: 0;
-			z-index: 99999;
+			z-index: 99998;
 			background: #fff;
-			border-bottom: 1px solid #ccc;
+			border-bottom: 7px solid #ccc;
 			padding: 20px;
 		
 			.avatar {
@@ -119,6 +155,7 @@
 		
 			.more {
 				display: none;
+				z-index: 99999;
 			}
 		
 			p {
@@ -243,7 +280,7 @@
 			right: 0;
 			bottom: $textarea_height;
 			background: #fff;
-			z-index: 99998;
+			z-index: 99997;
 			overflow-y: auto;
 			overflow-x: hidden;
 			-webkit-overflow-scrolling: touch;

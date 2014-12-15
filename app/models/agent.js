@@ -17,8 +17,7 @@ export default DS.Model.extend({
 	is_current_user: function() {
 		return this.get('session.agent.id') === this.get('id');
 	}.property('id'),
-	contacts: DS.hasMany('contact', { async: true }),
-	typing: DS.attr('boolean', { defaultValue: false }),
+	//contacts: DS.hasMany('contact', { async: true }),
 	active: function() {
 		return true; //!!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('email')).length;
 	}.property('name', 'email')

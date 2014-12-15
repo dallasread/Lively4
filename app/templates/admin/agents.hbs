@@ -23,8 +23,10 @@
 				<tr>
 					<td class="align_center">
 						{{#if session.agent.admin}}
-							{{#unless creator}}
-								{{input type="checkbox" checked=admin}}
+							{{#unless is_current_user}}
+								{{#unless creator}}
+									{{input type="checkbox" checked=admin}}
+								{{/unless}}
 							{{/unless}}
 						{{/if}}
 					</td>
