@@ -19,10 +19,12 @@
 			Visitors
 		{{/link-to}}
 
-		{{#link-to "admin.agents"}}
-			<i class="ion ion-help-buoy icon"></i>
-			Agents
-		{{/link-to}}
+		{{#if session.agent.admin}}
+			{{#link-to "admin.agents"}}
+				<i class="ion ion-help-buoy icon"></i>
+				Agents
+			{{/link-to}}
+		{{/if}}
 
 		{{#link-to "admin.settings"}}
 			<i class="ion ion-gear-a icon"></i>
@@ -30,10 +32,12 @@
 		{{/link-to}}
 
 		{{#unless session.chatbox.activated}}
-			{{#link-to "admin.activate"}}
-				<i class="ion ion-ios-bolt icon"></i>
-				Activate
-			{{/link-to}}
+			{{#if session.agent.admin}}
+				{{#link-to "admin.activate"}}
+					<i class="ion ion-ios-bolt icon"></i>
+					Activate
+				{{/link-to}}
+			{{/if}}
 		{{/unless}}
 	</div>
 
