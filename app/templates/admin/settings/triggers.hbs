@@ -20,7 +20,7 @@
 			{{#each session.chatbox.triggers itemController="admin/settings/triggers/trigger"}}
 				<tr>
 					<td>{{input type="checkbox" checked=active click="saveChatbox"}}</td>
-					<td>{{view "select" content=states value=state optionLabelPath="content.name" optionValuePath="content.value"}}</td>
+					<td>{{view 'select' content=states value=state optionLabelPath="content.name" optionValuePath="content.value"}}</td>
 					<td>{{input value=delay focus-out="saveChatbox"}}</td>
 					<td>{{input value=exclude focus-out="saveChatbox"}}</td>
 					<td>{{input value=include focus-out="saveChatbox"}}</td>

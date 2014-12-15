@@ -4,6 +4,9 @@ export default Ember.ObjectController.extend({
 	messageAdded: function() {
 		this.send('scrollMessages');
 	}.observes('messages.@each'),
+	watchContact: function() {  
+		this.get('model').save();
+  }.observes('agent.content'),
 	actions: {
 		showMore: function() {
 			Ember.$('.more').slideToggle();

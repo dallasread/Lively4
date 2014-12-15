@@ -17,7 +17,13 @@
 		<div class="details">
 			<p>
 				<span class="more_label">Served By</span>
-				<span class="more_detail">{{ agent.name }}</span>
+				<span class="more_detail">
+					{{#if session.agent.admin}}
+						{{view 'select' content=session.chatbox.agents selection=agent.content optionValuePath="content" optionLabelPath="content.name" prompt="None"}}
+					{{else}}
+						{{agent.name}}
+					{{/if}}
+				</span>
 				<span class="clear"></span>
 			</p>
 		
