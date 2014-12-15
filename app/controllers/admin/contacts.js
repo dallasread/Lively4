@@ -4,9 +4,7 @@ export default Ember.ArrayController.extend({
 	showAll: function() {
 		return this.get('filter') === 'all';
 	}.property('filter'),
-	filter: function() {
-		return this.session.agent.get('admin') ? 'all' : 'assigned';
-	}.property('session.agent.admin'),
+	filter: 'assigned',
 	contacts: function() {
 		if (this.session.agent.get('admin') && this.get('filter') === 'all') {
 			return this.get('content');

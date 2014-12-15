@@ -14,8 +14,8 @@ Video.reopenClass({
 		name: 'How to use Agents',
 		token: 'a1MxG6Uq4m4'
 	}, {
-		id: 'visitors',
-		name: 'How to use Visitors Effectively',
+		id: 'contacts',
+		name: 'How to Connect Effectively',
 		token: 'a1MxG6Uq4m4'
 	}, {
 		id: 'general',

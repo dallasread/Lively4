@@ -1,8 +1,8 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
 	//chatbox: DS.belongsTo('chatbox', { async: true }),
+	active: DS.attr('boolean', { defaultValue: false }),
 	creator: DS.attr('boolean', { defaultValue: false }),
 	admin: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
@@ -18,7 +18,4 @@ export default DS.Model.extend({
 		return this.get('session.agent.id') === this.get('id');
 	}.property('id'),
 	//contacts: DS.hasMany('contact', { async: true }),
-	active: function() {
-		return true; //!!Ember.$.trim(this.get('name')).length && !!Ember.$.trim(this.get('email')).length;
-	}.property('name', 'email')
 });

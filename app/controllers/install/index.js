@@ -46,7 +46,8 @@ export default Ember.Controller.extend({
 									email: e.get('email'),
 									name: e.get('name'),
 									admin: true,
-									creator: true
+									creator: true,
+									active: true
 								});
 					
 								chatbox.get('agents').addObject(agent);
