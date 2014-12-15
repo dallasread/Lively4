@@ -22,8 +22,13 @@ Router.map(function() {
 		this.route('agents');
 		this.route('activate');
 		this.route('setup');
+		
 		this.route('contacts', function() {
 			this.route('contact', { path: '/:contact_id' });
+		});
+		
+		this.route('videos', function() {
+			this.route('video', { path: '/:video_id' });
 		});
 
 		this.route('settings', function() {

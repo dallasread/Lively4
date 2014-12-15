@@ -1,0 +1,13 @@
+<div class="pane">
+	
+	<h2>{{name}}</h2>
+	
+	<p>
+		{{#link-to session.back}}
+			&larr; Go Back
+		{{/link-to}}
+	</p>
+	
+	<iframe width="640" height="360" {{bind-attr src=url}} frameborder="0" allowfullscreen></iframe>
+
+</div>

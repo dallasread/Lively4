@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'lively',
     environment: environment,
     baseURL: '/',
-    locationType: 'none', //auto,
+    locationType: 'auto', //none,
 		filepickerAPIKey: 'AXEU9C0erSGp77jK5MDNuz',
     EmberENV: {
       FEATURES: {
