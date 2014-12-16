@@ -46,6 +46,11 @@ export default {
 				
 				if (auth) {
 					store.find('agent', auth.uid).then(function(agent) {
+						if (!agent.get('active')) {
+							agent.set('active', true);
+							session.chatbox.save();
+						}
+						
 						session.set('agent', agent);
 						window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 						app.advanceReadiness();

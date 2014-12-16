@@ -3,9 +3,9 @@
 	<h2>Agents</h2>
 	
 	<p>
-		Multiple agents allow you to never miss a potential visitor or lead. To fully activate an agent, you must supply their email address. They will then receive an email with a temporary login password.
+		Multiple agents allow you to never miss a potential visitor or lead. To fully activate an agent, you must supply their email address. They will then receive an email with a temporary login password. Once an agent is activated, only they can change their email address (Settings > My Profile).
 		{{#link-to 'admin.videos.video' 'agents'}}
-			Quick Video: How to use multiple agents.
+			Quick Video: How to set up multiple agents.
 		{{/link-to}}
 	</p>
 
@@ -40,17 +40,21 @@
 						{{input type="name" value=name focus-out="saveChatbox"}}
 					</td>
 					<td>
-						{{input type="email" value=email focus-out="saveChatbox"}}
+						{{input type="email" value=email disabled=active focus-out="saveChatbox"}}
 					</td>
 					<td class="align_center">
 						{{#if active}}
 							{{input type="checkbox" checked=active readonly=true disabled=true}}
 						{{else}}
-							{{#if email.length}}
-								{{#if registered}}
-									<a href="#" {{action 'activate' .}}>Activate</a>
-								{{else}}
-									<a href="#" {{action 'reinvite' .}}>Re-invite</a>
+							{{#if registering}}
+								Activating...
+							{{else}}
+								{{#if email.length}}
+									{{#if registered}}
+										<a href="#" {{action 'register' .}}>Re-activate</a>
+									{{else}}
+										<a href="#" {{action 'register' .}}>Click to Activate</a>
+									{{/if}}
 								{{/if}}
 							{{/if}}
 						{{/if}}

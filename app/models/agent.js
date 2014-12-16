@@ -6,12 +6,13 @@ export default DS.Model.extend({
 	creator: DS.attr('boolean', { defaultValue: false }),
 	admin: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
+	registered: DS.attr('boolean', { defaultValue: false }),
 	name: DS.attr('string'),
 	email: DS.attr('string'),
 	avatar: DS.attr('string', { defaultValue: function() {
 		//var n = Math.floor(Math.random() * 10) + 1;
 		var n = 1;
-		return '/imgs/faces/lady' + n + '.png';
+		return '/imgs/faces/lady/' + n + '.png';
 	}}),
 	offline: function() {
 		return !this.get('online');
