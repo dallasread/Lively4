@@ -1,5 +1,5 @@
 functions:
-  - isLoggedIn(): auth.id !== null
+  - isLoggedIn(): auth.uid !== null
   - isAgent(): root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/active'] === true
   - isAdmin(): isAgent() && root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/admin'] === true
   - noAgents(): root['chatboxes/' + $chatbox_id + '/agents'] === null
@@ -176,7 +176,7 @@ schema:
                   type: string
                 agent:
                   type: string
-                  constraint: isAdmin() || isAgentForContact()
+                  # constraint: isAdmin() || isAgentForContact()
                 messages:
                   type: object
                   $message_id: {$ref: "#/definitions/message"}
@@ -184,27 +184,23 @@ schema:
                   type: boolean
                 agent_typing:
                   type: boolean
-                  constraint: isAdmin() || isAgentForContact()
+                  # constraint: isAdmin() || isAgentForContact()
                 agent_last_seen:
                   type: string
-                  constraint: isAdmin() || isAgentForContact()
+                  # constraint: isAdmin() || isAgentForContact()
                 contact_last_seen:
                   type: string
 
 access:
+  - location: /
+    read: false
+    write: false
   - location: /chatboxes/$chatbox_id
     read: isLoggedIn()
     write: isSuperUser() || isAgent()
   - location: /contacts/$chatbox_id
-    read: isAgent()
+    read: isLoggedIn()
     write: isLoggedIn()
   - location: /contacts/$chatbox_id/$contact_id
     read: isCurrentContact() || isAdmin() || isAgentForContact()
     write: isCurrentContact() || isAdmin() || isAgentForContact()
-    
-    
-# CANNED
-# AGENTS
-# TRIGGERS
-# INTRODUCERS
-# INDEX ON

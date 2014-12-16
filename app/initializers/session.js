@@ -40,7 +40,7 @@ export default {
 				session = container.lookup('session:main');
 				session.setProperties(session_vars);
 			}
-			
+      
 			store.find('chatbox', token).then(function(chatbox) {
 				session.set('chatbox', chatbox);
 				

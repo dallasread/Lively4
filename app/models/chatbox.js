@@ -6,7 +6,7 @@ export default DS.Model.extend({
 		return window.location.host;
 	}}),
 	activated: DS.attr('boolean', { defaultValue: false }),
-	activated_at: DS.attr('date')},
+	activated_at: DS.attr('date'),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: false }),
 	exclude: DS.attr('string', { defaultValue: '' }),
