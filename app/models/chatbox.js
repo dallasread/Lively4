@@ -5,7 +5,8 @@ export default DS.Model.extend({
 	domain: DS.attr('string', { defaultValue: function() {
 		return window.location.host;
 	}}),
-	active: DS.attr('boolean', { defaultValue: false }),
+	activated: DS.attr('boolean', { defaultValue: false }),
+	activated_at: DS.attr('date')},
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	texturize: DS.attr('boolean', { defaultValue: false }),
 	exclude: DS.attr('string', { defaultValue: '' }),
@@ -45,5 +46,11 @@ export default DS.Model.extend({
 		var styles = ['background-color: ' + this.get('color')];
 		if (this.get('texturize')) { styles.push('background-image: url(/imgs/header_bg2.png)'); }
 		return styles.join("; ");
-	}.property('color', 'texturize')
+	}.property('color', 'texturize'),
+	paypal_monthly: function() {
+		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GAN283WMZSTDU&custom=' + this.get('id')
+	}.property('id'),
+	paypal_annually: function() {
+		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BH9QXAHRFWA2Y&custom=' + this.get('id')
+	}.property('id')
 });
