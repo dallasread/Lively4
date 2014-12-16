@@ -2,7 +2,9 @@ functions:
   - isLoggedIn(): auth.id !== null
   - isAgent(): root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/active'] === true
   - isAdmin(): isAgent() && root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/admin'] === true
+  - noAgents(): root['chatboxes/' + $chatbox_id + '/agents'] === null
   - isCurrentContact(): $contact_id === auth.uid
+  - isCurrentAgent(): $agent_id === auth.uid
   - isAgentForContact(): root['contacts/' + $chatbox_id + '/' + $contact_id + '/agent'] === auth.uid
   - isSuperUser(): auth.admin === true
   - createOnly(): next.exists() && !prev.exists()
@@ -11,7 +13,84 @@ functions:
 
 schema:
   definitions:
+    trigger:
+      type: object
+      indexOn: [delay, state]
+      required: [active, delay, exclude, include, message, state]
+      additionalProperties: false
+      properties:
+        active:
+          type: boolean
+        delay:
+          type: number
+        exclude:
+          type: string
+        include:
+          type: string
+        message:
+          type: string
+        state:
+          type: string
+    canned:
+      type: object
+      indexOn: [hash]
+      required: [hash, message]
+      additionalProperties: false
+      properties:
+        hash:
+          type: string
+        message:
+          type: string
+    introducer:
+      type: object
+      indexOn: [ordinal]
+      required: [name, ordinal, permalink, required, type, validator]
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        ordinal:
+          type: number
+        permalink:
+          type: string
+        type:
+          type: string
+        validator:
+          type: string
+        required:
+          type: boolean
+    agent:
+      type: object
+      indexOn: [online]
+      required: [active, admin, avatar, creator, email, name, online, registered]
+      additionalProperties: false
+      properties:
+        active:
+          type: boolean
+          constraint: isAdmin() || isCurrentAgent()
+        admin:
+          type: boolean
+          constraint: isAdmin()
+        avatar:
+          type: string
+          constraint: isAdmin() || isCurrentAgent()
+        creator:
+          type: boolean
+          constraint: isAdmin()
+        email:
+          type: string
+          constraint: isAdmin() || isCurrentAgent()
+        name:
+          type: string
+          constraint: isAdmin() || isCurrentAgent()
+        online:
+          type: boolean
+          constraint: isCurrentAgent()
+        registered:
+          type: boolean
+          constraint: isAdmin() || isCurrentAgent()
     message:
+      indexOn: [created_at]
       type: object
       required: [body, contact, created_at, from_agent, read]
       additionalProperties: false
@@ -32,8 +111,9 @@ schema:
     chatboxes:
       properties:
         $chatbox_id:
+          type: object
+          required: [color, exclude, include, initial_offline_message, initial_online_message]
           additionalProperties: false
-          # required: [color, exclude, include, initial_offline_message, initial_online_message]
           properties:
             activated:
               type: boolean
@@ -62,17 +142,21 @@ schema:
               type: string
               constraint: isAdmin()
             canned:
-              constraint: isAdmin()
               type: object
+              constraint: isAdmin()
+              $canned_id: {$ref: "#/definitions/canned"}
             agents:
-              constraint: isAdmin()
               type: object
+              constraint: isAdmin() || noAgents()
+              $agent_id: {$ref: "#/definitions/agent"}
             triggers:
-              constraint: isAdmin()
               type: object
+              constraint: isAdmin()
+              $trigger_id: {$ref: "#/definitions/trigger"}
             introducers:
-              constraint: isAdmin()
               type: object
+              constraint: isAdmin()
+              $introducer_id: {$ref: "#/definitions/introducer"}
     contacts:
       properties:
         $chatbox_id:
@@ -95,7 +179,7 @@ schema:
                   constraint: isAdmin() || isAgentForContact()
                 messages:
                   type: object
-                  $message: {$ref: "#/definitions/message"}
+                  $message_id: {$ref: "#/definitions/message"}
                 contact_typing:
                   type: boolean
                 agent_typing:
@@ -111,9 +195,12 @@ access:
   - location: /chatboxes/$chatbox_id
     read: isLoggedIn()
     write: isSuperUser() || isAgent()
+  - location: /contacts/$chatbox_id
+    read: isAgent()
+    write: isLoggedIn()
   - location: /contacts/$chatbox_id/$contact_id
     read: isCurrentContact() || isAdmin() || isAgentForContact()
-    write: isSuperUser() || isCurrentContact() || isAdmin() || isAgentForContact()
+    write: isCurrentContact() || isAdmin() || isAgentForContact()
     
     
 # CANNED
