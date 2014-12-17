@@ -12,6 +12,7 @@ functions:
   - deleteOnly(): prev.exists() && !next.exists()
   - createOrDelete(): createOnly() || deleteOnly()
   - isContactOrAdminOrAgentForContact(): isCurrentContact() || isAdmin() || isAgentForContact()
+  - contactIsSettingDing(): root['contacts/' + $chatbox_id + '/' + auth.uid + '/agent'] === $agent_id
 
 schema:
   definitions:
@@ -82,6 +83,8 @@ schema:
         online:
           type: boolean
         registered:
+          type: boolean
+        ding:
           type: boolean
     message:
       indexOn: [created_at]
@@ -170,6 +173,8 @@ schema:
                   type: string
                 contact_last_seen:
                   type: string
+                ding:
+                  type: boolean
 
 access:
   - location: /
@@ -178,18 +183,34 @@ access:
 
   - location: /chatboxes/$chatbox_id/
     read: isLoggedIn()
-    write: isSuperUser() || isAgent()
-  - location: /chatboxes/$chatbox_id/agents
-    read: isLoggedIn()
+
   - location: /chatboxes/$chatbox_id/agents/$agent_id
-    write: isAdmin() || auth.uid === $agent_id
+    write: isAdmin() || isCurrentAgent() || contactIsSettingDing()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/active
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/admin
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/avatar
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/creator
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/email
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/name= $agent_id
   - location: /chatboxes/$chatbox_id/agents/$agent_id/online
-    write: auth.uid === $agent_id
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/registered
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/ding
+    write: isAdmin() || isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/online
+    write: isCurrentAgent()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/ding
+    write: isAdmin() || isCurrentAgent() || contactIsSettingDing()
+    
   - location: /chatboxes/$chatbox_id/triggers
-    read: isLoggedIn()
     write: isAdmin()
   - location: /chatboxes/$chatbox_id/introducers
-    read: isLoggedIn()
     write: isAdmin()
   - location: /chatboxes/$chatbox_id/canned
     read: isAgent()
@@ -205,7 +226,6 @@ access:
   - location: /chatboxes/$chatbox_id/initial_online_message
     write: isAdmin()
   - location: /chatboxes/$chatbox_id/activated
-    read: isLoggedIn()
     write: isSuperUser()
   - location: /chatboxes/$chatbox_id/activated_at
     write: isSuperUser()
@@ -244,4 +264,5 @@ access:
   - location: /contacts/$chatbox_id/$contact_id/contact_last_seen
   - location: /contacts/$chatbox_id/$contact_id/agent
     write: isAdmin() || isAgentForContact() || (isAgent() && next != prev)
-    
+  - location: /contacts/$chatbox_id/$contact_id/ding
+    write: isContactOrAdminOrAgentForContact()

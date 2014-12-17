@@ -4,7 +4,7 @@ export default DS.Model.extend({
 	// contact: DS.belongsTo('contact', { async: true }),
 	body: DS.attr('string'),
 	from_agent: DS.attr('boolean'),
+	read: DS.attr('boolean'),
 	agent: DS.belongsTo('agent', { async: true }),
-	read: DS.attr('boolean', { defaultValue: false }),
 	created_at: DS.attr('date', { defaultValue: function() { return new Date(); }})
 });

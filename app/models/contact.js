@@ -8,6 +8,7 @@ export default DS.Model.extend({
 		email: ""
 	}}),
 	anonymous: DS.attr('boolean', { defaultValue: true }),
+	ding: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
 	introduced: DS.attr('boolean', { defaultValue: false }),
 	triggered_by: DS.belongsTo('trigger'),

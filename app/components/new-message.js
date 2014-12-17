@@ -13,6 +13,7 @@ export default Ember.Component.extend({
 	}.observes('body'),
 	actions: {
 		createMessage: function() {
+			var e = this;
 			var body = Ember.$.trim(this.get('body'));
 			this.set('body', '');
 			
@@ -35,7 +36,14 @@ export default Ember.Component.extend({
 
 				this.contact.get('messages').addObject(message);
 				this.contact.set(this.type + '_last_seen', new Date());
-				this.contact.save();
+				this.contact.save().then(function() {
+					if (e.get('type') === 'agent') {
+						e.contact.set('ding', true).save();
+					} else if (e.get('type') === 'contact') {
+						e.contact.get('agent').set('ding', true);
+						window.LCSDB.child('chatboxes/' + e.get('session.chatbox.id') + '/agents/' + e.get('contact.agent.id') + '/ding').set(true);
+					}
+				});
 			}
 		}
 	}

@@ -7,6 +7,7 @@ export default DS.Model.extend({
 	admin: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
 	registered: DS.attr('boolean', { defaultValue: false }),
+	ding: DS.attr('boolean', { defaultValue: false }),
 	name: DS.attr('string'),
 	email: DS.attr('string'),
 	avatar: DS.attr('string', { defaultValue: function() {

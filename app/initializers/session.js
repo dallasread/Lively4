@@ -31,6 +31,7 @@ export default {
 				app.register('session:main', session, { instantiate: false, singleton: true });
 				app.inject('route', 'session', 'session:main');
 				app.inject('controller', 'session', 'session:main');
+				app.inject('component', 'session', 'session:main');
 				app.inject('view', 'session', 'session:main');
 				app.inject('model', 'session', 'session:main');
 				container.injection('component', 'store', 'store:main');
@@ -50,7 +51,7 @@ export default {
 							agent.set('active', true);
 							session.chatbox.save();
 						}
-						
+
 						session.set('agent', agent);
 						window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 						app.advanceReadiness();
