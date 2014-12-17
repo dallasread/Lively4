@@ -10,8 +10,7 @@ filepicker.setKey(config.filepickerAPIKey);
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver: Resolver,
-	storeConfigInMeta: false
+  Resolver: Resolver
 });
 
 loadInitializers(App, config.modulePrefix);

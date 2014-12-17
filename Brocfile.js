@@ -2,7 +2,9 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+	storeConfigInMeta: false
+});
 
 app.import("bower_components/fastclick/lib/fastclick.js");
 app.import('bower_components/filepicker/filepicker.min.js');
