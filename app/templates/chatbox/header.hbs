@@ -29,15 +29,21 @@
 			</ul>
 		</div>
 		
+		{{#link-to "chatbox.signin" class="agent_login_link"}}
+			Agent Login
+		{{/link-to}}
+		
 		<div class="clear"></div>
 	</div>
 	
-	{{#unless session.contact.agent.online}}
-		<p class="agent_offline">
-			<i class="ion ion-android-warning"></i>
-			{{session.contact.agent.name}} is now offline. If you send them a message, they'll receive it next time they login.
-		</p>
-	{{/unless}}
+	{{#if session.contact.introduced}}
+		{{#unless session.contact.agent.online}}
+			<p class="agent_offline">
+				<i class="ion ion-android-warning"></i>
+				{{session.contact.agent.name}} is now offline. If you send them a message, they'll receive it next time they login.
+			</p>
+		{{/unless}}
+	{{/if}}
 	
 	<div class="fader"></div>
 </div>

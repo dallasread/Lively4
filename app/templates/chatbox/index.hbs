@@ -1,29 +1,33 @@
 <div>
-	{{render 'chatbox/header'}}
+	{{#if session.contact}}
+		
+		{{render 'chatbox/header'}}
 	
-	<div class="messages">
-		{{#each session.contact.messages itemView="chatbox/message"}}
-			<div {{bind-attr class=":message from_agent:from_agent"}}>
-				<div class="body">
-					{{ body }}
-				</div>
+		<div class="messages">
+			{{#each session.contact.messages itemView="chatbox/message"}}
+				<div {{bind-attr class=":message from_agent:from_agent"}}>
+					<div class="body">
+						{{ body }}
+					</div>
 
-				<div class="clear"></div>
-			</div>
-		{{/each}}
-		
-		{{#if session.contact.agent_typing}}
-			<div class="message from_agent">
-				<div class="body">
-					Agent is typing...
+					<div class="clear"></div>
 				</div>
+			{{/each}}
 		
-				<div class="clear"></div>
-			</div>
-		{{/if}}
+			{{#if session.contact.agent_typing}}
+				<div class="message from_agent">
+					<div class="body">
+						Agent is typing...
+					</div>
 		
-		<div class="overlay"></div>
-	</div>
+					<div class="clear"></div>
+				</div>
+			{{/if}}
+		
+			<div class="overlay"></div>
+		</div>
 
-	{{new-message contact=session.contact agent=session.contact.agent chatbox=session.chatbox readonly=false}}
+		{{new-message contact=session.contact agent=session.contact.agent chatbox=session.chatbox readonly=false}}
+	
+	{{/if}}
 </div>

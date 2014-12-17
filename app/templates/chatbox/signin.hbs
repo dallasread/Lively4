@@ -1,4 +1,21 @@
 <div>
+	<div class="header" {{bind-attr style=session.chatbox.chatbox_style}}>
+		<div class="profile">
+			{{#link-to "prompter" class="close icon"}}
+				<i class="ion ion-ios-close-empty"></i>
+			{{/link-to}}
+
+			<div class="rectangle"></div>
+
+			<div class="served_by_description" style="margin-top: 20px; margin-left: 80px; ">
+				<p class="talking_to">Not an agent?</p>
+				<p class="agent_name">{{#link-to session.back}}<i class="ion ion-ios-arrow-thin-left"></i> Go Back{{/link-to}}</p>
+			</div>
+		
+			<div class="clear"></div>
+		</div>
+	</div>
+	
 	<form class="introducer form" {{action "signIn" on="submit"}}>
 		<p class="please_introduce">
 			To sign in as an agent, please enter your credentials below.

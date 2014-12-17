@@ -221,6 +221,21 @@ $header_border_width: 7px;
 			}
 		}
 	}
+	
+	.agent_login_link {
+		position: fixed;
+		top: $header_height - 20px;
+		right: 10px;
+		color: #ddd;
+		color: rgba(255, 255, 255, 0.2);
+		font-size: 11px;
+		line-height: 11px;
+		
+		&:hover {
+			color: #fff;
+			color: rgba(255, 255, 255, 0.5);
+		}
+	}
 }
 
 @media screen and (max-width: 480px) {
