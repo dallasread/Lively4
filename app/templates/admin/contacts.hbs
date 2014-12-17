@@ -5,7 +5,15 @@
 	<table class="contacts_filters">
 		<tbody>
 			<tr>
-				<td><a href="#" {{action 'setFilter' 'assigned' session.agent.id}} {{bind-attr class="showAll::active"}}>For Me</a></td>
+				<td>
+					<a href="#" {{action 'setFilter' 'assigned' session.agent.id}} {{bind-attr class="showAll::active"}}>
+					{{#if session.agent.admin}}
+						My Visitors
+					{{else}}
+						Visitors
+					{{/if}}
+					</a>
+				</td>
 				{{#if session.agent.admin}}
 					<td><a href="#" {{action 'setFilter' 'all'}} {{bind-attr class="showAll:active"}}>All</a></td>
 				{{/if}}

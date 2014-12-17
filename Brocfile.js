@@ -4,7 +4,6 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 
-app.import("bower_components/firebase/firebase.js");
 app.import("bower_components/fastclick/lib/fastclick.js");
 app.import('bower_components/filepicker/filepicker.min.js');
 app.import('bower_components/momentjs/moment.js');

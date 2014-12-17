@@ -24,12 +24,17 @@
 				<i class="ion ion-help-buoy icon"></i>
 				Agents
 			{{/link-to}}
+			
+			{{#link-to "admin.settings"}}
+				<i class="ion ion-gear-a icon"></i>
+				Settings
+			{{/link-to}}
+		{{else}}
+			{{#link-to "admin.settings.me"}}
+				<i class="ion ion-person icon"></i>
+				My Profile
+			{{/link-to}}
 		{{/if}}
-
-		{{#link-to "admin.settings"}}
-			<i class="ion ion-gear-a icon"></i>
-			Settings
-		{{/link-to}}
 
 		{{#unless session.chatbox.activated}}
 			{{#if session.agent.admin}}

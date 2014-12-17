@@ -1,10 +1,12 @@
 <div class="pane">
 	<div class="tabs">
 		<div class="nav">
-			{{link-to "General" "admin.settings.index"}}
-			{{link-to "Triggers" "admin.settings.triggers"}}
-			{{link-to "Canned" "admin.settings.canned"}}
-			{{link-to "Introducers" "admin.settings.introducers"}}
+			{{#if session.agent.admin}}
+				{{link-to "General" "admin.settings.index"}}
+				{{link-to "Triggers" "admin.settings.triggers"}}
+				{{link-to "Canned" "admin.settings.canned"}}
+				{{link-to "Introducers" "admin.settings.introducers"}}
+			{{/if}}
 			{{link-to "My Profile" "admin.settings.me"}}
 		</div>
 

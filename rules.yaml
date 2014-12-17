@@ -1,6 +1,7 @@
 functions:
   - isLoggedIn(): auth.uid !== null
   - isAgent(): root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/active'] === true
+  - isContact(): root['contacts/' + $chatbox_id + '/' + auth.uid] !== null
   - isAdmin(): isAgent() && root['chatboxes/' + $chatbox_id + '/agents/' + auth.uid + '/admin'] === true
   - noAgents(): root['chatboxes/' + $chatbox_id + '/agents'] === null
   - isCurrentContact(): $contact_id === auth.uid
@@ -10,6 +11,7 @@ functions:
   - createOnly(): next.exists() && !prev.exists()
   - deleteOnly(): prev.exists() && !next.exists()
   - createOrDelete(): createOnly() || deleteOnly()
+  - isContactOrAdminOrAgentForContact(): isCurrentContact() || isAdmin() || isAgentForContact()
 
 schema:
   definitions:
@@ -67,38 +69,29 @@ schema:
       properties:
         active:
           type: boolean
-          constraint: isAdmin() || isCurrentAgent()
         admin:
           type: boolean
-          constraint: isAdmin()
         avatar:
           type: string
-          constraint: isAdmin() || isCurrentAgent()
         creator:
           type: boolean
-          constraint: isAdmin()
         email:
           type: string
-          constraint: isAdmin() || isCurrentAgent()
         name:
           type: string
-          constraint: isAdmin() || isCurrentAgent()
         online:
           type: boolean
-          constraint: isCurrentAgent()
         registered:
           type: boolean
-          constraint: isAdmin() || isCurrentAgent()
     message:
       indexOn: [created_at]
       type: object
-      required: [body, contact, created_at, from_agent, read]
+      required: [body, created_at, from_agent, read]
       additionalProperties: false
-      constraint: createOnly()
       properties:
-        body:
+        agent:
           type: string
-        contact:
+        body:
           type: string
         created_at:
           type: string
@@ -117,37 +110,27 @@ schema:
           properties:
             activated:
               type: boolean
-              constraint: isSuperUser()
             activated_at:
               type: string
-              constraint: isSuperUser()
             color:
               type: string
-              constraint: isAdmin()
             domain:
               type: string
-              constraint: createOnly()
             texturize:
               type: boolean
             exclude:
               type: string
-              constraint: isAdmin()
             include:
               type: string
-              constraint: isAdmin()
             initial_offline_message:
               type: string
-              constraint: isAdmin()
             initial_online_message:
               type: string
-              constraint: isAdmin()
             canned:
               type: object
-              constraint: isAdmin()
               $canned_id: {$ref: "#/definitions/canned"}
             agents:
               type: object
-              constraint: isAdmin() || noAgents()
               $agent_id: {$ref: "#/definitions/agent"}
             triggers:
               type: object
@@ -176,7 +159,6 @@ schema:
                   type: string
                 agent:
                   type: string
-                  # constraint: isAdmin() || isAgentForContact()
                 messages:
                   type: object
                   $message_id: {$ref: "#/definitions/message"}
@@ -184,10 +166,8 @@ schema:
                   type: boolean
                 agent_typing:
                   type: boolean
-                  # constraint: isAdmin() || isAgentForContact()
                 agent_last_seen:
                   type: string
-                  # constraint: isAdmin() || isAgentForContact()
                 contact_last_seen:
                   type: string
 
@@ -195,12 +175,73 @@ access:
   - location: /
     read: false
     write: false
-  - location: /chatboxes/$chatbox_id
+
+  - location: /chatboxes/$chatbox_id/
     read: isLoggedIn()
     write: isSuperUser() || isAgent()
-  - location: /contacts/$chatbox_id
+  - location: /chatboxes/$chatbox_id/agents
     read: isLoggedIn()
-    write: isLoggedIn()
-  - location: /contacts/$chatbox_id/$contact_id
-    read: isCurrentContact() || isAdmin() || isAgentForContact()
-    write: isCurrentContact() || isAdmin() || isAgentForContact()
+  - location: /chatboxes/$chatbox_id/agents/$agent_id
+    write: isAdmin() || auth.uid === $agent_id
+  - location: /chatboxes/$chatbox_id/agents/$agent_id/online
+    write: auth.uid === $agent_id
+  - location: /chatboxes/$chatbox_id/triggers
+    read: isLoggedIn()
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/introducers
+    read: isLoggedIn()
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/canned
+    read: isAgent()
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/color
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/exclude
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/include
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/initial_offline_message
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/initial_online_message
+    write: isAdmin()
+  - location: /chatboxes/$chatbox_id/activated
+    read: isLoggedIn()
+    write: isSuperUser()
+  - location: /chatboxes/$chatbox_id/activated_at
+    write: isSuperUser()
+
+  - location: /contacts/$chatbox_id
+    read: isAgent()
+  - location: /contacts/$chatbox_id/$contact_id/
+    read: isCurrentContact() || isAgent()
+    write: isCurrentContact() || isAgent()
+    
+  - location: /contacts/$chatbox_id/$contact_id/anonymous
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/details
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/online
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/introduced
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/triggered_by
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/messages
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/contact_typing
+    read: isContactOrAdminOrAgentForContact()
+    write: isContactOrAdminOrAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/agent_typing
+    write: isAdmin() || isAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/agent_last_seen
+    write: isAdmin() || isAgentForContact()
+  - location: /contacts/$chatbox_id/$contact_id/contact_last_seen
+  - location: /contacts/$chatbox_id/$contact_id/agent
+    write: isAdmin() || isAgentForContact() || (isAgent() && next != prev)
+    
