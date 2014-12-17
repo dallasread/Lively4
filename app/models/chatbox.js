@@ -49,9 +49,9 @@ export default DS.Model.extend({
 		return styles.join("; ");
 	}.property('color', 'texturize'),
 	paypal_monthly: function() {
-		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GAN283WMZSTDU&custom=' + this.get('id')
+		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GAN283WMZSTDU&custom=' + this.get('id');
 	}.property('id'),
 	paypal_annually: function() {
-		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BH9QXAHRFWA2Y&custom=' + this.get('id')
+		return 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BH9QXAHRFWA2Y&custom=' + this.get('id');
 	}.property('id')
 });

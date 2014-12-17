@@ -31,7 +31,7 @@ export default Ember.Component.extend({
 			
 				if (this.type === "agent") {
 					message.set('agent', this.agent);
-					this.contact.set('agent', this.agent)
+					this.contact.set('agent', this.agent);
 				}
 
 				this.contact.get('messages').addObject(message);

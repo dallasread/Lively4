@@ -151,6 +151,7 @@ schema:
           properties:
             $contact_id:
               indexOn: [online, contact_last_seen]
+              constraint: createOnly()
               properties:
                 anonymous:
                   type: boolean
@@ -166,6 +167,7 @@ schema:
                   type: string
                 messages:
                   type: object
+                  constraint: createOnly()
                   $message_id: {$ref: "#/definitions/message"}
                 contact_typing:
                   type: boolean
@@ -184,7 +186,7 @@ access:
     write: false
 
   - location: /chatboxes/$chatbox_id
-    read: isLoggedIn()
+    read: true
     write: isLoggedIn()
 
   - location: /chatboxes/$chatbox_id/agents/$agent_id

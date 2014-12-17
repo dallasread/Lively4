@@ -20,12 +20,13 @@ export default {
 				if (!loader.length) {
 					app.advanceReadiness();
 				}
-			}
+			};
 
 			var session_vars = {
 				auth: auth,
 				url: config.url,
 				back: null,
+				created: null,
 				current: 'prompter',
 				ding: new window.Howl({
 				  urls: [
@@ -34,16 +35,6 @@ export default {
 					]
 				})
 			};
-			
-			var head = document.getElementsByTagName( 'head' )[0];
-			var link = document.createElement( 'link' );
-			link.setAttribute( 'href', config.url + '/assets/lcs.css' );
-			link.setAttribute( 'rel', 'stylesheet' );
-			link.setAttribute( 'type', 'text/css' );
-			link.onload = function() {
-				loadComplete( 'styles' );
-			};
-			head.appendChild(link);
 			
 			if (!window.LCSInjected) {
 				window.LCSInjected = true;
@@ -57,15 +48,49 @@ export default {
 				container.injection('component', 'store', 'store:main');
 				container.injection('view', 'store', 'store:main');
 				session = container.lookup('session:main');
+				
+				var head = document.getElementsByTagName( 'head' )[0];
+				var link = document.createElement( 'link' );
+				link.setAttribute( 'href', config.url + '/assets/lcs.css' );
+				link.setAttribute( 'rel', 'stylesheet' );
+				link.setAttribute( 'type', 'text/css' );
+				link.onload = function() {
+					loadComplete( 'styles' );
+				};
+				head.appendChild(link);
 			} else {
 				session = container.lookup('session:main');
 				session.setProperties(session_vars);
 			}
+			
+			var setContact = function(store, auth, session, chatbox) {
+				store.find('contact', auth.uid).then(function(contact) {
+					session.set('created', null);
+					
+					contact.get('agent').then(function(agent) {
+						console.log('here');
+						if (!agent) {
+							contact.set('agent', session.get("chatbox.next_available_agent"));
+						}
+					
+						contact.set('online', true).save().then(function() {
+							session.set('contact', contact);
+							window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
+							window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date().toJSON());
+							loadComplete('user');
+						});
+					});
+				}, function() {
+					window.LCSDB.unauth();
+				});							
+			};
+			
       
 			store.find('chatbox', token).then(function(chatbox) {
 				session.set('chatbox', chatbox);
 				
 				if (auth) {
+					
 					store.find('agent', auth.uid).then(function(agent) {
 						if (!agent.get('active')) {
 							agent.set('active', true);
@@ -80,24 +105,13 @@ export default {
 						session.set('agent', agent);
 						window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
 						loadComplete('user');
+						
 					}, function() {
-						store.find('contact', auth.uid).then(function(contact) {
-							contact.get('agent').then(function(agent) {
-								if (!agent) {
-									contact.set('agent', session.get("chatbox.next_available_agent"));
-								}
-								
-								contact.set('online', true).save().then(function() {
-									session.set('contact', contact);
-									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
-									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date().toJSON());
-									loadComplete('user');
-								});
-							});
-						}, function() {
-							window.LCSDB.unauth();
-						});
+						
+						setContact(store, auth, session, chatbox);
+						
 					});
+					
 				} else {
 					if (session.get('chatbox')) {
 						store.unloadAll('message');
@@ -113,7 +127,9 @@ export default {
 								store.createRecord('contact', {
 									id: auth.uid,
 									anonymous: true
-								}).save();
+								}).save().then(function() {
+									setContact(store, auth, session, chatbox);
+								});
 						  }
 						});
 					}

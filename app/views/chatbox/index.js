@@ -10,9 +10,9 @@ export default Ember.View.extend({
 				agent: this.session.contact.agent,
 				from_agent: true
 			});
-			e.session.contact.get('messages').addObject(message);
-			e.session.contact.set('agent_last_seen', new Date());
-			this.session.contact.save();
+			e.get('session.contact').get('messages').addObject(message);
+			e.get('session.contact').set('agent_last_seen', new Date());
+			this.get('session.contact').save();
 		}
 	}
 });

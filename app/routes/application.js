@@ -29,10 +29,6 @@ export default Ember.Route.extend({
 						e.transitionTo('prompter');
 					});
 				}
-			} else {
-				var current = this.controllerFor("application").get("currentPath");
-				var route = current === "chatbox.signin" ? "chatbox" : "chatbox.signin";
-				this.transitionTo(route);
 			}
 		}
 	}

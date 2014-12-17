@@ -8,9 +8,9 @@ export default Ember.Controller.extend({
 		}
   }.observes('currentPath'),
 	contactDinger: function() {
-		if (this.session.contact.get('ding')) {
+		if (this.get('session.contact.ding')) {
 			this.get('session.ding').play();
-			this.session.contact.set('ding', false).save();
+			this.get('session.contact').set('ding', false).save();
 		}
 	}.observes('session.contact.ding'),
 	agentDinger: function() {

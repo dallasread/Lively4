@@ -1,18 +1,24 @@
 <div class="prompter">
 	{{#if session.agent}}
+		
 		{{#link-to "admin" class="agent_avatar"}}
 			<img src="{{unbound session.url}}/assets/imgs/agent_cta.png" class="agent_cta pulse animated">
 		{{/link-to}}
-	{{else}}
-		<a href="#" {{action 'showChatbox'}} class="agent_avatar">
-			{{#if session.contact.unread_from_agent}}
-				<span class="unread_messages_count pulse animated infinite">{{session.contact.contact_unread_count}}</span>
-			{{/if}}
-			<img {{bind-attr src=session.contact.agent.avatar}}>
-		</a>
 		
-		{{#if session.contact.unread_from_agent}}
-			{{latest-message message=session.contact.latest_agent_message unread=session.contact.contact_unread_count session=session currentControllerBinding="controller"}}
+	{{else}}
+		{{#if session.contact}}
+			
+			<a href="#" {{action 'showChatbox'}} class="agent_avatar">
+				{{#if session.contact.unread_from_agent}}
+					<span class="unread_messages_count pulse animated infinite">{{session.contact.contact_unread_count}}</span>
+				{{/if}}
+				<img {{bind-attr src=session.contact.agent.avatar}}>
+			</a>
+		
+			{{#if session.contact.unread_from_agent}}
+				{{latest-message message=session.contact.latest_agent_message unread=session.contact.contact_unread_count session=session currentControllerBinding="controller"}}
+			{{/if}}
+			
 		{{/if}}
 	{{/if}}
 </div>

@@ -11,7 +11,7 @@ export default DS.Model.extend({
 	ding: DS.attr('boolean', { defaultValue: false }),
 	online: DS.attr('boolean', { defaultValue: false }),
 	introduced: DS.attr('boolean', { defaultValue: false }),
-	triggered_by: DS.belongsTo('trigger'),
+	triggered_by: DS.attr('string'),
 	agent: DS.belongsTo('agent', { async: true }),
 	messages: DS.hasMany('message', { embedded: true }),
 	contact_typing: DS.attr('boolean', { defaultValue: false }),

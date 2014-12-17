@@ -8,7 +8,7 @@ export default Ember.ObjectController.extend({
 	actions: {
 		register: function(agent) {
 			var e = this;
-			var register = function(auth) {
+			var register = function() {
 				agent.set('registered', true);
 
 				e.session.chatbox.save().then(function() {
@@ -21,7 +21,7 @@ export default Ember.ObjectController.extend({
 						});
 				  });
 				});
-			}
+			};
 			
 			e.set('registering', true);
 			
