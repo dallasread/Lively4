@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	// contact: DS.belongsTo('contact', { async: true }),
+	contact: DS.belongsTo('contact', { async: true }),
 	body: DS.attr('string'),
 	from_agent: DS.attr('boolean'),
 	read: DS.attr('boolean'),

@@ -41,7 +41,8 @@ export default Ember.Component.extend({
 						e.contact.set('ding', true).save();
 					} else if (e.get('type') === 'contact') {
 						e.contact.get('agent').set('ding', true);
-						window.LCSDB.child('chatboxes/' + e.get('session.chatbox.id') + '/agents/' + e.get('contact.agent.id') + '/ding').set(true);
+						e.session.get('chatbox').save();
+						//window.LCSDB.child('chatboxes/' + e.get('session.chatbox.id') + '/agents/' + e.get('contact.agent.id') + '/ding').set(true);
 					}
 				});
 			}

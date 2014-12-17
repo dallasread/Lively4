@@ -1,11 +1,11 @@
 <form class="form" {{action "createChatbox" on="submit"}}>
 	<div class="is_loading with_padding">
-		<img src="/imgs/badge_almost.png" class="badge">
-		<img src="/imgs/loading.gif">
+		<img src="{{unbound session.url}}/assets/imgs/badge_almost.png" class="badge">
+		<img src="{{unbound session.url}}/assets/imgs/loading.gif">
 	</div>
 	
 	<div class="isnt_loading">
-		<img src="/imgs/badge_almost.png" class="badge">
+		<img src="{{unbound session.url}}/assets/imgs/badge_almost.png" class="badge">
 		
 		<p>
 			<strong>Congratulations</strong> &mdash; Lively Chat Support is almost set up. Simply fill in the form below to register your chatbox.

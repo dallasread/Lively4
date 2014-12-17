@@ -96,6 +96,8 @@ schema:
           type: string
         body:
           type: string
+        contact:
+          type: string
         created_at:
           type: string
         from_agent:
@@ -181,8 +183,9 @@ access:
     read: false
     write: false
 
-  - location: /chatboxes/$chatbox_id/
+  - location: /chatboxes/$chatbox_id
     read: isLoggedIn()
+    write: isLoggedIn()
 
   - location: /chatboxes/$chatbox_id/agents/$agent_id
     write: isAdmin() || isCurrentAgent() || contactIsSettingDing()

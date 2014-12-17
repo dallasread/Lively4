@@ -1,7 +1,7 @@
 <div class="prompter">
 	{{#if session.agent}}
 		{{#link-to "admin" class="agent_avatar"}}
-			<img src="/imgs/agent_cta.png" class="agent_cta pulse animated">
+			<img src="{{unbound session.url}}/assets/imgs/agent_cta.png" class="agent_cta pulse animated">
 		{{/link-to}}
 	{{else}}
 		<a href="#" {{action 'showChatbox'}} class="agent_avatar">

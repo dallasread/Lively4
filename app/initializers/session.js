@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default {
   name: 'session',
@@ -12,18 +13,37 @@ export default {
 			var token = Ember.$('[data-lcs]').data('lcs');
 			var store = container.lookup('store:main');
 			var session = null;
+			var loader = ['styles', 'user'];
+			var loadComplete = function(loaded) {
+				var index = loader.indexOf(loaded);
+				loader.splice(index, 1);
+				if (!loader.length) {
+					app.advanceReadiness();
+				}
+			}
+
 			var session_vars = {
 				auth: auth,
-				url: 'http://localhost:4200',
+				url: config.url,
 				back: null,
 				current: 'prompter',
 				ding: new window.Howl({
 				  urls: [
-						'/audio/bell.mp3',
-						'/audio/bell.ogg'
+						config.url + '/audio/bell.mp3',
+						config.url + '/audio/bell.ogg'
 					]
 				})
 			};
+			
+			var head = document.getElementsByTagName( 'head' )[0];
+			var link = document.createElement( 'link' );
+			link.setAttribute( 'href', config.url + '/assets/lively.css' );
+			link.setAttribute( 'rel', 'stylesheet' );
+			link.setAttribute( 'type', 'text/css' );
+			link.onload = function() {
+				loadComplete( 'styles' );
+			};
+			head.appendChild(link);
 			
 			if (!window.LCSInjected) {
 				window.LCSInjected = true;
@@ -49,12 +69,17 @@ export default {
 					store.find('agent', auth.uid).then(function(agent) {
 						if (!agent.get('active')) {
 							agent.set('active', true);
-							session.chatbox.save();
 						}
-
+						
+						if (agent.get('ding')) {
+							session.get('ding').play();
+							agent.set('ding', false);
+						}
+						
+						session.chatbox.save();
 						session.set('agent', agent);
 						window.LCSDB.child('chatboxes/' + chatbox.id + '/agents/' + auth.uid + '/online').onDisconnect().set(false);
-						app.advanceReadiness();
+						loadComplete('user');
 					}, function() {
 						store.find('contact', auth.uid).then(function(contact) {
 							contact.get('agent').then(function(agent) {
@@ -66,7 +91,7 @@ export default {
 									session.set('contact', contact);
 									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/online').onDisconnect().set(false);
 									window.LCSDB.child('contacts/' + chatbox.id + '/' + auth.uid + '/contact_last_seen').onDisconnect().set(new Date().toJSON());
-									app.advanceReadiness();
+									loadComplete('user');
 								});
 							});
 						}, function() {
@@ -95,7 +120,7 @@ export default {
 				}
 			}, function() {
 				session.set('token', token);
-				app.advanceReadiness();
+				loadComplete('user');
 			});
 		});
 		

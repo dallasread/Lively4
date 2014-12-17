@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import config from '../config/environment';
 
 export default DS.Model.extend({
 	domain: DS.attr('string', { defaultValue: function() {
@@ -44,7 +45,7 @@ export default DS.Model.extend({
 	}.property('agents'),
 	chatbox_style: function() {
 		var styles = ['background-color: ' + this.get('color')];
-		if (this.get('texturize')) { styles.push('background-image: url(/imgs/header_bg2.png)'); }
+		if (this.get('texturize')) { styles.push('background-image: url(' + config.url + '/assets/imgs/header_bg2.png)'); }
 		return styles.join("; ");
 	}.property('color', 'texturize'),
 	paypal_monthly: function() {

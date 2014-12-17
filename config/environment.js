@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'lively',
     environment: environment,
     baseURL: '/',
+		url: 'http://localhost:4200',
     locationType: 'none', //auto,
 		filepickerAPIKey: 'AXEU9C0erSGp77jK5MDNuz',
     EmberENV: {
@@ -41,7 +42,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+		ENV.url = 'https://livelychatsupport.com';
   }
 
   return ENV;

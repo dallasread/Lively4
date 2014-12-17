@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import config from '../config/environment';
 
 export default DS.Model.extend({
 	//chatbox: DS.belongsTo('chatbox', { async: true }),
@@ -13,7 +14,7 @@ export default DS.Model.extend({
 	avatar: DS.attr('string', { defaultValue: function() {
 		//var n = Math.floor(Math.random() * 10) + 1;
 		var n = 1;
-		return '/imgs/faces/lady/' + n + '.png';
+		return config.url + '/assets/imgs/faces/lady/' + n + '.png';
 	}}),
 	offline: function() {
 		return !this.get('online');
