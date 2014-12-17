@@ -29,15 +29,15 @@ export default {
 				current: 'prompter',
 				ding: new window.Howl({
 				  urls: [
-						config.url + '/audio/bell.mp3',
-						config.url + '/audio/bell.ogg'
+						config.url + '/assets/audio/bell.mp3',
+						config.url + '/assets/audio/bell.ogg'
 					]
 				})
 			};
 			
 			var head = document.getElementsByTagName( 'head' )[0];
 			var link = document.createElement( 'link' );
-			link.setAttribute( 'href', config.url + '/assets/lively.css' );
+			link.setAttribute( 'href', config.url + '/assets/lcs.css' );
 			link.setAttribute( 'rel', 'stylesheet' );
 			link.setAttribute( 'type', 'text/css' );
 			link.onload = function() {

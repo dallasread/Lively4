@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'lively',
+    modulePrefix: 'lcs',
     environment: environment,
     baseURL: '/',
 		url: 'http://localhost:4200',
