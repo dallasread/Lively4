@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	dinging: false,
 	watchHistory: function(){
 		if (this.get('currentPath').indexOf('loading') === -1) {
 			this.get('session').set( 'back', this.get('session.current') );
@@ -14,12 +15,14 @@ export default Ember.Controller.extend({
 		}
 	}.observes('session.contact.ding'),
 	agentDinger: function() {
-		console.log(this.get('session.agent.ding'));
-		if (this.get('agent_ding')) {
+		if (!this.get('dinging')) {
+			var e = this;
+			this.set('dinging', true);
 			this.get('session.ding').play();
-			this.set('agent_ding', false);
-			this.session.chatbox.save();
-			//window.LCSDB.child('chatboxes/' + this.get('session.chatbox.id') + '/agents/' + this.get('session.agent.id') + '/ding').set(false);
+			this.set('session.agent.ding', false);
+			this.session.chatbox.save().then(function() {
+				e.set('dinging', false);
+			});
 		}
 	}.observes('session.agent.ding')
 });
