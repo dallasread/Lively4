@@ -21,6 +21,7 @@ Router.map(function() {
 	this.route('admin', function() {
 		this.route('agents');
 		this.route('activate');
+		this.route('billing');
 		this.route('setup');
 		
 		this.route('contacts', function() {

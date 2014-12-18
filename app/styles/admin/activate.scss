@@ -84,16 +84,61 @@
 					line-height: 20px;
 					margin-bottom: 15px;
 				}
-				
-				.risk_list {
-					margin: -20px 0 20px 35px;
-					list-style: disc;
-					
-					li {
-						margin-bottom: 7px;
-					}
-				}
 			}
+		}
+	}
+	
+	p, li {
+		margin-bottom: 20px 0;
+	}
+	
+	.risk_list {
+		margin: -20px 0 20px 35px;
+		list-style: disc;
+		
+		li {
+			margin-bottom: 7px;
+		}
+	}
+	
+	.choose_package {
+		margin-top: 10px;
+		margin-left: 80px;
+		margin-bottom: -30px;
+		width: 170px;
+	}
+	
+	.pricing {
+		border-collapse: collapse;
+		text-align: center;
+		width: 100%;
+		margin: 40px auto 40px;
+		border: 1px solid #bbb;
+		
+		td, th {
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+			padding: 12px;
+		}
+		
+		.package {
+			padding: 12px 12px 0px;
+			font-size: 15px;
+			line-height: 15px;
+			color: #106D99;
+		}
+		
+		.price {
+			font-weight: bold;
+			font-size: 21px;
+			line-height: 30px;
+			padding: 12px 12px 8px;
+		}
+		
+		.conversations {
+			font-size: 13px;
+			line-height: 19px;
+			padding: 0px 12px 12px;
 		}
 	}
 }

@@ -25,10 +25,24 @@
 				Agents
 			{{/link-to}}
 			
+			{{#if session.chatbox.activated}}
+				{{#link-to "admin.billing"}}
+					<i class="ion ion-card icon"></i>
+					Billing
+				{{/link-to}}
+			{{/if}}
+			
 			{{#link-to "admin.settings"}}
 				<i class="ion ion-gear-a icon"></i>
 				Settings
 			{{/link-to}}
+			
+			{{#unless session.chatbox.activated}}
+				{{#link-to "admin.activate"}}
+					<i class="ion ion-ios-bolt icon"></i>
+					Activate
+				{{/link-to}}
+			{{/unless}}
 		{{else}}
 			{{#link-to "admin.settings.me"}}
 				<i class="ion ion-person icon"></i>
@@ -36,14 +50,6 @@
 			{{/link-to}}
 		{{/if}}
 
-		{{#unless session.chatbox.activated}}
-			{{#if session.agent.admin}}
-				{{#link-to "admin.activate"}}
-					<i class="ion ion-ios-bolt icon"></i>
-					Activate
-				{{/link-to}}
-			{{/if}}
-		{{/unless}}
 	</div>
 
 	<div class="panes">

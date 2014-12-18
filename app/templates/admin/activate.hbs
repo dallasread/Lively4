@@ -1,32 +1,46 @@
 <div class="pane">
 	<div class="activate">
-		<p><span class="red">You are using the free version of Lively which has a limit of 2 conversations per day.</span> To lift this limit <em>and access all of your website's untapped potential</em>, you'll need an annual or monthly plan.</p>
-		<div class="plan selected">
+		<p><span class="red">You are using the free version of Lively which has a limit of 2 conversations per day.</span> When your chatbox hits the limit, it will simply remain hidden until the next day.</p>
+		<p>To lift this limit <em>and access all of your website's untapped potential</em>, you'll need to activate your chatbox with one of the monthly packages below. All packages include:</p>
+		<!-- <div class="plan selected">
 			<p class="plan_header">Our Annual Plan</p>
 			<div class="align_center">
-				<img src="{{unbound session.url}}/assets/imgs/price.png">
+				<img src="{{!unbound session.url}}/assets/imgs/price.png">
 			</div>
 			<p class="description">With the risk-free annual package, your website's contacts will be astounded with your quick, always-live responses.</p>
-			
-			<a {{bind-attr href=session.chatbox.paypal_annually}} class="button buy_now" target="_blank">
+
+			<a {{!bind-attr href=session.chatbox.paypal_annually}} class="button buy_now" target="_blank">
 				Click to Activate Your Chatbox!
 			</a>
 		</div>
 		<p class="hint">
-			We also offer a <a {{bind-attr href=session.chatbox.paypal_monthly}} target="_blank">$19 month-to-month plan</a>.
+			We also offer a <a {{!bind-attr href=session.chatbox.paypal_monthly}} target="_blank">$19 month-to-month plan</a>.
+		</p> -->
+		
+		<ul class="risk_list">
+			<li>Unlimited Agents</li>
+			<li>Unlimited Triggers (smooth Call-To-Actions start conversations automatically)</li>
+			<li>Unlimited Canned Messages (respond quickly with prebuilt messages)</li>
+			<li>Flexible Introducer Fields (choose what information you want to collect from the visitor &mdash; and when you want it)</li>
+		</ul>
+			
+		{{render 'admin/activate/pricing'}}
+			
+		<p class="hint" style="margin-top: -25px; ">
+			A conversation is when an agent and visitor reply to each other.
 		</p>
+		
 		<div class="clear"></div>
 		
 		<p>
-			<strong>100% Money-Back Guarantee</strong><br>
-			You have enough risks to consider &mdash; Lively should not be one of them! We've eliminated <em>all</em> the risks by offering:
+			<strong>Why do I need to choose a plan?</strong><br>
+			<em>The truth is: you don't.</em> You could stay limited to 2 conversations per day forever, but you'll be losing out on loads of business. Our paying plans allow us to build new features, mobile apps (coming soon), build Fort-Knox-like security, host your chatbox, and scale to whatever bandwidth your site needs.
 		</p>
 		
-		<ul class="risk_list">
-			<li>30-second installation</li>
-			<li>No-time-limit free trial</li>
-			<li>Unlimited-features trial</li>
-		</ul>
+		<p>
+			<strong>100% Money-Back Guarantee</strong><br>
+			You have enough risks to consider &mdash; Lively should not be one of them! We've eliminated <em>all</em> the risks by offering you an Unlimited-Term, Unlimited-Features Trial. The only catch is that you're restricted to <em>2 conversations per day</em>.
+		</p>
 		
 		<p>To top it off, we have a rock solid guarantee: <strong>If Lively doesn't boost your business' bottom line in your 1st month, we'll give you a 100% refund &mdash; no questions asked!</strong>
 		</p>
@@ -55,8 +69,10 @@
 			Thanks for the plug in, out of the alternatives this has everything needed and is just after a couple of clicks ready to run.
 		</p>
 		
+		{{render 'admin/activate/pricing'}}
+		
 		<p>
-			We'd love to welcome you to the Lively Chat Support family! <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BH9QXAHRFWA2Y" class="red" target="_blank">Click here to start your annual plan.</a>
+			We'd love to welcome you to the Lively Chat Support family!
 		</p>
 	</div>
 </div>
