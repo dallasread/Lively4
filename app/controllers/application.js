@@ -14,10 +14,11 @@ export default Ember.Controller.extend({
 		}
 	}.observes('session.contact.ding'),
 	agentDinger: function() {
-		if (this.get('session.agent.ding')) {
+		console.log(this.get('session.agent.ding'));
+		if (this.get('agent_ding')) {
 			this.get('session.ding').play();
-			this.session.get('agent').set('ding', false);
-			this.session.get('chatbox').save();
+			this.set('agent_ding', false);
+			this.session.chatbox.save();
 			//window.LCSDB.child('chatboxes/' + this.get('session.chatbox.id') + '/agents/' + this.get('session.agent.id') + '/ding').set(false);
 		}
 	}.observes('session.agent.ding')

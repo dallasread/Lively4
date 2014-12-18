@@ -87,7 +87,7 @@ schema:
         ding:
           type: boolean
     message:
-      indexOn: [created_at]
+      indexOn: [created_at, read]
       type: object
       required: [body, created_at, from_agent, read]
       additionalProperties: false
@@ -150,8 +150,8 @@ schema:
         $chatbox_id:
           properties:
             $contact_id:
+              type: object
               indexOn: [online, contact_last_seen]
-              constraint: createOnly()
               properties:
                 anonymous:
                   type: boolean
@@ -167,7 +167,6 @@ schema:
                   type: string
                 messages:
                   type: object
-                  constraint: createOnly()
                   $message_id: {$ref: "#/definitions/message"}
                 contact_typing:
                   type: boolean
@@ -206,8 +205,6 @@ access:
     write: isAdmin() || isCurrentAgent()
   - location: /chatboxes/$chatbox_id/agents/$agent_id/registered
     write: isAdmin() || isCurrentAgent()
-  - location: /chatboxes/$chatbox_id/agents/$agent_id/ding
-    write: isAdmin() || isCurrentAgent()
   - location: /chatboxes/$chatbox_id/agents/$agent_id/online
     write: isCurrentAgent()
   - location: /chatboxes/$chatbox_id/agents/$agent_id/ding
@@ -235,12 +232,12 @@ access:
   - location: /chatboxes/$chatbox_id/activated_at
     write: isSuperUser()
 
-  - location: /contacts/$chatbox_id
-    read: isAgent()
-  - location: /contacts/$chatbox_id/$contact_id/
+  - location: /contacts
+    read: isLoggedIn()
+    write: isLoggedIn()
+  - location: /contacts/$chatbox_id/$contact_id
     read: isCurrentContact() || isAgent()
     write: isCurrentContact() || isAgent()
-    
   - location: /contacts/$chatbox_id/$contact_id/anonymous
     read: isContactOrAdminOrAgentForContact()
     write: isContactOrAdminOrAgentForContact()

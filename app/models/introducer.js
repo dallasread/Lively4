@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	//chatbox: DS.belongsTo('chatbox', { async: true }),
 	name: DS.attr('string'),
 	permalink: DS.attr('string'),
-	required: DS.attr('boolean'),
+	required: DS.attr('boolean', { defaultValue: false }),
 	type: DS.attr('string'),
 	validator: DS.attr('string'),
 	ordinal: DS.attr('number'),

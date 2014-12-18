@@ -16,7 +16,7 @@ export default Ember.ArrayController.extend({
 		}
 	}.property('filter', 'session.agent.admin', 'content.@each.agent'),
 	actions: {
-		setFilter: function(filter, agent_id) {
+		setFilter: function(filter) {
 			if (this.get('filter') !== filter) {
 				this.set('filter', filter);
 			}
