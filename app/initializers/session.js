@@ -68,7 +68,6 @@ export default {
 					session.set('created', null);
 					
 					contact.get('agent').then(function(agent) {
-						console.log('here');
 						if (!agent) {
 							contact.set('agent', session.get("chatbox.next_available_agent"));
 						}

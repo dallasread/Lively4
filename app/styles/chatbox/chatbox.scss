@@ -71,7 +71,7 @@ $header_border_width: 7px;
 						color: rgba(255, 255, 255, 0.7);
 						font-size: 14px;
 						line-height: 14px;
-						margin: 0 0 5px 0;
+						margin: 0 0 8px 0;
 					}
 					
 					.agent_name {
@@ -95,22 +95,12 @@ $header_border_width: 7px;
 							display: inline-block;
 							color: #ddd;
 							color: rgba(255, 255, 255, 0.7);
-							font-size: 25px;
-							line-height: 25px;
+							font-size: 20px;
+							line-height: 20px;
 							padding: 7px;
 							
 							&:hover {
 								color: #fff;
-							}
-							
-							.ion-ios-locked-outline {
-								font-size: 20px;
-								line-height: 20px;
-							}
-							
-							.ion-ios-email-outline {
-								font-size: 24px;
-								line-height: 24px;
 							}
 						}
 						
@@ -121,7 +111,7 @@ $header_border_width: 7px;
 							text-transform: uppercase;
 							margin: 0;
 							position: absolute;
-							padding-top: 10px;
+							padding-top: 6px;
 							margin-left: 10px;
 							display: inline-block;
 						}
@@ -222,10 +212,18 @@ $header_border_width: 7px;
 		}
 	}
 	
+	.reset_password {
+		float: right;
+		color: #aaa;
+		font-size: 13px;
+		line-height: 13px;
+		padding: 10px 0px;
+	}
+	
 	.agent_login_link {
 		position: fixed;
-		top: $header_height - 20px;
-		right: 10px;
+		top: $header_height - 22px;
+		right: 8px;
 		color: #ddd;
 		color: rgba(255, 255, 255, 0.2);
 		font-size: 11px;
