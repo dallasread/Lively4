@@ -19,12 +19,12 @@ export default Ember.Route.extend({
 				}
 				
 				if (confirm(msg)) {
-					e.store.unloadAll('message');
-					e.store.unloadAll('contact');
-					e.session.set('auth', null);
-					e.session.set('contact', null);
-					e.session.set('agent', null);
 					window.LCSDB.unauth();
+					//e.store.unloadAll('message');
+					//e.store.unloadAll('contact');
+					//e.session.set('auth', null);
+					//e.session.set('contact', null);
+					//e.session.set('agent', null);
 					e.transitionTo('prompter');
 				}
 			}

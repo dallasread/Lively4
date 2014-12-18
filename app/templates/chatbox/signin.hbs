@@ -48,12 +48,16 @@
 		</div>
 		
 		
-			<button type="submit">
+		<button type="submit">
+			{{#if loading}}
+				Loading...
+			{{else}}
 				{{#if resetting}}
 					Send Me Reset Instructions
 				{{else}}
 					Sign In
 				{{/if}}
-			</button>
+			{{/if}}
+		</button>
 	</form>
 </div>

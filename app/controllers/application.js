@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 		}
 	}.observes('session.contact.ding'),
 	agentDinger: function() {
-		if (!this.get('dinging')) {
+		if (this.get('session.agent') && !this.get('dinging')) {
 			var e = this;
 			this.set('dinging', true);
 			this.get('session.ding').play();
