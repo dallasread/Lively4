@@ -4,61 +4,13 @@
 			.activate {
 				max-width: 450px;
 
-				.plan {
-					padding: 20px;
-					position: relative;
-					background: #B3DAFF;
-					color: #394854;
-					border: 3px solid #212931;
-					border-radius: 9px;
-			
-					p, li {
-						margin: 40px 0;
-						color: #394854;
-					}
-					
-					.plan_header {
-						background: #212931;
-						color: #B3DAFF;
-						text-align: center;
-						padding: 10px;
-						margin: -20px -20px 20px -20px;
-						font-weight: bold;
-					}
-			
-					.price {
-						font-weight: bold;
-						font-size: 72px;
-						line-height: 84px;
-						margin: 0;
-						color: #212931;
-						display: inline-block;
-					}
-			
-					.interval {
-						display: inline-block;
-						color: #5C768A;
-					}
-			
-					.savings {
-						position: absolute;
-						right: -20px;
-						top: -20px;
-					}
-			
-					.description {
-						margin: 10px 0 0 0;
-						font-size: 14px;
-						line-height: 21px;
-					}
-				}
-		
 				.hint {
 					color: #aaa;
 					font-size: 13px;
-					line-height: 20px;
+					line-height: 19px;
 					margin-top: 7px;
 					float: right;
+					font-weight: normal;
 			
 					a {
 						text-decoration: underline;
@@ -85,60 +37,66 @@
 					margin-bottom: 15px;
 				}
 			}
-		}
-	}
+			
+			p, li {
+				margin-bottom: 20px 0;
+			}
 	
-	p, li {
-		margin-bottom: 20px 0;
-	}
+			.risk_list {
+				margin: -20px 0 20px 35px;
+				list-style: disc;
+		
+				li {
+					margin-bottom: 7px;
+				}
+			}
 	
-	.risk_list {
-		margin: -20px 0 20px 35px;
-		list-style: disc;
-		
-		li {
-			margin-bottom: 7px;
-		}
-	}
+			.choose_package {
+				margin-top: 10px;
+				margin-left: 80px;
+				margin-bottom: -30px;
+				width: 170px;
+			}
 	
-	.choose_package {
-		margin-top: 10px;
-		margin-left: 80px;
-		margin-bottom: -30px;
-		width: 170px;
-	}
-	
-	.pricing {
-		border-collapse: collapse;
-		text-align: center;
-		width: 100%;
-		margin: 40px auto 40px;
-		border: 1px solid #bbb;
+			.pricing {
+				border-collapse: collapse;
+				text-align: center;
+				width: 100%;
+				margin: 40px auto 40px;
+				border: 1px solid #bbb;
 		
-		td, th {
-			border-left: 1px solid #ddd;
-			border-right: 1px solid #ddd;
-			padding: 12px;
-		}
+				td, th {
+					border-left: 1px solid #ddd;
+					border-right: 1px solid #ddd;
+					padding: 12px;
+				}
 		
-		.package {
-			padding: 12px 12px 0px;
-			font-size: 15px;
-			line-height: 15px;
-			color: #106D99;
-		}
+				.package {
+					padding: 12px 12px 0px;
+					font-size: 15px;
+					line-height: 15px;
+					color: #106D99;
+				}
 		
-		.price {
-			font-weight: bold;
-			font-size: 21px;
-			line-height: 30px;
-			padding: 12px 12px 8px;
-		}
+				.price {
+					font-weight: bold;
+					font-size: 21px;
+					line-height: 30px;
+					padding: 12px 12px 8px;
+				}
+				
+				.cents {
+					color: #aaa;
+					font-size: 12px;
+					line-height: 17px;
+				}
 		
-		.conversations {
-			font-size: 13px;
-			line-height: 19px;
-			padding: 0px 12px 12px;
+				.conversations {
+					font-size: 13px;
+					line-height: 19px;
+					padding: 0px 12px 12px;
+				}
+			}
 		}
 	}
 }

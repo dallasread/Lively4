@@ -20,6 +20,10 @@
           ".write":"(((!newData.parent().exists()||!(((newData.parent().isString()||newData.parent().isNumber()||newData.parent().isBoolean()))))&&(newData.parent().val()==null||newData.parent().child('color').exists()&&newData.parent().child('exclude').exists()&&newData.parent().child('include').exists()&&newData.parent().child('initial_offline_message').exists()&&newData.parent().child('initial_online_message').exists())&&(!newData.exists()||newData.isString())&&(auth.uid!==null||root.child('chatboxes/'+$chatbox_id+'/agents/'+auth.uid+'/active').val()===true&&root.child('chatboxes/'+$chatbox_id+'/agents/'+auth.uid+'/admin').val()===true)))",
           ".read":"(true)"
         },
+        "plan": {
+          ".write":"(((!newData.parent().exists()||!(((newData.parent().isString()||newData.parent().isNumber()||newData.parent().isBoolean()))))&&(newData.parent().val()==null||newData.parent().child('color').exists()&&newData.parent().child('exclude').exists()&&newData.parent().child('include').exists()&&newData.parent().child('initial_offline_message').exists()&&newData.parent().child('initial_online_message').exists())&&(!newData.exists()||newData.isString())&&(auth.uid!==null||auth.admin===true)))",
+          ".read":"(true)"
+        },
         "domain": {
           ".write":"(((!newData.parent().exists()||!(((newData.parent().isString()||newData.parent().isNumber()||newData.parent().isBoolean()))))&&(newData.parent().val()==null||newData.parent().child('color').exists()&&newData.parent().child('exclude').exists()&&newData.parent().child('include').exists()&&newData.parent().child('initial_offline_message').exists()&&newData.parent().child('initial_online_message').exists())&&(!newData.exists()||newData.isString())&&auth.uid!==null))",
           ".read":"true"

@@ -119,6 +119,8 @@ schema:
               type: string
             color:
               type: string
+            plan:
+              type: string
             domain:
               type: string
             texturize:
@@ -227,6 +229,8 @@ access:
     write: isAdmin()
   - location: /chatboxes/$chatbox_id/initial_online_message
     write: isAdmin()
+  - location: /chatboxes/$chatbox_id/plan
+    write: isSuperUser()
   - location: /chatboxes/$chatbox_id/activated
     write: isSuperUser()
   - location: /chatboxes/$chatbox_id/activated_at

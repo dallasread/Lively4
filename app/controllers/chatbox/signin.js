@@ -29,6 +29,7 @@ export default Ember.ObjectController.extend({
 						e.store.find('agent', auth.uid).then(function() {
 							e.get('session.contact').set('online', false).save().then(function() {
 								e.get('session').set('contact', null);
+								e.set('loading', false);
 								e.transitionToRoute('admin');
 							});
 						}, function() {
