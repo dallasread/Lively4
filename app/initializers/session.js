@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import config from '../config/environment';
+var fff = "aHR0cHM6Ly9sY3M0LmZpcmViYXNlaW8uY29t";
 
 export default {
   name: 'session',
 	after: 'store',
   initialize: function(container, app) {
-		window.LCSDB = new window.Firebase("https://lcs4.firebaseio.com");
+		window.LCSDB = new window.Firebase(window.atob(fff));
 		window.FastClick.attach(document.body);
 		//window.LCSDB.unauth();
 		

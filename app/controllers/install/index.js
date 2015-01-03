@@ -49,8 +49,9 @@ export default Ember.Controller.extend({
 									creator: true,
 									active: true
 								});
-					
+								
 								chatbox.get('agents').addObject(agent);
+								if (typeof window.afterCreateChatbox === 'function') { window.afterCreateChatbox( chatbox.toJSON() ); }
 								e.session.set('agent', agent);
 								e.transitionToRoute( 'admin' );
 							}

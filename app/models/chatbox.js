@@ -8,6 +8,7 @@ export default DS.Model.extend({
 	}}),
 	activated: DS.attr('boolean', { defaultValue: false }),
 	activated_at: DS.attr('date'),
+	created_at: DS.attr('date', { defaultValue: function() { return new Date(); }}),
 	color: DS.attr('string', { defaultValue: '#004154' }),
 	plan: DS.belongsTo('plan', { async: true }),
 	texturize: DS.attr('boolean', { defaultValue: false }),

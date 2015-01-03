@@ -188,7 +188,7 @@ access:
 
   - location: /chatboxes/$chatbox_id
     read: true
-    write: isLoggedIn()
+    write: isLoggedIn() || createOnly()
 
   - location: /chatboxes/$chatbox_id/agents/$agent_id
     write: isAdmin() || isCurrentAgent() || contactIsSettingDing()
